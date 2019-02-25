@@ -30,6 +30,8 @@
     "@babel/core": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.0.0",
+    "@flexis/srcset-loader": "^1.0.0",
+    "@flexis/workbox-webpack-plugin": "^1.0.0-beta",
     "@storybook/addon-a11y": "^4.0.9",
     "@storybook/addon-actions": "^4.0.9",
     "@storybook/addon-info": "^4.0.9",

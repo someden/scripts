@@ -36,7 +36,7 @@ Scripts and configuration for TrigenSoftware's web projects.
 
 ## Environment variables
 
-```
+```bash
 PROXY_API_URI='' # valid URI; not set by default
 DISABLE_BROWSER_SYNC=false # boolean; `false` by default
 ```
