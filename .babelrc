@@ -1,0 +1,10 @@
+{
+	"exclude": "node_modules/**",
+	"presets": [
+        ["babel-preset-trigen", {
+            "targets": { "node": "current" },
+            "react": true,
+            "commonjs": true
+        }]
+	]
+}

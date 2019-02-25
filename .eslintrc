@@ -1,0 +1,11 @@
+{
+	"extends": "trigen",
+	"env": {
+		"node": true
+	},
+	"rules": {
+		"import/unambiguous": "off",
+		"no-sync": "off",
+		"no-process-exit": "off"
+	}
+}
