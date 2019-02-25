@@ -6,6 +6,7 @@
 	"rules": {
 		"import/unambiguous": "off",
 		"no-sync": "off",
-		"no-process-exit": "off"
+		"no-process-exit": "off",
+		"no-console": "off"
 	}
 }
