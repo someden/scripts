@@ -23,10 +23,6 @@ const scripts = {
 		args: ['-c', 'jest.config.json']
 	},
 	'test':            ['lint', 'jest', 'build'],
-	'storybook':       {
-		cmd:  'start-storybook',
-		args: ['--ci', '-p', '3001', '-c', storybookConfigs]
-	},
 	'build:docs':      [{
 		cmd:    'typedoc',
 		args:   ['./src', '--out', './docs', '--excludeExternals', '--mode', 'modules'],
@@ -35,6 +31,10 @@ const scripts = {
 		cmd:  'tocuh',
 		args: ['docs/.nojekyll']
 	}],
+	'start:storybook': {
+		cmd:  'start-storybook',
+		args: ['--ci', '-p', '3001', '-c', storybookConfigs]
+	},
 	'build:storybook': {
 		env:  'development',
 		cmd:  'build-storybook',

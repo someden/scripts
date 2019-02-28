@@ -31,8 +31,8 @@ Scripts and configuration for TrigenSoftware's web projects.
 - `lint`
 - `jest`
 - `test`
-- `storybook`
 - `build:docs`
+- `start:storybook`
 - `build:storybook`
 - `start`
 - `build`
