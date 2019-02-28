@@ -1,22 +1,27 @@
 import path from 'path';
 import update from 'immutability-helper';
+import WorkboxPlugin from '@flexis/workbox-webpack-plugin';
 import findIndex from '../../helpers/findIndex';
 
+const swTest = /\/sw\.js$/;
 const cwd = process.cwd();
 
 export function base(config) {
 	return update(config, {
 		module: {
 			rules: { $push: [{
-				test:    /\/sw\.js$/,
+				test:    swTest,
 				exclude: /node_modules/,
 				loader:  'service-worker-loader',
 				options: {
-					filename:   '[name].js',
+					filename:   '[path][name].js',
 					outputPath: path.join(cwd, 'build')
 				}
 			}] }
-		}
+		},
+		plugins: { $push: [
+			new WorkboxPlugin(swTest)
+		] }
 	});
 }
 

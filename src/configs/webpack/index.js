@@ -7,6 +7,7 @@ import { decamelize } from 'humps';
 import findIndex from '../../helpers/findIndex';
 import applyReducers from '../../helpers/applyReducers';
 import addDevScripts from '../../helpers/addDevScripts';
+import getWebpackHook from '../../helpers/getWebpackHook';
 import htmlminConfig from '../htmlmin';
 import * as stylableLoader from './stylableLoader';
 import * as svgLoader from './svgLoader';
@@ -16,7 +17,8 @@ const cwd = process.cwd();
 const loaders = [
 	stylableLoader,
 	svgLoader,
-	swLoader
+	swLoader,
+	getWebpackHook()
 ];
 const baseLoaders = loaders.map(_ => _.base);
 const devLoaders = loaders.map(_ => _.dev);

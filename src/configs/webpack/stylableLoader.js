@@ -16,10 +16,17 @@ export function base(config) {
 	return update(config, {
 		module: {
 			rules: { $push: [{
-				test:    /\.(eot|woff|ttf|jpg|webp|png|gif)$/,
+				test:    /\.(eot|woff|ttf)$/,
 				loader:  'file-loader',
 				options: {
-					name: '[name].[hash:10].[ext]'
+					name: '[path][name].[ext]'
+				}
+			}, {
+				test:    /\.(jpg|webp|png|gif)$/,
+				loader:  '@flexis/srcset-loader',
+				options: {
+					name:             '[path][name].[ext]',
+					skipOptimization: true
 				}
 			}] }
 		}
@@ -46,6 +53,12 @@ export function build(config) {
 				[findIndex('loader', 'file-loader', config.module.rules)]: {
 					options: {
 						name: { $set: '[name].[hash:10].[ext]' }
+					}
+				},
+				[findIndex('loader', '@flexis/srcset-loader', config.module.rules)]: {
+					options: {
+						name:             { $set: '[name].[hash:10].[ext]' },
+						skipOptimization: { $set: false }
 					}
 				}
 			}
