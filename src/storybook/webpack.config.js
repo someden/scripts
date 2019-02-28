@@ -6,7 +6,6 @@ module.exports = configureStorybook;
 
 function configureStorybook(storybookBaseConfig) {
 
-	const webpackDevConfig = webpackConfig.dev();
 	const projectRoot = process.cwd();
 	const pkg = JSON.parse(
 		fs.readFileSync(
@@ -18,6 +17,8 @@ function configureStorybook(storybookBaseConfig) {
 	process.env.PROJECT_NAME = pkg.name.toUpperCase();
 	process.env.PROJECT_HOMEPAGE = pkg.repository.url.replace(/(^git\+)|(\.git$)/g, '');
 	process.env.PROJECT_SRC = path.join(projectRoot, 'src');
+
+	const webpackDevConfig = webpackConfig.dev();
 
 	storybookBaseConfig.resolve.extensions.push(
 		...webpackDevConfig.resolve.extensions
