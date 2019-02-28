@@ -17,7 +17,7 @@
   "scripts": {
     "lint": "eslint 'src/**/*.{js,jsx}'",
     "test": "npm run lint",
-    "build": "./scripts/buildPackage.sh",
+    "build": "npm run lint && ./scripts/buildPackage.sh",
     "prepublishOnly": "if [ -f .gitignore ]; then exit 1; fi"
   },
   "peerDependencies": {
