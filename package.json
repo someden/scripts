@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Scripts and configuration for TrigenSoftware's web projects.",
   "author": "dangreen",
   "license": "MIT",
@@ -13,6 +13,9 @@
   },
   "bin": {
     "trigen-scripts": "./index.js"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   },
   "scripts": {
     "lint": "eslint 'src/**/*.{js,jsx}'",
