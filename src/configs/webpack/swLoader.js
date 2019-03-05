@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 import WorkboxPlugin from '@flexis/workbox-webpack-plugin';
 import findIndex from '../../helpers/findIndex';
 
-const swTest = /\/sw\.js$/;
+const swTest = /(\/|\.)sw\.js$/;
 const cwd = process.cwd();
 
 export function base(config) {
