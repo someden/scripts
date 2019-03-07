@@ -1,10 +1,7 @@
-import path from 'path';
 import update from 'immutability-helper';
 import WorkboxPlugin from '@flexis/workbox-webpack-plugin';
-import findIndex from '../../helpers/findIndex';
 
-const swTest = /(\/|\.)sw\.js$/;
-const cwd = process.cwd();
+const swTest = /(\/|\.)sw\.(js|ts)$/;
 
 export function base(config) {
 	return update(config, {
@@ -14,8 +11,7 @@ export function base(config) {
 				exclude: /node_modules/,
 				loader:  'service-worker-loader',
 				options: {
-					filename:   '[path][name].js',
-					outputPath: path.join(cwd, 'build')
+					filename: '[name].[chunkhash].js'
 				}
 			}] }
 		},
@@ -30,15 +26,5 @@ export function dev(config) {
 }
 
 export function build(config) {
-	return update(config, {
-		module: {
-			rules: {
-				[findIndex('loader', 'service-worker-loader', config.module.rules)]: {
-					options: {
-						filename: { $set: '[name].[chunkhash].js' }
-					}
-				}
-			}
-		}
-	});
+	return config;
 }
