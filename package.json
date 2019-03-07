@@ -19,7 +19,7 @@
   },
   "scripts": {
     "lint": "eslint 'src/**/*.{js,jsx}'",
-    "test": "npm run lint",
+    "test": "npm run build && node test/scripts.spec",
     "build": "npm run lint && ./scripts/buildPackage.sh",
     "prepublishOnly": "if [ -f .gitignore ]; then exit 1; fi"
   },
@@ -59,7 +59,6 @@
     "chalk": "^2.4.2",
     "clean-webpack-plugin": "^1.0.0",
     "connect-history-api-fallback": "^1.5.0",
-    "dotenv": "^6.0.0",
     "eslint": "^5.4.0",
     "eslint-config-trigen": "^3.2.3",
     "eslint-loader": "^2.1.1",
@@ -99,10 +98,11 @@
     "@babel/node": "^7.0.0",
     "babel-preset-trigen": "^1.8.0",
     "browserslist-config-trigen": "^1.1.0",
+    "del": "^4.0.0",
+    "dotenv": "^6.0.0",
     "eslint": "^5.4.0",
     "eslint-config-trigen": "^3.2.3",
     "husky": "^1.0.0-rc.10",
-    "jest": "^23.6.0",
     "lint-staged": "^8.1.0"
   }
 }
