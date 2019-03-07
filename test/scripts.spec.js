@@ -34,14 +34,6 @@ try {
 
 	console.log(chalk.blue('\n> Testing...\n'));
 
-	execSync(`ls ${path.join(__dirname, '..')}`, {
-		stdio: 'inherit'
-	});
-
-	execSync(`ls ${path.join(__dirname, '../package')}`, {
-		stdio: 'inherit'
-	});
-
 	execSync(`node ${path.join(__dirname, '..', 'package', 'index.js')} test`, {
 		stdio: 'inherit',
 		cwd:   WEATHER_PATH

@@ -19,7 +19,7 @@
   },
   "scripts": {
     "lint": "eslint 'src/**/*.{js,jsx}'",
-    "test": "npm run build && node test/scripts.spec",
+    "test": "npm run build && ls package",
     "build": "npm run lint && ./scripts/buildPackage.sh",
     "prepublishOnly": "if [ -f .gitignore ]; then exit 1; fi"
   },
