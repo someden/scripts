@@ -34,7 +34,11 @@ try {
 
 	console.log(chalk.blue('\n> Testing...\n'));
 
-	execSync(`tree ${path.join(__dirname, '..')}`, {
+	execSync(`ls ${path.join(__dirname, '..')}`, {
+		stdio: 'inherit'
+	});
+
+	execSync(`ls ${path.join(__dirname, '../package')}`, {
 		stdio: 'inherit'
 	});
 
