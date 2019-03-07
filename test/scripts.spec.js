@@ -12,7 +12,7 @@ try {
 
 	console.log(chalk.blue('\n> Cloning `weather`...\n'));
 
-	execSync('git clone git@github.com:TrigenSoftware/weather.git', {
+	execSync('git clone https://github.com/TrigenSoftware/weather.git', {
 		stdio: 'inherit',
 		cwd:   __dirname
 	});
