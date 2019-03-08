@@ -17,12 +17,16 @@ const scripts = {
 		args: ['-p', '.', '-t', 'stylish', 'src/**/*.{ts,tsx}']
 	},
 	'lint':            ['lint:styles', 'lint:scripts'],
+	'typecheck':       {
+		cmd:  'tsc',
+		args: ['--noEmit', '--pretty', '--skipLibCheck']
+	},
 	'jest':            {
 		env:  'test',
 		cmd:  'jest',
 		args: ['-c', 'jest.config.json']
 	},
-	'test':            ['lint', 'jest', 'build'],
+	'test':            ['typecheck', 'lint', 'jest', 'build'],
 	'build:docs':      [{
 		cmd:    'typedoc',
 		args:   ['./src', '--out', './docs', '--excludeExternals', '--mode', 'modules'],

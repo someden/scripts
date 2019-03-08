@@ -191,7 +191,7 @@ export function build(params) {
 			}
 		} },
 		plugins:      { $push: [
-			new CleanPlugin('build', { root: cwd }),
+			new CleanPlugin(),
 			new webpack.HashedModuleIdsPlugin(),
 			new HtmlPlugin({
 				template: 'src/index.html',
