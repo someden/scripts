@@ -4,7 +4,9 @@ import * as webpackConfig from '../configs/webpack';
 
 module.exports = configureStorybook;
 
-function configureStorybook(storybookBaseConfig) {
+function configureStorybook({
+	config: storybookBaseConfig
+}) {
 
 	const projectRoot = process.cwd();
 	const pkg = JSON.parse(
@@ -28,18 +30,21 @@ function configureStorybook(storybookBaseConfig) {
 		webpackDevConfig.resolve.alias
 	);
 
-	storybookBaseConfig.module.rules.push(
+	storybookBaseConfig.module.rules = [
+		...storybookBaseConfig.module.rules.filter(
+			_ => !/css|svg/.test(String(_.test))
+		),
 		...webpackDevConfig.module.rules
-	);
+	];
+
 	storybookBaseConfig.plugins.push(
 		...webpackDevConfig.plugins.filter((plugin) => {
 
 			switch (plugin.constructor.name) {
 
 				case 'HtmlWebpackPlugin':
-					return false;
-
 				case 'HotModuleReplacementPlugin':
+				case 'WorkboxWebpackPlugin':
 					return false;
 
 				default:
