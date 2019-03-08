@@ -46,3 +46,4 @@ package
 build
 
 .env
+test/weather
