@@ -104,5 +104,10 @@
     "eslint-config-trigen": "^3.2.3",
     "husky": "^1.0.0-rc.10",
     "lint-staged": "^8.1.0"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "@types/storybook__addon-knobs"
+    ]
   }
 }
