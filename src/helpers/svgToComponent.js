@@ -29,6 +29,7 @@ function runtimeGenerator({
 	const spriteRequest = stringifyRequest({ context }, spriteModule);
 	const symbolRequest = stringifyRequest({ context }, symbolModule);
 	const displayName = `Icon${pascalize(symbol.id)}`;
+	const [,, width, height] = symbol.viewBox.split(' ');
 
 	return `
 		${generateImport('React', 'react', esModule)}
@@ -40,7 +41,7 @@ function runtimeGenerator({
 		sprite.add(symbol);
 
 		function ${displayName}() {
-			Reflect.apply(Icon, this, arguments);
+			Icon.apply(this, arguments);
 		}
 
 		${displayName}.prototype = Object.create(Icon.prototype);
@@ -48,7 +49,11 @@ function runtimeGenerator({
 		${displayName}.defaultProps = Object.assign(
 			{},
 			Icon.defaultProps,
-			{ glyph: '${symbol.id}' }
+			{
+				glyph: '${symbol.id}',
+				width:  ${width},
+				height: ${height}
+			}
 		);
 
 		${generateExport(displayName, esModule)}

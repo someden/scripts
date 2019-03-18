@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import CleanPlugin from 'clean-webpack-plugin';
+import FilterWarningPlugins from 'webpack-filter-warnings-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
 import update from 'immutability-helper';
 import { decamelize } from 'humps';
@@ -23,6 +24,14 @@ const loaders = [
 const baseLoaders = loaders.map(_ => _.base);
 const devLoaders = loaders.map(_ => _.dev);
 const buildLoaders = loaders.map(_ => _.build);
+const ignoreWarnings = loaders.reduce((all, { ignoreWarnings }) => {
+
+	if (ignoreWarnings) {
+		return all.concat(ignoreWarnings);
+	}
+
+	return all;
+}, []);
 
 function base({
 	envify = {}
@@ -124,6 +133,9 @@ export function dev(params) {
 			new webpack.HotModuleReplacementPlugin(),
 			new HtmlPlugin({
 				template: 'src/index.html'
+			}),
+			new FilterWarningPlugins({
+				exclude: ignoreWarnings
 			})
 		] }
 	}));

@@ -6,9 +6,7 @@ import {
 } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
-// import { withOptions } from '@storybook/addon-options';
 import { withA11y } from '@storybook/addon-a11y';
-import stylesheet from '@flexis/ui/reboot.st.css';
 
 addParameters({
 	options: {
@@ -19,10 +17,7 @@ addParameters({
 });
 
 addDecorator(story => (
-	<div
-		{...stylesheet('root')}
-		style={{ padding: '12px' }}
-	>
+	<div style={{ padding: '12px' }}>
 		{story()}
 	</div>
 ));

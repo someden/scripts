@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Scripts and configuration for TrigenSoftware's web projects.",
   "author": "dangreen",
   "license": "MIT",
@@ -90,6 +90,7 @@
     "typescript": "3.3.3333",
     "webpack": "^4.26.1",
     "webpack-dev-middleware": "^3.2.0",
+    "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-hot-middleware": "^2.22.3"
   },
   "devDependencies": {
