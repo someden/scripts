@@ -2093,10 +2093,10 @@
     "@types/react" "*"
     "@types/storybook__react" "*"
 
-"@types/storybook__addon-knobs@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@types/storybook__addon-knobs/-/storybook__addon-knobs-4.0.2.tgz#473a1c3984cef1d4c4088304f5a4d53b9dfcac92"
-  integrity sha512-eqJ9fTBRJs77uxayQ9NpmeFbbEnYCg+rK5X6EQzx89M6lB9U/TG6fBTsn4DAameYRN9rrR9nRJu8CSNB6unQXQ==
+"@types/storybook__addon-knobs@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-knobs/-/storybook__addon-knobs-4.0.0.tgz#b218f0d84888833cc8b8d7a7b524175e8bb3030f"
+  integrity sha512-x3GNz8f0fQv7USvDuVXdZ4p/7nofFHyH6iB/qwR84Yp97xZxOzlQ0SY+6K14tVbdi9P7Qm5DZ2kZr0a+Io8qEQ==
   dependencies:
     "@types/react" "*"
     "@types/storybook__react" "*"
@@ -13628,10 +13628,10 @@ stylelint-a11y@^1.1.5:
   resolved "https://registry.yarnpkg.com/stylelint-a11y/-/stylelint-a11y-1.1.10.tgz#bd590975468b46c1457df9e0a7e7bfe815ebfe15"
   integrity sha512-rNkSrpYDL7NaevgGTf6HUNvUUTRV04KW5OKDY4IdfUZ9snOQrD77rB12HYtKhXk3uSx2ibpYk2h3pr8WnjfNuw==
 
-stylelint-config-trigen@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/stylelint-config-trigen/-/stylelint-config-trigen-2.0.2.tgz#4ef7b05199d1118c751445c70ef5d95fc3c30827"
-  integrity sha512-4f4qJpoKBA+OCmDvZryLgTnNQFwHnCASxHio7zXkmgYSiBfLx3Ktu/CB9Eh9pqzqTeLrooGNR+RNawsoDsUayw==
+stylelint-config-trigen@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/stylelint-config-trigen/-/stylelint-config-trigen-2.0.3.tgz#4b220bd18f9de7c921a82c0c0e2b2dc725404a96"
+  integrity sha512-BVPbeSjYfqCle4SPXqBlwPnVtpRXE68mrnbgRBXsA1ez2TNFGWsEfO/sLWMzmE0oO3z58/j8Md1oaBLjPMSIzw==
   dependencies:
     stylelint-a11y "^1.1.5"
     stylelint-csstree-validator "^1.3.0"

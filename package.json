@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Scripts and configuration for TrigenSoftware's web projects.",
   "author": "dangreen",
   "license": "MIT",
@@ -78,7 +78,7 @@
     "react-hot-loader": "4.8.0",
     "service-worker-loader": "^3.0.0",
     "stylelint": "^9.9.0",
-    "stylelint-config-trigen": "^2.0.2",
+    "stylelint-config-trigen": "^2.0.3",
     "stylelint-webpack-plugin": "^0.10.5",
     "svg-sprite-loader": "^4.1.3",
     "svgo": "^1.0.5",
