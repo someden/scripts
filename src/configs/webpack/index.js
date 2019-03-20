@@ -110,7 +110,10 @@ function base({
 					...env,
 					[`process.env.${decamelize(key).toUpperCase()}`]: JSON.stringify(value)
 				}), {})
-			)
+			),
+			new FilterWarningPlugins({
+				exclude: ignoreWarnings
+			})
 		]
 	});
 }
@@ -133,9 +136,6 @@ export function dev(params) {
 			new webpack.HotModuleReplacementPlugin(),
 			new HtmlPlugin({
 				template: 'src/index.html'
-			}),
-			new FilterWarningPlugins({
-				exclude: ignoreWarnings
 			})
 		] }
 	}));
