@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Scripts and configuration for TrigenSoftware's web projects.",
   "author": "dangreen",
   "license": "MIT",
@@ -75,6 +75,7 @@
     "node-notifier": "*",
     "postcss": "^7.0.2",
     "postcss-momentum-scrolling": "^1.4.8",
+    "rcfile": "^1.0.3",
     "react-hot-loader": "4.8.0",
     "service-worker-loader": "^3.0.0",
     "stylelint": "^9.9.0",

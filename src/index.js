@@ -16,12 +16,26 @@ function humanize(script) {
 		.replace(script[0].toLowerCase(), script[0].toUpperCase());
 }
 
-function run(script) {
+function run(script, ignoreTitle) {
 
 	const command = scripts[script] || script;
 
+	if (!ignoreTitle
+		&& typeof script === 'string'
+		&& script !== exec
+	) {
+		console.log(
+			chalk.blue(`\n> ${
+				humanize(script)
+			}\n`)
+		);
+	}
+
 	if (Array.isArray(command)) {
-		command.forEach(run);
+
+		const onlyOneCommand = command.length <= 1;
+
+		command.forEach(_ => run(_, onlyOneCommand));
 		return;
 	}
 
@@ -30,23 +44,15 @@ function run(script) {
 		return;
 	}
 
-	if (typeof script === 'string') {
-		console.log(
-			chalk.blue(`\n> ${
-				humanize(script)
-			}\n`)
-		);
-	}
-
 	const {
 		env,
 		cmd,
 		args,
-		noExit
+		ignoreResult
 	} = command;
-	const status = spawn(env, cmd, args);
+	const status = spawn(env, cmd, args, ignoreResult);
 
-	if (status && !noExit) {
+	if (status) {
 		process.exit(status);
 	}
 }
