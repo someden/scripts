@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Scripts and configuration for TrigenSoftware's web projects.",
   "author": "dangreen",
   "license": "MIT",
@@ -96,16 +96,9 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.0.0",
     "@babel/node": "^7.0.0",
-    "babel-preset-trigen": "^2.0.3",
-    "browserslist-config-trigen": "^1.1.0",
     "del": "^4.0.0",
-    "dotenv": "^7.0.0",
-    "eslint": "^5.4.0",
-    "eslint-config-trigen": "^3.2.3",
-    "husky": "^1.0.0-rc.10",
-    "lint-staged": "^8.1.0"
+    "dotenv": "^7.0.0"
   },
   "greenkeeper": {
     "ignore": [
