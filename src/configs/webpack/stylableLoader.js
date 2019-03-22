@@ -13,7 +13,7 @@ function postProcessor(stylableResult) {
 }
 
 export const ignoreWarnings = [
-	/Stylable.*unscoped element "[^"]+" will affect all elements of the same type in the document/
+	/Stylable.*will affect all elements of the same type in the document/
 ];
 
 export function base(config) {
