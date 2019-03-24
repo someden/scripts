@@ -3199,10 +3199,10 @@ babel-preset-react-app@^7.0.0:
     babel-plugin-macros "2.5.0"
     babel-plugin-transform-react-remove-prop-types "0.4.24"
 
-babel-preset-trigen@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/babel-preset-trigen/-/babel-preset-trigen-2.0.3.tgz#dd2c119ba91c50cd089961a2ad13d54a144dc4e3"
-  integrity sha512-3G3jc1meniscFCjZybRXBOWUrw6rzdnd21IIkAJVZOgHajNudLtJlBBoGmaqjC7nZvMR1Od6NKq6fcJtnbVFkw==
+babel-preset-trigen@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-trigen/-/babel-preset-trigen-2.2.0.tgz#15a106e66c0e77d62a2810e5de047adcaeda35ff"
+  integrity sha512-wttcMUU4w/LsYtYoVt21a3JY/0pJ8FVoj3Fdy7jM6Fmhs5lY0uaXdxZfAJRWvTo0j3H1fioHtj1MYfrEnSUMYw==
   dependencies:
     "@babel/plugin-proposal-async-generator-functions" "^7.2.0"
     "@babel/plugin-proposal-class-properties" "^7.3.4"
