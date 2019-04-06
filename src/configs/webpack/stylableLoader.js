@@ -12,10 +12,6 @@ function postProcessor(stylableResult) {
 	return stylableResult;
 }
 
-export const ignoreWarnings = [
-	/Stylable.*will affect all elements of the same type in the document/
-];
-
 export function base(config) {
 	return update(config, {
 		module: {
