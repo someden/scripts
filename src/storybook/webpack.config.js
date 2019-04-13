@@ -16,7 +16,7 @@ function configureStorybook({
 		)
 	);
 
-	process.env.PROJECT_NAME = pkg.name.toUpperCase();
+	process.env.PROJECT_NAME = pkg.name;
 	process.env.PROJECT_HOMEPAGE = pkg.repository.url.replace(/(^git\+)|(\.git$)/g, '');
 	process.env.PROJECT_SRC = path.join(projectRoot, 'src');
 

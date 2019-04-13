@@ -12,6 +12,13 @@ function postProcessor(stylableResult) {
 	return stylableResult;
 }
 
+export const ignoreWarnings = [
+	/**
+	 * Ignore warnings about elements in portals.
+	 */
+	/Stylable.*unscoped class "[a-z][^"]+" will affect all elements of the same type in the document/
+];
+
 export function base(config) {
 	return update(config, {
 		module: {
