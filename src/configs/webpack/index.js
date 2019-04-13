@@ -35,7 +35,7 @@ const ignoreWarnings = loaders.reduce((all, { ignoreWarnings }) => {
 	/**
 	 * Ignore warnings about TypeScript interfaces.
 	 */
-	/export 'I[A-Z][^']+' was not found in/
+	/export 'I[A-Z][^']+'(| \([^)]+\)) was not found in/
 ]);
 
 function base({
