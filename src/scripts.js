@@ -27,7 +27,7 @@ const scripts = {
 		args: ['--noEmit', '--pretty', '--skipLibCheck']
 	},
 	'jest':            {
-		env:  'test',
+		vars: { NODE_ENV: 'test' },
 		cmd:  'jest',
 		args: ['-c', 'jest.config.json']
 	},
@@ -41,26 +41,27 @@ const scripts = {
 		args: ['docs/.nojekyll']
 	}],
 	'start:storybook': {
+		vars: {},
 		cmd:  'start-storybook',
 		args: FILL_ME
 	},
 	'build:storybook': {
-		env:  'development',
+		vars: { NODE_ENV: 'development' },
 		cmd:  'build-storybook',
 		args: FILL_ME
 	},
 	'start':           {
-		env:  'development',
+		vars: { NODE_ENV: 'development' },
 		cmd:  'node',
 		args: [path.join(__dirname, 'start.js')]
 	},
 	'build':           {
-		env:  'production',
+		vars: { NODE_ENV: 'production' },
 		cmd:  'node',
 		args: [path.join(__dirname, 'build.js')]
 	},
 	'serve':           {
-		env:  'production',
+		vars: { NODE_ENV: 'production' },
 		cmd:  'node',
 		args: [path.join(__dirname, 'serve.js')]
 	}
@@ -118,6 +119,8 @@ export default function getScripts(inputArgs) {
 		script,
 		args
 	} = getScriptAndArgs(inputArgs);
+	const storybookConfigsArgs = getScriptArg(args, '-c', storybookConfigs);
+	const withCustomSotrybookConfigs = !storybookConfigsArgs.length;
 	const scriptsWithArgs = update(scripts, {
 		'lint:styles':     {
 			args: {
@@ -152,17 +155,27 @@ export default function getScripts(inputArgs) {
 			}
 		},
 		'start:storybook': {
+			vars: {
+				CUSTOM_CONFIGS: {
+					$set: JSON.stringify(withCustomSotrybookConfigs)
+				}
+			},
 			args: {
 				$set: [
 					'--ci', '-p', '3001',
-					...getScriptArg(args, '-c', storybookConfigs)
+					...storybookConfigsArgs
 				]
 			}
 		},
 		'build:storybook': {
+			vars: {
+				CUSTOM_CONFIGS: {
+					$set: JSON.stringify(withCustomSotrybookConfigs)
+				}
+			},
 			args: {
 				$set: [
-					...getScriptArg(args, '-c', storybookConfigs),
+					...storybookConfigsArgs,
 					'-o', 'storybook-build'
 				]
 			}

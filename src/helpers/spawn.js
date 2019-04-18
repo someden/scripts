@@ -1,12 +1,17 @@
 import { spawnSync } from 'child_process';
 
-export default function spawn(nodeEnv, cmd, args, ignoreResult) {
+export default function spawn(vars, cmd, args, ignoreResult) {
 
-	const result = spawnSync(cmd, args, {
+	const {
+		error,
+		signal,
+		status
+	} = spawnSync(cmd, args, {
 		stdio: 'inherit',
 		env:   {
 			...process.env,
-			NODE_ENV: process.env.NODE_ENV || nodeEnv
+			...vars,
+			NODE_ENV: process.env.NODE_ENV || vars.NODE_ENV
 		}
 	});
 
@@ -14,16 +19,21 @@ export default function spawn(nodeEnv, cmd, args, ignoreResult) {
 		return 0;
 	}
 
-	switch (result.signal) {
+	switch (signal) {
 
 		case 'SIGKILL':
 		case 'SIGTERM':
 			console.error(
-				`The build failed because the process exited too early (by signal \`${result.signal}\`).`
+				`The build failed because the process exited too early (by signal \`${signal}\`).`
 			);
 			return 1;
 
 		default:
-			return result.status;
+
+			if (error) {
+				throw error;
+			}
+
+			return status;
 	}
 }

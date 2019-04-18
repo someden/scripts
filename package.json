@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts",
-  "version": "1.9.2",
+  "version": "1.10.0",
   "description": "Scripts and configuration for TrigenSoftware's web projects.",
   "author": "dangreen",
   "license": "MIT",

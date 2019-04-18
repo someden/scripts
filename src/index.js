@@ -45,12 +45,12 @@ function run(script, ignoreTitle) {
 	}
 
 	const {
-		env,
+		vars = {},
 		cmd,
 		args,
 		ignoreResult
 	} = command;
-	const status = spawn(env, cmd, args, ignoreResult);
+	const status = spawn(vars, cmd, args, ignoreResult);
 
 	if (status) {
 		process.exit(status);

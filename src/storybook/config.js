@@ -31,10 +31,12 @@ const stories = require.context(
 	/\.stories\.tsx$/
 );
 
-function loadStories() {
+export function loadStories() {
 	stories.keys().forEach(filename =>
 		stories(filename)
 	);
 }
 
-configure(loadStories, module);
+if (process.env.CUSTOM_CONFIGS !== 'true') {
+	configure(loadStories, module);
+}
