@@ -37,8 +37,9 @@ const scripts = {
 		args:         FILL_ME,
 		ignoreResult: true
 	}, {
-		cmd:  'touch',
-		args: ['docs/.nojekyll']
+		cmd:       'touch',
+		args:      ['docs/.nojekyll'],
+		immutable: true
 	}],
 	'start:storybook': {
 		vars: {},
@@ -104,7 +105,11 @@ function pushArgs(scripts, args) {
 	}
 
 	if (scripts.hasOwnProperty('args')) {
-		scripts.args.push(...args);
+
+		if (!scripts.hasOwnProperty('immutable')) {
+			scripts.args.push(...args);
+		}
+
 		return;
 	}
 
