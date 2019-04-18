@@ -37,7 +37,7 @@ const scripts = {
 		args:         FILL_ME,
 		ignoreResult: true
 	}, {
-		cmd:  'tocuh',
+		cmd:  'touch',
 		args: ['docs/.nojekyll']
 	}],
 	'start:storybook': {
