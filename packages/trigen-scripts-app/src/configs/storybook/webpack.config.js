@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import * as webpackConfig from '../configs/webpack';
+import * as webpackConfig from '../webpack';
 
 module.exports = configureStorybook;
 

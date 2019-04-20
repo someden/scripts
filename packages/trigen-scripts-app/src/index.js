@@ -1,9 +1,18 @@
 import path from 'path';
 import update from 'immutability-helper';
-import { config } from './rc';
+import {
+	FILL_ME,
+	getScriptAndArgs,
+	getScriptArg,
+	pushArgs
+} from '@trigen/scripts';
 
-const FILL_ME = [null/* FILL ME */];
-const storybookConfigs = path.join(__dirname, 'storybook');
+export const Features = [
+	'eslint',
+	'tslint'
+];
+
+const storybookConfigs = path.join(__dirname, 'configs', 'storybook');
 const scripts = {
 	'lint:styles':     {
 		cmd:  'stylelint',
@@ -17,10 +26,7 @@ const scripts = {
 		cmd:  'tslint',
 		args: FILL_ME
 	},
-	'lint:scripts':    [
-		config.features.eslint && 'lint:js',
-		config.features.tslint && 'lint:ts'
-	].filter(Boolean),
+	'lint:scripts':    FILL_ME,
 	'lint':            ['lint:styles', 'lint:scripts'],
 	'typecheck':       {
 		cmd:  'tsc',
@@ -69,61 +75,12 @@ const scripts = {
 };
 const scriptsNames = Object.keys(scripts);
 
-function getScriptAndArgs(inputArgs) {
-
-	const scriptIndex = inputArgs.findIndex(_ => scriptsNames.includes(_));
-	const script = inputArgs[scriptIndex] || null;
-	const args = script ? inputArgs.slice(scriptIndex + 1) : [];
-
-	return {
-		script,
-		args
-	};
-}
-
-function getScriptArg(args, arg, value) {
-
-	if (typeof arg === 'number') {
-
-		if (arg >= args.length || args[arg][0] === '-') {
-			return [value];
-		}
-	} else
-	if (!args.includes(arg)) {
-		return typeof value !== 'undefined'
-			? [arg, value]
-			: [arg];
-	}
-
-	return [];
-}
-
-function pushArgs(scripts, args) {
-
-	if (typeof scripts === 'string') {
-		return;
-	}
-
-	if (scripts.hasOwnProperty('args')) {
-
-		if (!scripts.hasOwnProperty('immutable')) {
-			scripts.args.push(...args);
-		}
-
-		return;
-	}
-
-	for (const script in scripts) {
-		pushArgs(scripts[script], args);
-	}
-}
-
-export default function getScripts(inputArgs) {
+export default function getScripts(inputArgs, features) {
 
 	const {
 		script,
 		args
-	} = getScriptAndArgs(inputArgs);
+	} = getScriptAndArgs(inputArgs, scriptsNames);
 	const storybookConfigsArgs = getScriptArg(args, '-c', storybookConfigs);
 	const withCustomSotrybookConfigs = !storybookConfigsArgs.length;
 	const scriptsWithArgs = update(scripts, {
@@ -147,6 +104,12 @@ export default function getScripts(inputArgs) {
 					...getScriptArg(args, 0, 'src/**/*.{ts,tsx}')
 				]
 			}
+		},
+		'lint:scripts':    {
+			$set: [
+				features.eslint && 'lint:js',
+				features.tslint && 'lint:ts'
+			].filter(Boolean)
 		},
 		'build:docs':      {
 			0: {

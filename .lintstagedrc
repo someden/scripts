@@ -1,4 +1,3 @@
 {
-	"src/**/*.css": ["stylelint", "git add"],
-	"src/**/*.{js,jsx}": ["eslint", "git add"]
+	"packages/*/src/**/*.{js,jsx}": ["eslint", "git add"]
 }
