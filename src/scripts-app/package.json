@@ -1,25 +1,20 @@
 {
-  "name": "@trigen/scripts",
-  "version": "1.10.2",
+  "name": "@trigen/scripts-app",
+  "version": "2.0.0",
   "description": "Scripts and configuration for TrigenSoftware's web projects.",
   "author": "dangreen",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TrigenSoftware/scripts"
+    "url": "https://github.com/TrigenSoftware/scripts/packages/scripts-app#readme"
   },
   "bugs": {
     "url": "https://github.com/TrigenSoftware/scripts/issues"
-  },
-  "bin": {
-    "trigen-scripts": "./index.js"
   },
   "engines": {
     "node": ">=6.0.0"
   },
   "scripts": {
-    "lint": "eslint 'src/**/*.{js,jsx}'",
-    "test": "npm run build && node test/scripts.spec",
     "build": "npm run lint && ./scripts/buildPackage.sh",
     "prepublishOnly": "if [ -f .gitignore ]; then exit 1; fi"
   },
@@ -57,7 +52,6 @@
     "babel-preset-trigen": "^2.2.1",
     "browser-sync": "^2.24.7",
     "browserslist-config-trigen": "^1.1.0",
-    "chalk": "^2.4.2",
     "clean-webpack-plugin": "^2.0.1",
     "connect-history-api-fallback": "^1.5.0",
     "core-js": "2",
@@ -76,7 +70,6 @@
     "node-notifier": "*",
     "postcss": "^7.0.2",
     "postcss-momentum-scrolling": "^1.4.8",
-    "rcfile": "^1.0.3",
     "react-hot-loader": "4.8.0",
     "service-worker-loader": "^3.0.0",
     "stylelint": "^9.9.0",
@@ -94,13 +87,6 @@
     "webpack-dev-middleware": "^3.2.0",
     "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-hot-middleware": "^2.22.3"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/node": "^7.0.0",
-    "del": "^4.0.0",
-    "dotenv": "^7.0.0",
-    "lerna": "^3.13.3"
   },
   "greenkeeper": {
     "ignore": [

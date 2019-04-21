@@ -1,5 +1,7 @@
 import getPlugins from './helpers/plugins';
-import rc from './rc';
+import rc, {
+	getFeaturesMap
+} from './rc';
 
 const PREFIX = `@trigen/scripts-`;
 const {
@@ -9,33 +11,29 @@ const {
 
 export default function getScripts(inputArgs) {
 
+	const allFeatures = [];
+	const features = getFeaturesMap(rcFeatures);
 	const plugins = getPlugins(rcScripts, PREFIX);
-	const {
-		features,
-		scripts
-	} = plugins.reduce((result, plugin) => {
+	const scripts = plugins.reduce((scripts, plugin) => {
 
 		const {
-			features,
-			scripts
-		} = result;
-		const {
-			Features: pluginFeatures,
-			default:  pluginGetScripts
+			Features:        pluginFeatures,
+			DefaultFeatures: pluginDefaultFeatures,
+			default:         pluginGetScripts
 		} = plugin;
-		const pluginScripts = pluginGetScripts(inputArgs, rcFeatures);
 
-		features.push(...pluginFeatures);
+		allFeatures.push(...pluginFeatures);
+		Object.assign(features, getFeaturesMap(pluginDefaultFeatures));
+
+		const pluginScripts = pluginGetScripts(inputArgs, features);
+
 		Object.assign(scripts.scripts, pluginScripts.scripts);
 		scripts.exec = pluginScripts.exec;
 
-		return result;
-	}, {
-		features: [],
-		scripts:  {}
-	});
+		return scripts;
+	}, {});
 
-	validateFeatures(features);
+	validateFeatures(allFeatures);
 
 	return scripts;
 }

@@ -12,6 +12,10 @@ export const Features = [
 	'tslint'
 ];
 
+export const DefaultFeatures = [
+	'tslint'
+];
+
 const storybookConfigs = path.join(__dirname, 'configs', 'storybook');
 const scripts = {
 	'lint:styles':     {

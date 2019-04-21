@@ -4,15 +4,15 @@ const defaults = {
 	scripts:  [],
 	features: []
 };
-const rc = {
+
+export default {
 	...defaults,
 	...getRc('trigenscripts')
 };
 
-export default {
-	...rc,
-	features: rc.features.reduce((featuresMap, feature) => {
+export function getFeaturesMap(features) {
+	return features.reduce((featuresMap, feature) => {
 		featuresMap[feature] = true;
 		return featuresMap;
-	}, {})
-};
+	}, {});
+}
