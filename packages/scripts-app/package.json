@@ -15,8 +15,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "build": "npm run lint && ./scripts/buildPackage.sh",
-    "prepublishOnly": "if [ -f .gitignore ]; then exit 1; fi"
+    "build": "../../scripts/buildPackage.sh",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "@types/prop-types": "*",
@@ -39,6 +39,7 @@
     "@storybook/react": "^5.0.5",
     "@stylable/core": "^1.0.6",
     "@stylable/webpack-plugin": "^1.1.4",
+    "@trigen/scripts": "file:../../scripts/package",
     "@types/jest": "^24.0.10",
     "@types/storybook__addon-a11y": "^5.0.0",
     "@types/storybook__addon-actions": "^3.4.1",
@@ -87,6 +88,9 @@
     "webpack-dev-middleware": "^3.2.0",
     "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-hot-middleware": "^2.22.3"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "greenkeeper": {
     "ignore": [

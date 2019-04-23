@@ -1,5 +1,8 @@
 #!/bin/bash
 
-rm -rf packages
-cp -R src packages
-NODE_ENV=production babel --root-mode upward ./packages -d ./packages -s inline
+rm -rf package
+cp -R src package
+NODE_ENV=production babel --root-mode upward ./package -d ./package -s inline
+cp README.md package/
+cp package.json package/
+cp ../../LICENSE package/

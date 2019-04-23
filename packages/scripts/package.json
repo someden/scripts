@@ -18,8 +18,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "build": "npm run lint && ./scripts/buildPackage.sh",
-    "prepublishOnly": "if [ -f .gitignore ]; then exit 1; fi"
+    "build": "../../scripts/buildPackage.sh",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.2",
@@ -27,5 +27,8 @@
     "core-js": "2",
     "immutability-helper": "^3.0.0",
     "rcfile": "^1.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

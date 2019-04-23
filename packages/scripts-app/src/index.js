@@ -5,7 +5,7 @@ import {
 	getScriptAndArgs,
 	getScriptArg,
 	pushArgs
-} from '@trigen/scripts';
+} from '@trigen/scripts/helpers/args';
 
 export const Features = [
 	'eslint',
