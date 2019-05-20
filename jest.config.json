@@ -1,12 +1,16 @@
 {
 	"testEnvironment": "node",
-	"testRegex": "/src/.*\\.spec\\.js$",
+	"testRegex": "/test/unit/.*\\.spec\\.js$",
+	"modulePathIgnorePatterns": [
+		"<rootDir>/packages/.*/package/"
+	],
 	"transform": {
 		"^.+\\.(jsx?|tsx?)$": "babel-jest"
 	},
 	"collectCoverage": true,
 	"collectCoverageFrom": [
-		"src/**/*.{js,jsx}",
+		"packages/*/src/**/*.{js,jsx}",
+		"!packages/scripts-app/**",
 		"!**/node_modules/**"
 	],
 	"coverageReporters": [

@@ -15,17 +15,25 @@ export function setIconClassName(className) {
 export default class Icon extends PureComponent {
 
 	static propTypes = {
-		className: PropTypes.string,
-		glyph:     PropTypes.string,
-		width:     PropTypes.number,
-		height:    PropTypes.number
+		'className':   PropTypes.string,
+		'style':       PropTypes.object,
+		'glyph':       PropTypes.string,
+		'width':       PropTypes.number,
+		'height':      PropTypes.number,
+		'tabIndex':    PropTypes.number,
+		'aria-hidden': PropTypes.bool,
+		'role':        PropTypes.string
 	};
 
 	static defaultProps = {
-		className: undefined,
-		glyph:     '',
-		width:     undefined,
-		height:    undefined
+		'className':   undefined,
+		'style':       undefined,
+		'glyph':       '',
+		'width':       undefined,
+		'height':      undefined,
+		'tabIndex':    -1,
+		'aria-hidden': undefined,
+		'role':        undefined
 	};
 
 	hrefListenerRemover = null;
@@ -34,21 +42,34 @@ export default class Icon extends PureComponent {
 
 		const {
 			className,
+			style,
 			glyph,
 			width,
 			height,
+			tabIndex,
+			'aria-hidden': ariaHidden,
+			role,
 			...props
 		} = this.props;
+		const focusable = tabIndex < 0
+			? { focusable: false }
+			: { tabIndex };
+		const hidden = typeof ariaHidden !== 'undefined'
+			? ariaHidden
+			: typeof role !== 'string';
 
 		return (
 			<svg
 				{...props}
+				{...focusable}
 				className={[className, iconClassName].filter(Boolean).join(' ')}
 				style={{
 					width,
-					height
+					height,
+					...style
 				}}
 				data-glyph={glyph}
+				aria-hidden={hidden}
 			>
 				<use xlinkHref={`${this.getPathname()}#${glyph}`}/>
 			</svg>

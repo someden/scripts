@@ -28,7 +28,7 @@ try {
 	const packageJson = require(PACKAGE_JSON_PATH); // eslint-disable-line
 
 	packageJson.devDependencies['@trigen/scripts'] = path.join(PACKAGES_PATH, 'scripts', 'package');
-	packageJson.devDependencies['@trigen/scripts'] = path.join(PACKAGES_PATH, 'scripts-app', 'package');
+	packageJson.devDependencies['@trigen/scripts-app'] = path.join(PACKAGES_PATH, 'scripts-app', 'package');
 
 	fs.writeFileSync(PACKAGE_JSON_PATH, JSON.stringify(packageJson));
 	fs.unlinkSync(path.join(WEATHER_PATH, 'yarn.lock'));

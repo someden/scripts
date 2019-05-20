@@ -60,5 +60,5 @@ function run(script, ignoreTitle) {
 if (exec) {
 	run(exec);
 } else {
-	console.error('Unknown script.');
+	throw new Error(`Unknown script "${exec}"`);
 }

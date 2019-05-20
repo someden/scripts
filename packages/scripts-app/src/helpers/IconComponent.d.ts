@@ -1,5 +1,5 @@
 import {
-	AllHTMLAttributes,
+	SVGProps,
 	PureComponent
 } from 'react';
 import PropTypes from 'prop-types';
@@ -10,7 +10,7 @@ interface ISelfProps {
 	height?: number;
 }
 
-export declare type IProps = ISelfProps & AllHTMLAttributes<SVGElement>;
+export declare type IProps = ISelfProps & SVGProps<SVGElement>;
 
 export declare function setIconClassName(className: string);
 

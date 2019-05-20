@@ -1,14 +1,12 @@
 import getRc from 'rcfile';
 
-const defaults = {
-	scripts:  [],
-	features: []
-};
-
-export default {
-	...defaults,
-	...getRc('trigenscripts')
-};
+export function getConfigFromRC(options) {
+	return {
+		scripts:  [],
+		features: [],
+		...getRc('trigenscripts', options)
+	};
+}
 
 export function getFeaturesMap(features) {
 	return features.reduce((featuresMap, feature) => {
