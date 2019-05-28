@@ -9,6 +9,7 @@ const PATCHES_PATH = path.join(__dirname, 'patches');
 const WEATHER_PATH = path.join(__dirname, 'weather');
 const PACKAGE_JSON_PATH = path.join(WEATHER_PATH, 'package.json');
 const shouldLeave = process.argv.includes('--leave');
+const noLock = process.argv.includes('--no-lock');
 
 try {
 
@@ -31,7 +32,10 @@ try {
 	packageJson.devDependencies['@trigen/scripts-app'] = path.join(PACKAGES_PATH, 'scripts-app', 'package');
 
 	fs.writeFileSync(PACKAGE_JSON_PATH, JSON.stringify(packageJson));
-	fs.unlinkSync(path.join(WEATHER_PATH, 'yarn.lock'));
+
+	if (noLock) {
+		fs.unlinkSync(path.join(WEATHER_PATH, 'yarn.lock'));
+	}
 
 	try {
 
@@ -64,7 +68,11 @@ try {
 
 	console.log(chalk.blue('\n> Testing...\n'));
 
-	execSync(`node ${path.join(PACKAGES_PATH, 'scripts', 'package', 'index.js')} test`, {
+	execSync(`yarn jest --clearCache`, {
+		stdio: 'inherit',
+		cwd:   WEATHER_PATH
+	});
+	execSync(`yarn test`, {
 		stdio: 'inherit',
 		cwd:   WEATHER_PATH
 	});
