@@ -1,4 +1,3 @@
-
 # scripts
 
 [![NPM version][npm]][npm-url]
