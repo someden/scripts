@@ -1,0 +1,31 @@
+{
+  "name": "@trigen/scripts-plugin-eslint",
+  "version": "2.0.0",
+  "description": "ESLint scripts.",
+  "author": "dangreen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrigenSoftware/scripts/packages/scripts-plugin-eslint#readme"
+  },
+  "bugs": {
+    "url": "https://github.com/TrigenSoftware/scripts/issues"
+  },
+  "os": [
+    "!win32"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "build": "../../scripts/buildPackage.sh",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-trigen": "^3.2.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@trigen/scripts-plugin-typescript",
+  "version": "2.0.0",
+  "description": "TypeScript scripts.",
+  "author": "dangreen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrigenSoftware/scripts/packages/scripts-plugin-typescript#readme"
+  },
+  "bugs": {
+    "url": "https://github.com/TrigenSoftware/scripts/issues"
+  },
+  "os": [
+    "!win32"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "build": "../../scripts/buildPackage.sh",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@trigen/scripts": "file:../../scripts",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.11.0",
+    "tslint-config-trigen": "^3.0.7",
+    "typedoc": "^0.14.0",
+    "typescript": "3.3.3333"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

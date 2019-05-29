@@ -1,0 +1,35 @@
+{
+  "name": "@trigen/scripts-plugin-babel",
+  "version": "2.0.0",
+  "description": "Babel scripts.",
+  "author": "dangreen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrigenSoftware/scripts/packages/scripts-plugin-babel#readme"
+  },
+  "bugs": {
+    "url": "https://github.com/TrigenSoftware/scripts/issues"
+  },
+  "os": [
+    "!win32"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "build": "../../scripts/buildPackage.sh",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/node": "^7.0.0",
+    "@babel/runtime": "^7.4.2",
+    "@trigen/scripts": "file:../../scripts",
+    "babel-preset-trigen": "^2.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

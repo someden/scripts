@@ -1,56 +1,34 @@
+/* eslint-disable no-magic-numbers */
 import getPlugins from './helpers/plugins';
-import {
-	getConfigFromRC,
-	getFeaturesMap
-} from './rc';
+import getConfigFromRC from './rc';
 
 const PREFIX = `@trigen/scripts-`;
 
+export function getScriptAndArgs(inputArgs) {
+
+	const [
+		script,
+		...args
+	] = inputArgs.slice(2);
+
+	return [
+		script,
+		args
+	];
+}
+
 export default function getScripts(inputArgs, options) {
 
-	const allFeatures = [];
-	const {
-		scripts:  rcScripts,
-		features: rcFeatures
-	} = getConfigFromRC(options);
-	const features = getFeaturesMap(rcFeatures);
-	const plugins = getPlugins(rcScripts, PREFIX);
+	const rcPlugins = getConfigFromRC(options);
+	const plugins = getPlugins(rcPlugins, PREFIX);
 	const scripts = plugins.reduce((scripts, plugin) => {
 
 		const {
-			Features:        pluginFeatures,
-			DefaultFeatures: pluginDefaultFeatures,
-			default:         pluginGetScripts
+			default: getPluginScripts
 		} = plugin;
 
-		allFeatures.push(...pluginFeatures);
-		Object.assign(features, getFeaturesMap(pluginDefaultFeatures));
-
-		const pluginScripts = pluginGetScripts(inputArgs, features);
-
-		Object.assign(scripts.scripts, pluginScripts.scripts);
-
-		if (pluginScripts.exec) {
-			scripts.exec = pluginScripts.exec;
-		}
-
-		return scripts;
-	}, {
-		exec:    null,
-		scripts: {}
-	});
-
-	validateFeatures(allFeatures, rcFeatures);
+		return getPluginScripts(inputArgs, scripts);
+	}, {});
 
 	return scripts;
-}
-
-function validateFeatures(features, rcFeatures) {
-
-	rcFeatures.forEach((feature) => {
-
-		if (!features.includes(feature)) {
-			throw new Error(`Unknown feature "${feature}"`);
-		}
-	});
 }

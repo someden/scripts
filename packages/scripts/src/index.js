@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 import chalk from 'chalk';
 import spawn from './helpers/spawn';
-import getScripts from './scripts';
+import getScripts, {
+	getScriptAndArgs
+} from './scripts';
 
-const {
+const [
 	exec,
-	scripts
-} = getScripts(process.argv);
+	args
+] = getScriptAndArgs(process.argv);
+const scripts = getScripts(args);
 
 function humanize(script) {
 	return script
@@ -57,7 +60,7 @@ function run(script, ignoreTitle) {
 	}
 }
 
-if (exec) {
+if (scripts[exec]) {
 	run(exec);
 } else {
 	throw new Error(`Unknown script "${exec}"`);

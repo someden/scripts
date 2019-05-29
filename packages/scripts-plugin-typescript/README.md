@@ -1,20 +1,20 @@
-# @trigen/scripts
+# @trigen/scripts-plugin-typescript
 
-CLI tool for running scripts.
+TypeScript scripts.
 
 ## Usage
 
 1. Install scripts package
 
 ```bash
-yarn add -D @trigen/scripts-preset-react-app
+yarn add -D @trigen/scripts-plugin-typescript
 ```
 
 2. Add installed scripts to `.trigenscriptsrc`
 
 ```json
 [
-    "preset-react-app",
+    "plugin-typescript",
     "./some/other"
 ]
 ```
@@ -22,5 +22,5 @@ yarn add -D @trigen/scripts-preset-react-app
 3. Now you can run some script
 
 ```bash
-yarn exec -- trigen-scripts lint
+yarn exec -- trigen-scripts start src/test.ts
 ```
