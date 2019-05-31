@@ -1,0 +1,35 @@
+{
+  "name": "@trigen/scripts-plugin-rollup",
+  "version": "2.0.0",
+  "description": "Rollup scripts.",
+  "author": "dangreen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrigenSoftware/scripts/packages/scripts-plugin-rollup#readme"
+  },
+  "bugs": {
+    "url": "https://github.com/TrigenSoftware/scripts/issues"
+  },
+  "os": [
+    "!win32"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "build": "../../scripts/buildPackage.sh",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "builtin-modules": "*",
+    "rollup": "^0.67.1",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-babel-minify": "^6.1.1",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-eslint": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

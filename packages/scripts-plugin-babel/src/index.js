@@ -22,7 +22,7 @@ export default function getScripts(args, allScripts) {
 		'start': {
 			$set: update(scripts.start, {
 				args: {
-					$set: [
+					$push: [
 						...getScriptArg(args, 0, 'src/index.js'),
 						...args
 					]
@@ -32,7 +32,7 @@ export default function getScripts(args, allScripts) {
 		'build': {
 			$set: update(scripts.build, {
 				args: {
-					$set: [
+					$push: [
 						...getScriptArg(args, 0, './src'),
 						...getScriptArg(args, '-d', './lib'),
 						...getScriptArg(args, '-s', 'inline'),

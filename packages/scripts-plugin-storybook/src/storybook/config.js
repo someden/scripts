@@ -1,12 +1,18 @@
 import React from 'react';
 import {
-	configure,
+	configure as configureStorybook,
 	addParameters,
 	addDecorator
 } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs } from '@storybook/addon-knobs';
-import { withA11y } from '@storybook/addon-a11y';
+import {
+	withInfo
+} from '@storybook/addon-info';
+import {
+	withKnobs
+} from '@storybook/addon-knobs';
+import {
+	withA11y
+} from '@storybook/addon-a11y';
 
 addParameters({
 	options: {
@@ -25,7 +31,7 @@ addDecorator(withInfo);
 addDecorator(withKnobs);
 addDecorator(withA11y);
 
-const stories = require.context(
+export const stories = require.context(
 	process.env.PROJECT_SRC,
 	true,
 	/\.stories\.tsx$/
@@ -37,6 +43,10 @@ export function loadStories() {
 	);
 }
 
-if (process.env.CUSTOM_CONFIGS !== 'true') {
-	configure(loadStories, module);
+export function configure(module) {
+	configureStorybook(loadStories, module);
+}
+
+if (process.env.STORYBOOK_AUTO_CONFIGURE === 'true') {
+	configure(module);
 }

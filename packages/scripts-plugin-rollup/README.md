@@ -1,20 +1,20 @@
-# @trigen/scripts-plugin-babel
+# @trigen/scripts-plugin-rollup
 
-Babel scripts.
+Jest scripts.
 
 ## Usage
 
 1. Install scripts package
 
 ```bash
-yarn add -D @trigen/scripts-plugin-babel
+yarn add -D @trigen/scripts-plugin-rollup
 ```
 
 2. Add installed scripts to `.trigenscriptsrc`
 
 ```json
 [
-    "plugin-babel",
+    "plugin-rollup",
     "./some/other"
 ]
 ```
@@ -22,14 +22,12 @@ yarn add -D @trigen/scripts-plugin-babel
 3. Now you can run some script
 
 ```bash
-yarn exec -- trigen-scripts start src/test.js
+yarn exec -- trigen-scripts build
 ```
 
 ## Available scripts
 
 ```bash
-# Start given script
-yarn start
-# Build sources
+# Build bundle
 yarn build
 ```

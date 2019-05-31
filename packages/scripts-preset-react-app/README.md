@@ -1,6 +1,29 @@
-# scripts-app
+# @trigen/scripts-preset-react-app
 
-Scripts and configuration for TrigenSoftware's web projects.
+React App scripts preset.
+
+## Usage
+
+1. Install scripts package
+
+```bash
+yarn add -D @trigen/scripts-preset-react-app
+```
+
+2. Add installed scripts to `.trigenscriptsrc`
+
+```json
+[
+    "preset-react-app",
+    "./some/other"
+]
+```
+
+3. Now you can run some script
+
+```bash
+yarn exec -- trigen-scripts start
+```
 
 ## Available scripts
 
@@ -17,7 +40,7 @@ yarn jest
 yarn typecheck
 # Run lint, tests and build
 yarn test
-# Generate docs for TypeScript sources
+# Generate docs for typescript sources
 yarn build:docs
 # Start Storybook
 yarn start:storybook
@@ -25,7 +48,7 @@ yarn start:storybook
 yarn build:storybook
 # Start development server
 yarn start
-# Build our bundle for production
+# Build app
 yarn build
 # Serve files from `build` directory
 yarn serve

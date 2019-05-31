@@ -24,3 +24,16 @@ yarn add -D @trigen/scripts-plugin-eslint
 ```bash
 yarn exec -- trigen-scripts lint:js
 ```
+
+## Available scripts
+
+```bash
+# Lint only javascript
+yarn lint:js
+# Lint only scripts
+yarn lint:scripts
+# Lint all sources
+yarn lint
+# Run lint
+yarn test
+```

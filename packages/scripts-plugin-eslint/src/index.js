@@ -20,7 +20,7 @@ export default function getScripts(args, allScripts) {
 		'lint:js':      {
 			$set: update(scripts['lint:js'], {
 				args: {
-					$set: [
+					$push: [
 						'--cache',
 						...getScriptArg(args, 0, 'src/**/*.{js,jsx}'),
 						...args

@@ -1,0 +1,33 @@
+{
+  "name": "@trigen/scripts-plugin-jest",
+  "version": "2.0.0",
+  "description": "Jest scripts.",
+  "author": "dangreen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrigenSoftware/scripts/packages/scripts-plugin-jest#readme"
+  },
+  "bugs": {
+    "url": "https://github.com/TrigenSoftware/scripts/issues"
+  },
+  "os": [
+    "!win32"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "build": "../../scripts/buildPackage.sh",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@trigen/scripts": "file:../../scripts",
+    "@types/jest": "^24.0.10",
+    "babel-jest": "^24.5.0",
+    "jest": "^24.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

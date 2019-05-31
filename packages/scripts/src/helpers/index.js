@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 
-export const FILL_ME = [null/* FILL ME */];
+export const FILL_ME = [/* FILL ME */];
 
 export function getScriptArg(args, arg, value) {
 
@@ -43,10 +43,6 @@ export function addItems(items, add, unshift) {
 			}
 		}
 	});
-
-	if (itemsList.length < 2) {
-		return itemsList[0];
-	}
 
 	return itemsList;
 }

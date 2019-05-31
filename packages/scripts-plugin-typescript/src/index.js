@@ -22,6 +22,14 @@ const scripts = {
 		cmd:  'ts-node',
 		args: FILL_ME
 	},
+	'build:docs':   [{
+		cmd:          'typedoc',
+		args:         FILL_ME,
+		ignoreResult: true
+	}, {
+		cmd:  'touch',
+		args: ['docs/.nojekyll']
+	}],
 	'build':        {
 		vars: { NODE_ENV: 'production' },
 		cmd:  'tsc',
@@ -34,7 +42,7 @@ export default function getScripts(args, allScripts) {
 		'lint:ts':      {
 			$set: update(scripts['lint:ts'], {
 				args: {
-					$set: [
+					$push: [
 						'-p', '.', '-t', 'stylish',
 						...getScriptArg(args, 0, 'src/**/*.{ts,tsx}'),
 						...args
@@ -58,10 +66,10 @@ export default function getScripts(args, allScripts) {
 		'test':         {
 			$apply: _ => addItems(_, scripts.test, true)
 		},
-		'start': {
+		'start':        {
 			$set: update(scripts.start, {
 				args: {
-					$set: [
+					$push: [
 						'-P', './tsconfig.dev.json',
 						...getScriptArg(args, 0, 'src/index.ts'),
 						...args
@@ -69,10 +77,19 @@ export default function getScripts(args, allScripts) {
 				}
 			})
 		},
-		'build': {
+		'build:docs':   {
+			$set: update(scripts['build:docs'], {
+				0: {
+					args: {
+						$push: args
+					}
+				}
+			})
+		},
+		'build':        {
 			$set: update(scripts.build, {
 				args: {
-					$set: [
+					$push: [
 						'--rootDir',
 						...getScriptArg(args, 0, './src'),
 						...getScriptArg(args, '--outDir', './lib'),

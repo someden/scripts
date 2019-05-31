@@ -1,20 +1,20 @@
-# @trigen/scripts-plugin-babel
+# @trigen/scripts-plugin-jest
 
-Babel scripts.
+Jest scripts.
 
 ## Usage
 
 1. Install scripts package
 
 ```bash
-yarn add -D @trigen/scripts-plugin-babel
+yarn add -D @trigen/scripts-plugin-jest
 ```
 
 2. Add installed scripts to `.trigenscriptsrc`
 
 ```json
 [
-    "plugin-babel",
+    "plugin-jest",
     "./some/other"
 ]
 ```
@@ -22,14 +22,14 @@ yarn add -D @trigen/scripts-plugin-babel
 3. Now you can run some script
 
 ```bash
-yarn exec -- trigen-scripts start src/test.js
+yarn exec -- trigen-scripts jest --watch
 ```
 
 ## Available scripts
 
 ```bash
-# Start given script
-yarn start
-# Build sources
-yarn build
+# Run tests with Jest
+yarn jest
+# Run tests
+yarn test
 ```

@@ -1,25 +1,13 @@
-import path from 'path';
-import fs from 'fs';
+import configure from '@trigen/scripts-plugin-storybook/storybook/webpack.config';
 import * as webpackConfig from '../webpack';
 
 module.exports = configureStorybook;
 
-function configureStorybook({
-	config: storybookBaseConfig
-}) {
+function configureStorybook(input) {
 
-	const projectRoot = process.cwd();
-	const pkg = JSON.parse(
-		fs.readFileSync(
-			path.join(projectRoot, 'package.json'),
-			'utf8'
-		)
-	);
-
-	process.env.PROJECT_NAME = pkg.name;
-	process.env.PROJECT_HOMEPAGE = pkg.repository.url.replace(/(^git\+)|(\.git$)/g, '');
-	process.env.PROJECT_SRC = path.join(projectRoot, 'src');
-
+	const {
+		config: storybookBaseConfig
+	} = configure(input);
 	const webpackDevConfig = webpackConfig.dev();
 
 	storybookBaseConfig.resolve.extensions.push(
