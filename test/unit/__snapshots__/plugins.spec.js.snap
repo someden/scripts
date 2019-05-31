@@ -323,7 +323,7 @@ Object {
     },
   },
   "lint": Array [
-    undefined,
+    "lint:styles",
     "lint:scripts",
   ],
   "lint:scripts": Array [

@@ -61,7 +61,7 @@ export default function getScripts(args, inputAllScripts) {
 			})
 		},
 		'lint':            {
-			$apply: _ => addItems(_, scripts['lint:lint'], true)
+			$apply: _ => addItems(_, scripts.lint, true)
 		},
 		'test':            {
 			$apply: _ => addItems(_, scripts.test)
