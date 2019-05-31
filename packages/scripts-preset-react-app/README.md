@@ -1,6 +1,6 @@
 # @trigen/scripts-preset-react-app
 
-React App scripts preset.
+React app scripts preset.
 
 ## Usage
 

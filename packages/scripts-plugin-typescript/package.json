@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "@trigen/scripts": "file:../../scripts",
-    "ts-node": "^8.0.3",
+    "ts-node-dev": "^1.0.0-pre.39",
+    "tsconfig-paths": "^3.8.0",
     "tslint": "^5.11.0",
     "tslint-config-trigen": "^3.0.7",
     "typedoc": "^0.14.0",

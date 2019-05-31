@@ -19,7 +19,7 @@ const scripts = {
 	'test':         ['typecheck', 'lint'],
 	'start':        {
 		vars: { NODE_ENV: 'development' },
-		cmd:  'ts-node',
+		cmd:  'ts-node-dev',
 		args: FILL_ME
 	},
 	'build:docs':   [{
@@ -71,6 +71,9 @@ export default function getScripts(args, allScripts) {
 				args: {
 					$push: [
 						'-P', './tsconfig.dev.json',
+						'-r', 'tsconfig-paths/register',
+						'--respawn', '--transpileOnly',
+						'--ignore-watch', 'node_modules',
 						...getScriptArg(args, 0, 'src/index.ts'),
 						...args
 					]

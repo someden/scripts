@@ -1,7 +1,7 @@
 {
   "name": "@trigen/scripts-preset-react-app",
   "version": "2.0.0",
-  "description": "React App scripts preset.",
+  "description": "React app scripts preset.",
   "author": "dangreen",
   "license": "MIT",
   "repository": {
@@ -74,10 +74,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "greenkeeper": {
-    "ignore": [
-      "@types/storybook__addon-knobs"
-    ]
   }
 }
