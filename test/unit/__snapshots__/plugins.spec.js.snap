@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@trigen/scripts-* scripts-plugin-babel should return correct scripts object 1`] = `
+Object {
+  "build": Object {
+    "args": Array [
+      "./src",
+      "-d",
+      "./lib",
+      "-s",
+      "inline",
+    ],
+    "cmd": "babel",
+    "vars": Object {
+      "NODE_ENV": "production",
+    },
+  },
+  "start": Object {
+    "args": Array [
+      "src/index.js",
+    ],
+    "cmd": "babel-node",
+    "vars": Object {
+      "NODE_ENV": "development",
+    },
+  },
+}
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-eslint should return correct scripts object 1`] = `
+Object {
+  "lint": Array [
+    "lint:scripts",
+  ],
+  "lint:js": Object {
+    "args": Array [
+      "--cache",
+      "src/**/*.{js,jsx}",
+    ],
+    "cmd": "eslint",
+  },
+  "lint:scripts": Array [
+    "lint:js",
+  ],
+  "test": Array [
+    "lint",
+  ],
+}
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-jest should return correct scripts object 1`] = `
+Object {
+  "jest": Object {
+    "args": Array [
+      "-c",
+      "jest.config.json",
+    ],
+    "cmd": "jest",
+    "vars": Object {
+      "NODE_ENV": "test",
+    },
+  },
+  "test": Array [
+    "jest",
+  ],
+}
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-rollup should return correct scripts object 1`] = `
+Object {
+  "build": Object {
+    "args": Array [
+      "-c",
+    ],
+    "cmd": "rollup",
+    "vars": Object {
+      "NODE_ENV": "production",
+    },
+  },
+}
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-storybook should return correct scripts object 1`] = `
+Object {
+  "build:storybook": Object {
+    "args": Array [
+      "-c",
+      "/Users/dangreen/github/trigen-scripts/packages/scripts-plugin-storybook/src/storybook",
+      "-o",
+      "storybook-build",
+    ],
+    "cmd": "build-storybook",
+    "vars": Object {
+      "NODE_ENV": "development",
+      "STORYBOOK_AUTO_CONFIGURE": "true",
+    },
+  },
+  "start:storybook": Object {
+    "args": Array [
+      "--ci",
+      "-p",
+      "3001",
+      "-c",
+      "/Users/dangreen/github/trigen-scripts/packages/scripts-plugin-storybook/src/storybook",
+    ],
+    "cmd": "start-storybook",
+    "vars": Object {
+      "STORYBOOK_AUTO_CONFIGURE": "true",
+    },
+  },
+}
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-typescript should return correct scripts object 1`] = `
+Object {
+  "build": Object {
+    "args": Array [
+      "--rootDir",
+      "./src",
+      "--outDir",
+      "./lib",
+    ],
+    "cmd": "tsc",
+    "vars": Object {
+      "NODE_ENV": "production",
+    },
+  },
+  "build:docs": Array [
+    Object {
+      "args": Array [],
+      "cmd": "typedoc",
+      "ignoreResult": true,
+    },
+    Object {
+      "args": Array [
+        "docs/.nojekyll",
+      ],
+      "cmd": "touch",
+    },
+  ],
+  "lint": Array [
+    "lint:scripts",
+  ],
+  "lint:scripts": Array [
+    "lint:ts",
+  ],
+  "lint:ts": Object {
+    "args": Array [
+      "-p",
+      ".",
+      "-t",
+      "stylish",
+      "src/**/*.{ts,tsx}",
+    ],
+    "cmd": "tslint",
+  },
+  "start": Object {
+    "args": Array [
+      "-P",
+      "./tsconfig.dev.json",
+      "-r",
+      "tsconfig-paths/register",
+      "--respawn",
+      "--transpileOnly",
+      "--ignore-watch",
+      "node_modules",
+      "src/index.ts",
+    ],
+    "cmd": "ts-node-dev",
+    "vars": Object {
+      "NODE_ENV": "development",
+    },
+  },
+  "test": Array [
+    "typecheck",
+    "lint",
+  ],
+  "typecheck": Object {
+    "args": Array [
+      "--noEmit",
+      "--pretty",
+      "--skipLibCheck",
+    ],
+    "cmd": "tsc",
+  },
+}
+`;
+
+exports[`@trigen/scripts-* scripts-preset-lib should return correct scripts object 1`] = `
+Object {
+  "build": Object {
+    "args": Array [
+      "./src",
+      "-d",
+      "./lib",
+      "-s",
+      "inline",
+    ],
+    "cmd": "babel",
+    "vars": Object {
+      "NODE_ENV": "production",
+    },
+  },
+  "checkSize": Object {
+    "args": Array [],
+    "cmd": "size-limit",
+  },
+  "cleanPublish": Array [
+    "test",
+    Object {
+      "args": Array [],
+      "cmd": "clean-publish",
+    },
+  ],
+  "jest": Object {
+    "args": Array [
+      "-c",
+      "jest.config.json",
+    ],
+    "cmd": "jest",
+    "vars": Object {
+      "NODE_ENV": "test",
+    },
+  },
+  "start": Object {
+    "args": Array [
+      "src/index.js",
+    ],
+    "cmd": "babel-node",
+    "vars": Object {
+      "NODE_ENV": "development",
+    },
+  },
+  "test": Array [
+    "jest",
+    "build",
+    "checkSize",
+  ],
+}
+`;
+
+exports[`@trigen/scripts-* scripts-preset-node-app should return correct scripts object 1`] = `
+Object {
+  "build": Object {
+    "args": Array [
+      "-c",
+    ],
+    "cmd": "rollup",
+    "vars": Object {
+      "NODE_ENV": "production",
+    },
+  },
+  "jest": Object {
+    "args": Array [
+      "-c",
+      "jest.config.json",
+    ],
+    "cmd": "jest",
+    "vars": Object {
+      "NODE_ENV": "test",
+    },
+  },
+  "start": Object {
+    "args": Array [
+      "src/index.js",
+    ],
+    "cmd": "babel-node",
+    "vars": Object {
+      "NODE_ENV": "development",
+    },
+  },
+  "test": Array [
+    "jest",
+    "build",
+  ],
+}
+`;
+
+exports[`@trigen/scripts-* scripts-preset-react-app should return correct scripts object 1`] = `
+Object {
+  "build": Object {
+    "args": Array [
+      "/Users/dangreen/github/trigen-scripts/packages/scripts-preset-react-app/src/build.js",
+    ],
+    "cmd": "node",
+    "vars": Object {
+      "NODE_ENV": "production",
+    },
+  },
+  "build:docs": Array [
+    Object {
+      "args": Array [],
+      "cmd": "typedoc",
+      "ignoreResult": true,
+    },
+    Object {
+      "args": Array [
+        "docs/.nojekyll",
+      ],
+      "cmd": "touch",
+    },
+  ],
+  "build:storybook": Object {
+    "args": Array [
+      "-o",
+      "storybook-build",
+    ],
+    "cmd": "build-storybook",
+    "vars": Object {
+      "NODE_ENV": "development",
+      "REACT_APP_STORYBOOK_AUTO_CONFIGURE": "true",
+      "STORYBOOK_AUTO_CONFIGURE": "false",
+    },
+  },
+  "jest": Object {
+    "args": Array [
+      "-c",
+      "jest.config.json",
+    ],
+    "cmd": "jest",
+    "vars": Object {
+      "NODE_ENV": "test",
+    },
+  },
+  "lint": Array [
+    undefined,
+    "lint:scripts",
+  ],
+  "lint:scripts": Array [
+    "lint:ts",
+  ],
+  "lint:styles": Object {
+    "args": Array [
+      "src/**/*.css",
+    ],
+    "cmd": "stylelint",
+  },
+  "lint:ts": Object {
+    "args": Array [
+      "-p",
+      ".",
+      "-t",
+      "stylish",
+      "src/**/*.{ts,tsx}",
+    ],
+    "cmd": "tslint",
+  },
+  "serve": Object {
+    "args": Array [
+      "/Users/dangreen/github/trigen-scripts/packages/scripts-preset-react-app/src/serve.js",
+    ],
+    "cmd": "node",
+    "vars": Object {
+      "NODE_ENV": "production",
+    },
+  },
+  "start": Object {
+    "args": Array [
+      "/Users/dangreen/github/trigen-scripts/packages/scripts-preset-react-app/src/start.js",
+    ],
+    "cmd": "node",
+    "vars": Object {
+      "NODE_ENV": "development",
+    },
+  },
+  "start:storybook": Object {
+    "args": Array [
+      "--ci",
+      "-p",
+      "3001",
+    ],
+    "cmd": "start-storybook",
+    "vars": Object {
+      "REACT_APP_STORYBOOK_AUTO_CONFIGURE": "true",
+      "STORYBOOK_AUTO_CONFIGURE": "false",
+    },
+  },
+  "test": Array [
+    "typecheck",
+    "lint",
+    "jest",
+    "build",
+  ],
+  "typecheck": Object {
+    "args": Array [
+      "--noEmit",
+      "--pretty",
+      "--skipLibCheck",
+    ],
+    "cmd": "tsc",
+  },
+}
+`;

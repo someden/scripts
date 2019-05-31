@@ -1,16 +1,20 @@
 import fs from 'fs';
 import path from 'path';
-import getScripts from '../../packages/scripts/src/scripts';
+import {
+	getScripts
+} from '../../packages/scripts/src/scripts';
 
 const rcPath = path.join(__dirname, '.trigenscriptsrc');
+const cwd = process.cwd();
 
-function writeRC(scripts, features) {
+function writeRC(scripts) {
 	fs.writeFileSync(
 		rcPath,
-		JSON.stringify({
-			scripts: scripts.map(_ => path.join(__dirname, 'mock-plugins', _)),
-			features
-		})
+		JSON.stringify(
+			scripts.map(_ =>
+				path.join(cwd, 'packages', `scripts-${_}`, 'src', 'index.js')
+			)
+		)
 	);
 }
 
@@ -20,269 +24,114 @@ function deleteRC() {
 
 describe('@trigen/scripts', () => {
 
+	afterAll(deleteRC);
+
 	describe('getScripts', () => {
 
-		describe('Plugin A', () => {
+		it('should get scripts by rc file', () => {
 
-			it('should get scripts by rc file', () => {
+			writeRC([
+				'plugin-eslint'
+			]);
 
-				writeRC([
-					'plugin-a.js'
-				], [
-					'feature1'
-				]);
+			const result = getScripts(
+				[],
+				{ cwd: __dirname }
+			);
 
-				let result = getScripts(
-					['script', '-c', '.dir'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
-
-				expect(result.exec).toBe(null);
-
-				result = getScripts(
-					['script1'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
-
-				expect(
-					result.scripts[result.exec]
-				).toEqual({
-					cmd:  'execScript1',
-					args: [
-						'feature1',
-						'feature2'
-					]
-				});
-
-				result = getScripts(
-					['script2', '-c', '.dir'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
-
-				expect(
-					result.scripts[result.exec]
-				).toEqual({
-					vars: {
-						NODE_ENV: 'test'
-					},
-					cmd:  'execScript2',
-					args: [
-						'--flag',
-						'-c', '.dir'
-					]
-				});
-
-				result = getScripts(
-					['script3', '-c', '.dir'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
-
-				expect(
-					result.scripts[result.exec]
-				).toEqual({
-					cmd:  'execScript3',
-					args: ['-c', '.dir']
-				});
-
-				result = getScripts(
-					['script12'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
-
-				expect(
-					result.scripts[result.exec]
-				).toEqual([
-					'script1',
-					'script2'
-				]);
-
-				result = getScripts(
-					['scripts', '--arg'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
-
-				expect(
-					result.scripts[result.exec]
-				).toEqual([{
-					cmd:          'execScripts1',
-					args:         ['--arg'],
-					ignoreResult: true
-				}, {
-					cmd:       'execScripts2',
-					args:      ['-f'],
-					immutable: true
-				}]);
-
-				deleteRC();
-			});
-
-			it('should validate features', () => {
-
-				writeRC([
-					'plugin-a.js'
-				], [
-					'featurer'
-				]);
-
-				expect(() => {
-					getScripts(
-						['script', '-c', '.dir'],
-						{
-							cwd: path.join(__dirname, 'mock-plugins')
-						}
-					);
-				}).toThrow('Unknown feature "featurer"');
-
-				deleteRC();
+			expect(result).toEqual({
+				'lint:js':      {
+					cmd:  'eslint',
+					args: ['--cache', 'src/**/*.{js,jsx}']
+				},
+				'lint:scripts': ['lint:js'],
+				'lint':         ['lint:scripts'],
+				'test':         ['lint']
 			});
 		});
 
-		describe('Plugin B', () => {
+		it('should pass args', () => {
 
-			it('should get scripts by rc file', () => {
+			let result = getScripts(
+				['packages/*/src/**/*.js'],
+				{ cwd: __dirname }
+			);
 
-				writeRC([
-					'plugin-b.js'
-				], [
-					'feature3'
-				]);
-
-				let result = getScripts(
-					['script', '-c', '.dir'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
-
-				expect(result.exec).toBe(null);
-
-				result = getScripts(
-					['script3', '-c', '.dir'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
-
-				expect(
-					result.scripts[result.exec]
-				).toEqual({
-					cmd:  'execScript3',
-					args: [
-						'feature3',
-						'-c', '.dir'
-					]
-				});
-
-				deleteRC();
-
-				writeRC([
-					'plugin-b.js'
-				], []);
-
-				result = getScripts(
-					['script3'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
-
-				expect(
-					result.scripts[result.exec]
-				).toEqual({
-					cmd:  'execScript3',
-					args: []
-				});
-
-				deleteRC();
+			expect(result).toEqual({
+				'lint:js':      {
+					cmd:  'eslint',
+					args: ['--cache', 'packages/*/src/**/*.js']
+				},
+				'lint:scripts': ['lint:js'],
+				'lint':         ['lint:scripts'],
+				'test':         ['lint']
 			});
 
-			it('should validate features', () => {
+			result = getScripts(
+				['-v'],
+				{ cwd: __dirname }
+			);
 
-				writeRC([
-					'plugin-b.js'
-				], [
-					'feature'
-				]);
-
-				expect(() => {
-					getScripts(
-						['script3', '-c', '.dir'],
-						{
-							cwd: path.join(__dirname, 'mock-plugins')
-						}
-					);
-				}).toThrow('Unknown feature "feature"');
-
-				deleteRC();
+			expect(result).toEqual({
+				'lint:js':      {
+					cmd:  'eslint',
+					args: ['--cache', 'src/**/*.{js,jsx}', '-v']
+				},
+				'lint:scripts': ['lint:js'],
+				'lint':         ['lint:scripts'],
+				'test':         ['lint']
 			});
 		});
 
-		describe('Plugins combination', () => {
+		it('should combine plugins', () => {
 
-			it('should validate features', () => {
+			writeRC([
+				'plugin-eslint',
+				'plugin-typescript'
+			]);
 
-				writeRC([
-					'plugin-a.js',
-					'plugin-b.js'
-				], [
-					'feature1'
-				]);
+			const result = getScripts(
+				[],
+				{ cwd: __dirname }
+			);
 
-				let result = getScripts(
-					['script3', '-c', '.dir'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
+			expect(result['lint:scripts']).toEqual(
+				['lint:js', 'lint:ts']
+			);
 
-				expect(
-					result.scripts[result.exec]
-				).toEqual({
-					cmd:  'execScript3',
-					args: [
-						'feature1',
-						'feature2',
-						'-c', '.dir'
-					]
-				});
+			expect(result.lint).toEqual(
+				['lint:scripts']
+			);
 
-				deleteRC();
+			expect(result.test).toEqual(
+				['typecheck', 'lint']
+			);
+		});
 
-				writeRC([
-					'plugin-b.js',
-					'plugin-a.js'
-				], [
-					'feature1'
-				]);
+		it('should combine plugins and preset', () => {
 
-				result = getScripts(
-					['script3', '-c', '.dir'],
-					{
-						cwd: path.join(__dirname, 'mock-plugins')
-					}
-				);
+			writeRC([
+				'plugin-typescript',
+				'plugin-rollup',
+				'preset-lib'
+			]);
 
-				expect(
-					result.scripts[result.exec]
-				).toEqual({
-					cmd:  'execScript3',
-					args: ['-c', '.dir']
-				});
+			const result = getScripts(
+				[],
+				{ cwd: __dirname }
+			);
 
-				deleteRC();
-			});
+			expect(result['lint:scripts']).toEqual(
+				['lint:ts']
+			);
+
+			expect(result.lint).toEqual(
+				['lint:scripts']
+			);
+
+			expect(result.test).toEqual(
+				['typecheck', 'lint', 'jest', 'build', 'checkSize']
+			);
 		});
 	});
 });

@@ -11,7 +11,7 @@ export default function getPlugins(plugins, prefix) {
 			try {
 				return require(resolve(_));
 			} catch (err2) {
-				throw err;
+				throw err2;
 			}
 		}
 	});

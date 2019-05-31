@@ -4,7 +4,7 @@ import {
 	FILL_ME,
 	getScriptArg,
 	addItems
-} from '@trigen/scripts/helpers/args';
+} from '@trigen/scripts/helpers';
 import babel from '@trigen/scripts-plugin-babel';
 import typescript from '@trigen/scripts-plugin-typescript';
 import jest from '@trigen/scripts-plugin-jest';

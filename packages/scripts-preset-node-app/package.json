@@ -22,10 +22,10 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@trigen/scripts": "file:../../scripts",
-    "@trigen/scripts-plugin-babel": "file:../../scripts-plugin-babel",
-    "@trigen/scripts-plugin-jest": "file:../../scripts-plugin-jest",
-    "@trigen/scripts-plugin-rollup": "file:../../scripts-plugin-rollup",
+    "@trigen/scripts": "file:../scripts",
+    "@trigen/scripts-plugin-babel": "file:../scripts-plugin-babel",
+    "@trigen/scripts-plugin-jest": "file:../scripts-plugin-jest",
+    "@trigen/scripts-plugin-rollup": "file:../scripts-plugin-rollup",
     "browserslist-config-trigen": "^1.1.0",
     "husky": "^1.0.0-rc.10",
     "lint-staged": "^8.1.0"

@@ -17,7 +17,7 @@ export function getScriptAndArgs(inputArgs) {
 	];
 }
 
-export default function getScripts(inputArgs, options) {
+export function getScripts(args, options) {
 
 	const rcPlugins = getConfigFromRC(options);
 	const plugins = getPlugins(rcPlugins, PREFIX);
@@ -27,7 +27,7 @@ export default function getScripts(inputArgs, options) {
 			default: getPluginScripts
 		} = plugin;
 
-		return getPluginScripts(inputArgs, scripts);
+		return getPluginScripts(args, scripts);
 	}, {});
 
 	return scripts;

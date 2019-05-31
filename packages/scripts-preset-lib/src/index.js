@@ -2,7 +2,7 @@ import update from 'immutability-helper';
 import {
 	FILL_ME,
 	addItems
-} from '@trigen/scripts/helpers/args';
+} from '@trigen/scripts/helpers';
 import babel from '@trigen/scripts-plugin-babel';
 import jest from '@trigen/scripts-plugin-jest';
 
@@ -41,8 +41,10 @@ export default function getScripts(args, inputAllScripts) {
 		},
 		'cleanPublish': {
 			$set: update(scripts.cleanPublish, {
-				args: {
-					$push: args
+				1: {
+					args: {
+						$push: args
+					}
 				}
 			})
 		}

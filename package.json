@@ -25,7 +25,15 @@
   },
   "dependencies": {
     "@trigen/scripts": "file:packages/scripts",
-    "@trigen/scripts-app": "file:packages/scripts-app"
+    "@trigen/scripts-plugin-babel": "file:packages/scripts-plugin-babel",
+    "@trigen/scripts-plugin-eslint": "file:packages/scripts-plugin-eslint",
+    "@trigen/scripts-plugin-jest": "file:packages/scripts-plugin-jest",
+    "@trigen/scripts-plugin-rollup": "file:packages/scripts-plugin-rollup",
+    "@trigen/scripts-plugin-storybook": "file:packages/scripts-plugin-storybook",
+    "@trigen/scripts-plugin-typescript": "file:packages/scripts-plugin-typescript",
+    "@trigen/scripts-preset-lib": "file:packages/scripts-preset-lib",
+    "@trigen/scripts-preset-node-app": "file:packages/scripts-preset-node-app",
+    "@trigen/scripts-preset-react-app": "file:packages/scripts-preset-react-app"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

@@ -21,16 +21,17 @@ export function getScriptArg(args, arg, value) {
 
 export function addItems(items, add, unshift) {
 
+	const addList = Array.isArray(add)
+		? add.slice()
+		: [add];
+
 	if (!items) {
-		return add;
+		return addList;
 	}
 
 	const itemsList = Array.isArray(items)
 		? items.slice()
 		: [items];
-	const addList = Array.isArray(add)
-		? add.slice()
-		: [add];
 
 	addList.forEach((add) => {
 

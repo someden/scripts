@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import chalk from 'chalk';
 import spawn from './helpers/spawn';
-import getScripts, {
-	getScriptAndArgs
+import {
+	getScriptAndArgs,
+	getScripts
 } from './scripts';
 
 const [

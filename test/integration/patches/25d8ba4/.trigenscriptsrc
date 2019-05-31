@@ -1,5 +1,3 @@
-{
-	"scripts": [
-		"app"
-	]
-}
+[
+	"preset-react-app"
+]

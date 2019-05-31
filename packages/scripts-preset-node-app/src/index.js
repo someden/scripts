@@ -1,7 +1,7 @@
 import update from 'immutability-helper';
 import {
 	addItems
-} from '@trigen/scripts/helpers/args';
+} from '@trigen/scripts/helpers';
 import babel from '@trigen/scripts-plugin-babel';
 import jest from '@trigen/scripts-plugin-jest';
 import rollup from '@trigen/scripts-plugin-rollup';
