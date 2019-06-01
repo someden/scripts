@@ -59,7 +59,12 @@ export default function getScripts(args, allScripts) {
 		'typecheck':    {
 			$set: update(scripts.typecheck, {
 				args: {
-					$push: args
+					$push: [
+						'./src',
+						...getScriptArg(args, '--out', './docs'),
+						'--excludeExternals', '--mode', 'modules',
+						...args
+					]
 				}
 			})
 		},
