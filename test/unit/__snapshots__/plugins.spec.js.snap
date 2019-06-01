@@ -134,7 +134,13 @@ exports[`@trigen/scripts-* scripts-plugin-typescript should return correct scrip
 		\\"args\\": [
 			\\"--noEmit\\",
 			\\"--pretty\\",
-			\\"--skipLibCheck\\"
+			\\"--skipLibCheck\\",
+			\\"./src\\",
+			\\"--out\\",
+			\\"./docs\\",
+			\\"--excludeExternals\\",
+			\\"--mode\\",
+			\\"modules\\"
 		]
 	},
 	\\"test\\": [
@@ -318,7 +324,13 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 		\\"args\\": [
 			\\"--noEmit\\",
 			\\"--pretty\\",
-			\\"--skipLibCheck\\"
+			\\"--skipLibCheck\\",
+			\\"./src\\",
+			\\"--out\\",
+			\\"./docs\\",
+			\\"--excludeExternals\\",
+			\\"--mode\\",
+			\\"modules\\"
 		]
 	},
 	\\"test\\": [
