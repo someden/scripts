@@ -27,17 +27,12 @@
   "dependencies": {
     "@babel/runtime": "^7.4.2",
     "chalk": "^2.4.2",
-    "core-js": "^3.1.3",
+    "core-js": "2",
     "immutability-helper": "^3.0.0",
     "rcfile": "^1.0.3",
     "resolve-cwd": "^3.0.0"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "greenkeeper": {
-    "ignore": [
-      "core-js"
-    ]
   }
 }

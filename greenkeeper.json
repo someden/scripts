@@ -13,7 +13,12 @@
         "packages/scripts-preset-node-app/package.json",
         "packages/scripts-preset-react-app/package.json",
         "packages/scripts/package.json"
-      ]
+      ],
+			"ignore": [
+				"@types/storybook__addon-knobs",
+				"core-js",
+				"svg-sprite-loader"
+			]
     }
   }
 }

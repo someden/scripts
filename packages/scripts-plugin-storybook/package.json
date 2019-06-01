@@ -42,10 +42,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "greenkeeper": {
-    "ignore": [
-      "@types/storybook__addon-knobs"
-    ]
   }
 }
