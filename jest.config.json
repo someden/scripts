@@ -1,0 +1,26 @@
+{
+	"testEnvironment": "node",
+	"testRegex": "/test/unit/.*\\.spec\\.js$",
+	"modulePathIgnorePatterns": [
+		"<rootDir>/packages/.*/package/"
+	],
+	"transform": {
+		"^.+\\.(jsx?|tsx?)$": "babel-jest"
+	},
+	"collectCoverage": true,
+	"collectCoverageFrom": [
+		"packages/*/src/**/*.{js,jsx}",
+		"!packages/scripts-plugin-storybook/src/storybook/**",
+		"!packages/scripts-preset-react-app/src/configs/**",
+		"!packages/scripts-preset-react-app/src/helpers/**",
+		"!**/node_modules/**"
+	],
+	"coverageReporters": [
+		"lcovonly",
+		"text"
+	],
+	"moduleNameMapper": {
+		"@trigen/([^/]+)$": "<rootDir>/packages/$1/src",
+		"@trigen/([^/]+)/(.*)$": "<rootDir>/packages/$1/src/$2"
+	}
+}

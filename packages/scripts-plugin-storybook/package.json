@@ -1,0 +1,51 @@
+{
+  "name": "@trigen/scripts-plugin-storybook",
+  "version": "2.0.0",
+  "description": "Storybook scripts.",
+  "author": "dangreen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrigenSoftware/scripts/packages/scripts-plugin-storybook#readme"
+  },
+  "bugs": {
+    "url": "https://github.com/TrigenSoftware/scripts/issues"
+  },
+  "os": [
+    "!win32"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "build": "../../scripts/buildPackage.sh",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "dependencies": {
+    "@storybook/addon-a11y": "^5.0.5",
+    "@storybook/addon-actions": "^5.0.5",
+    "@storybook/addon-info": "^5.0.5",
+    "@storybook/addon-knobs": "^5.0.5",
+    "@storybook/addon-options": "^5.0.5",
+    "@storybook/addons": "^5.0.5",
+    "@storybook/react": "^5.0.5",
+    "@trigen/scripts": "file:../scripts",
+    "@types/storybook__addon-a11y": "^5.0.0",
+    "@types/storybook__addon-actions": "^3.4.1",
+    "@types/storybook__addon-info": "^4.1.0",
+    "@types/storybook__addon-knobs": "4.0.0",
+    "@types/storybook__react": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "@types/storybook__addon-knobs"
+    ]
+  }
+}

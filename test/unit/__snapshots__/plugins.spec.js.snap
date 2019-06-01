@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@trigen/scripts-* scripts-plugin-babel should return correct scripts object 1`] = `
+"{
+	\\"start\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"development\\"
+		},
+		\\"cmd\\": \\"babel-node\\",
+		\\"args\\": [
+			\\"src/index.js\\"
+		]
+	},
+	\\"build\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"production\\"
+		},
+		\\"cmd\\": \\"babel\\",
+		\\"args\\": [
+			\\"./src\\",
+			\\"-d\\",
+			\\"./lib\\",
+			\\"-s\\",
+			\\"inline\\"
+		]
+	}
+}"
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-eslint should return correct scripts object 1`] = `
+"{
+	\\"lint:js\\": {
+		\\"cmd\\": \\"eslint\\",
+		\\"args\\": [
+			\\"--cache\\",
+			\\"src/**/*.{js,jsx}\\"
+		]
+	},
+	\\"lint:scripts\\": [
+		\\"lint:js\\"
+	],
+	\\"lint\\": [
+		\\"lint:scripts\\"
+	],
+	\\"test\\": [
+		\\"lint\\"
+	]
+}"
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-jest should return correct scripts object 1`] = `
+"{
+	\\"jest\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"test\\"
+		},
+		\\"cmd\\": \\"jest\\",
+		\\"args\\": [
+			\\"-c\\",
+			\\"jest.config.json\\"
+		]
+	},
+	\\"test\\": [
+		\\"jest\\"
+	]
+}"
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-rollup should return correct scripts object 1`] = `
+"{
+	\\"build\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"production\\"
+		},
+		\\"cmd\\": \\"rollup\\",
+		\\"args\\": [
+			\\"-c\\"
+		]
+	}
+}"
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-storybook should return correct scripts object 1`] = `
+"{
+	\\"start:storybook\\": {
+		\\"vars\\": {
+			\\"STORYBOOK_AUTO_CONFIGURE\\": \\"true\\"
+		},
+		\\"cmd\\": \\"start-storybook\\",
+		\\"args\\": [
+			\\"--ci\\",
+			\\"-p\\",
+			\\"3001\\",
+			\\"-c\\",
+			\\"/packages/scripts-plugin-storybook/src/storybook\\"
+		]
+	},
+	\\"build:storybook\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"development\\",
+			\\"STORYBOOK_AUTO_CONFIGURE\\": \\"true\\"
+		},
+		\\"cmd\\": \\"build-storybook\\",
+		\\"args\\": [
+			\\"-c\\",
+			\\"/packages/scripts-plugin-storybook/src/storybook\\",
+			\\"-o\\",
+			\\"storybook-build\\"
+		]
+	}
+}"
+`;
+
+exports[`@trigen/scripts-* scripts-plugin-typescript should return correct scripts object 1`] = `
+"{
+	\\"lint:ts\\": {
+		\\"cmd\\": \\"tslint\\",
+		\\"args\\": [
+			\\"-p\\",
+			\\".\\",
+			\\"-t\\",
+			\\"stylish\\",
+			\\"src/**/*.{ts,tsx}\\"
+		]
+	},
+	\\"lint:scripts\\": [
+		\\"lint:ts\\"
+	],
+	\\"lint\\": [
+		\\"lint:scripts\\"
+	],
+	\\"typecheck\\": {
+		\\"cmd\\": \\"tsc\\",
+		\\"args\\": [
+			\\"--noEmit\\",
+			\\"--pretty\\",
+			\\"--skipLibCheck\\"
+		]
+	},
+	\\"test\\": [
+		\\"typecheck\\",
+		\\"lint\\"
+	],
+	\\"start\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"development\\"
+		},
+		\\"cmd\\": \\"ts-node-dev\\",
+		\\"args\\": [
+			\\"-P\\",
+			\\"./tsconfig.dev.json\\",
+			\\"-r\\",
+			\\"tsconfig-paths/register\\",
+			\\"--respawn\\",
+			\\"--transpileOnly\\",
+			\\"--ignore-watch\\",
+			\\"node_modules\\",
+			\\"src/index.ts\\"
+		]
+	},
+	\\"build:docs\\": [
+		{
+			\\"cmd\\": \\"typedoc\\",
+			\\"args\\": [],
+			\\"ignoreResult\\": true
+		},
+		{
+			\\"cmd\\": \\"touch\\",
+			\\"args\\": [
+				\\"docs/.nojekyll\\"
+			]
+		}
+	],
+	\\"build\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"production\\"
+		},
+		\\"cmd\\": \\"tsc\\",
+		\\"args\\": [
+			\\"--rootDir\\",
+			\\"./src\\",
+			\\"--outDir\\",
+			\\"./lib\\"
+		]
+	}
+}"
+`;
+
+exports[`@trigen/scripts-* scripts-preset-lib should return correct scripts object 1`] = `
+"{
+	\\"start\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"development\\"
+		},
+		\\"cmd\\": \\"babel-node\\",
+		\\"args\\": [
+			\\"src/index.js\\"
+		]
+	},
+	\\"build\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"production\\"
+		},
+		\\"cmd\\": \\"babel\\",
+		\\"args\\": [
+			\\"./src\\",
+			\\"-d\\",
+			\\"./lib\\",
+			\\"-s\\",
+			\\"inline\\"
+		]
+	},
+	\\"jest\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"test\\"
+		},
+		\\"cmd\\": \\"jest\\",
+		\\"args\\": [
+			\\"-c\\",
+			\\"jest.config.json\\"
+		]
+	},
+	\\"test\\": [
+		\\"jest\\",
+		\\"build\\",
+		\\"checkSize\\"
+	],
+	\\"checkSize\\": {
+		\\"cmd\\": \\"size-limit\\",
+		\\"args\\": []
+	},
+	\\"cleanPublish\\": [
+		\\"test\\",
+		{
+			\\"cmd\\": \\"clean-publish\\",
+			\\"args\\": []
+		}
+	]
+}"
+`;
+
+exports[`@trigen/scripts-* scripts-preset-node-app should return correct scripts object 1`] = `
+"{
+	\\"start\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"development\\"
+		},
+		\\"cmd\\": \\"babel-node\\",
+		\\"args\\": [
+			\\"src/index.js\\"
+		]
+	},
+	\\"build\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"production\\"
+		},
+		\\"cmd\\": \\"rollup\\",
+		\\"args\\": [
+			\\"-c\\"
+		]
+	},
+	\\"jest\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"test\\"
+		},
+		\\"cmd\\": \\"jest\\",
+		\\"args\\": [
+			\\"-c\\",
+			\\"jest.config.json\\"
+		]
+	},
+	\\"test\\": [
+		\\"jest\\",
+		\\"build\\"
+	]
+}"
+`;
+
+exports[`@trigen/scripts-* scripts-preset-react-app should return correct scripts object 1`] = `
+"{
+	\\"start\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"development\\"
+		},
+		\\"cmd\\": \\"node\\",
+		\\"args\\": [
+			\\"/packages/scripts-preset-react-app/src/start.js\\"
+		]
+	},
+	\\"build\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"production\\"
+		},
+		\\"cmd\\": \\"node\\",
+		\\"args\\": [
+			\\"/packages/scripts-preset-react-app/src/build.js\\"
+		]
+	},
+	\\"lint:ts\\": {
+		\\"cmd\\": \\"tslint\\",
+		\\"args\\": [
+			\\"-p\\",
+			\\".\\",
+			\\"-t\\",
+			\\"stylish\\",
+			\\"src/**/*.{ts,tsx}\\"
+		]
+	},
+	\\"lint:scripts\\": [
+		\\"lint:ts\\"
+	],
+	\\"lint\\": [
+		\\"lint:styles\\",
+		\\"lint:scripts\\"
+	],
+	\\"typecheck\\": {
+		\\"cmd\\": \\"tsc\\",
+		\\"args\\": [
+			\\"--noEmit\\",
+			\\"--pretty\\",
+			\\"--skipLibCheck\\"
+		]
+	},
+	\\"test\\": [
+		\\"typecheck\\",
+		\\"lint\\",
+		\\"jest\\",
+		\\"build\\"
+	],
+	\\"build:docs\\": [
+		{
+			\\"cmd\\": \\"typedoc\\",
+			\\"args\\": [],
+			\\"ignoreResult\\": true
+		},
+		{
+			\\"cmd\\": \\"touch\\",
+			\\"args\\": [
+				\\"docs/.nojekyll\\"
+			]
+		}
+	],
+	\\"jest\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"test\\"
+		},
+		\\"cmd\\": \\"jest\\",
+		\\"args\\": [
+			\\"-c\\",
+			\\"jest.config.json\\"
+		]
+	},
+	\\"start:storybook\\": {
+		\\"vars\\": {
+			\\"STORYBOOK_AUTO_CONFIGURE\\": \\"false\\",
+			\\"REACT_APP_STORYBOOK_AUTO_CONFIGURE\\": \\"true\\"
+		},
+		\\"cmd\\": \\"start-storybook\\",
+		\\"args\\": [
+			\\"--ci\\",
+			\\"-p\\",
+			\\"3001\\"
+		]
+	},
+	\\"build:storybook\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"development\\",
+			\\"STORYBOOK_AUTO_CONFIGURE\\": \\"false\\",
+			\\"REACT_APP_STORYBOOK_AUTO_CONFIGURE\\": \\"true\\"
+		},
+		\\"cmd\\": \\"build-storybook\\",
+		\\"args\\": [
+			\\"-o\\",
+			\\"storybook-build\\"
+		]
+	},
+	\\"lint:styles\\": {
+		\\"cmd\\": \\"stylelint\\",
+		\\"args\\": [
+			\\"src/**/*.css\\"
+		]
+	},
+	\\"serve\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"production\\"
+		},
+		\\"cmd\\": \\"node\\",
+		\\"args\\": [
+			\\"/packages/scripts-preset-react-app/src/serve.js\\"
+		]
+	}
+}"
+`;

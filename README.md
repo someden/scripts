@@ -1,5 +1,4 @@
-
-# scripts
+# @trigen/scripts
 
 [![NPM version][npm]][npm-url]
 [![Node version][node]][node-url]
@@ -22,44 +21,16 @@
 [greenkeeper]: https://badges.greenkeeper.io/TrigenSoftware/scripts.svg
 [greenkeeper-url]: https://greenkeeper.io/
 
-Scripts and configuration for TrigenSoftware's web projects.
+Scripts and configuration for TrigenSoftware's projects.
 
-## Available scripts
+## Available plugins and presets
 
-```bash
-# Lint only styles
-yarn lint:styles
-# Lint only scripts
-yarn lint:scripts
-# Lint all sources
-yarn lint
-# Run tests with Jest
-yarn jest
-# Run type checking
-yarn typecheck
-# Run lint, tests and build
-yarn test
-# Generate docs for TypeScript sources
-yarn build:docs
-# Start Storybook
-yarn start:storybook
-# Build standalone Storybook bundle
-yarn build:storybook
-# Start development server
-yarn start
-# Build our bundle for production
-yarn build
-# Serve files from `build` directory
-yarn serve
-```
-
-## Environment variables
-
-Optional variables:
-
-```bash
-PROXY_API_URI='' # valid URI; not set by default
-DISABLE_BROWSER_SYNC=false # boolean; `false` by default
-```
-
-You can create `.env` in project root with this variables.
+- [plugin-eslint](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-eslint#readme)
+- [plugin-babel](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-babel#readme)
+- [plugin-typescript](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-typescript#readme)
+- [plugin-jest](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-jest#readme)
+- [plugin-rollup](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-rollup#readme)
+- [plugin-storybook](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-storybook#readme)
+- [preset-lib](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-lib#readme)
+- [preset-node-app](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-node-app#readme)
+- [preset-react-app](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-react-app#readme)
