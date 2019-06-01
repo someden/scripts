@@ -165,6 +165,7 @@ exports[`@trigen/scripts-* scripts-plugin-typescript should return correct scrip
 				\\"./src\\",
 				\\"--out\\",
 				\\"./docs\\",
+				\\"--ignoreCompilerErrors\\",
 				\\"--excludeExternals\\",
 				\\"--mode\\",
 				\\"modules\\"
@@ -341,6 +342,7 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 				\\"./src\\",
 				\\"--out\\",
 				\\"./docs\\",
+				\\"--ignoreCompilerErrors\\",
 				\\"--excludeExternals\\",
 				\\"--mode\\",
 				\\"modules\\"
