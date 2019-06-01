@@ -59,12 +59,7 @@ export default function getScripts(args, allScripts) {
 		'typecheck':    {
 			$set: update(scripts.typecheck, {
 				args: {
-					$push: [
-						'./src',
-						...getScriptArg(args, '--out', './docs'),
-						'--excludeExternals', '--mode', 'modules',
-						...args
-					]
+					$push: args
 				}
 			})
 		},
@@ -89,7 +84,12 @@ export default function getScripts(args, allScripts) {
 			$set: update(scripts['build:docs'], {
 				0: {
 					args: {
-						$push: args
+						$push: [
+							'./src',
+							...getScriptArg(args, '--out', './docs'),
+							'--excludeExternals', '--mode', 'modules',
+							...args
+						]
 					}
 				}
 			})

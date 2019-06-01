@@ -134,13 +134,7 @@ exports[`@trigen/scripts-* scripts-plugin-typescript should return correct scrip
 		\\"args\\": [
 			\\"--noEmit\\",
 			\\"--pretty\\",
-			\\"--skipLibCheck\\",
-			\\"./src\\",
-			\\"--out\\",
-			\\"./docs\\",
-			\\"--excludeExternals\\",
-			\\"--mode\\",
-			\\"modules\\"
+			\\"--skipLibCheck\\"
 		]
 	},
 	\\"test\\": [
@@ -167,7 +161,14 @@ exports[`@trigen/scripts-* scripts-plugin-typescript should return correct scrip
 	\\"build:docs\\": [
 		{
 			\\"cmd\\": \\"typedoc\\",
-			\\"args\\": [],
+			\\"args\\": [
+				\\"./src\\",
+				\\"--out\\",
+				\\"./docs\\",
+				\\"--excludeExternals\\",
+				\\"--mode\\",
+				\\"modules\\"
+			],
 			\\"ignoreResult\\": true
 		},
 		{
@@ -324,13 +325,7 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 		\\"args\\": [
 			\\"--noEmit\\",
 			\\"--pretty\\",
-			\\"--skipLibCheck\\",
-			\\"./src\\",
-			\\"--out\\",
-			\\"./docs\\",
-			\\"--excludeExternals\\",
-			\\"--mode\\",
-			\\"modules\\"
+			\\"--skipLibCheck\\"
 		]
 	},
 	\\"test\\": [
@@ -342,7 +337,14 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 	\\"build:docs\\": [
 		{
 			\\"cmd\\": \\"typedoc\\",
-			\\"args\\": [],
+			\\"args\\": [
+				\\"./src\\",
+				\\"--out\\",
+				\\"./docs\\",
+				\\"--excludeExternals\\",
+				\\"--mode\\",
+				\\"modules\\"
+			],
 			\\"ignoreResult\\": true
 		},
 		{
