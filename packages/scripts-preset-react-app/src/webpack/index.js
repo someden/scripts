@@ -6,12 +6,14 @@ import {
 import FilterWarningPlugins from 'webpack-filter-warnings-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
 import update from 'immutability-helper';
-import { decamelize } from 'humps';
-import findIndex from '../../helpers/findIndex';
-import applyReducers from '../../helpers/applyReducers';
-import addDevScripts from '../../helpers/addDevScripts';
-import getWebpackHook from '../../helpers/getWebpackHook';
-import htmlminConfig from '../htmlmin';
+import {
+	decamelize
+} from 'humps';
+import findIndex from '../helpers/findIndex';
+import applyReducers from '../helpers/applyReducers';
+import addDevScripts from '../helpers/addDevScripts';
+import getWebpackHook from '../helpers/getWebpackHook';
+import htmlminConfig from '../configs/htmlmin';
 import * as stylableLoader from './stylableLoader';
 import * as svgLoader from './svgLoader';
 import * as swLoader from './swLoader';

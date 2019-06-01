@@ -1,6 +1,6 @@
 import path from 'path';
 import update from 'immutability-helper';
-import findIndex from '../../helpers/findIndex';
+import findIndex from '../helpers/findIndex';
 
 export function base(config) {
 	return update(config, {
@@ -10,9 +10,9 @@ export function base(config) {
 				use:  [{
 					loader:  'svg-sprite-loader',
 					options: {
-						runtimeGenerator: path.join(__dirname, '../../helpers/svgToComponent.js'),
+						runtimeGenerator: path.join(__dirname, '../helpers/svgToComponent.js'),
 						runtimeOptions:   {
-							iconModule: path.join(__dirname, '../../helpers/IconComponent.js')
+							iconModule: path.join(__dirname, '../helpers/IconComponent.js')
 						}
 					}
 				}]

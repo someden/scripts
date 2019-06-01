@@ -7,7 +7,7 @@ import HttpProxyMiddleware from 'http-proxy-middleware';
 import HistoryApiFallbackMiddleware from 'connect-history-api-fallback';
 import { notify } from './helpers/notify';
 import browserSyncConfigBase from './configs/browserSync';
-import * as webpackConfig from './configs/webpack';
+import * as webpackConfig from './webpack';
 
 const server = create();
 const webpackDevCompiler = webpack(webpackConfig.dev());

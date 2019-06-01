@@ -10,7 +10,7 @@ import typescript from '@trigen/scripts-plugin-typescript';
 import jest from '@trigen/scripts-plugin-jest';
 import storybook from '@trigen/scripts-plugin-storybook';
 
-const storybookConfigs = path.join(__dirname, 'configs', 'storybook');
+const storybookConfigs = path.join(__dirname, 'storybook');
 const scripts = {
 	'lint:styles': {
 		cmd:  'stylelint',

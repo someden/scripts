@@ -2,8 +2,8 @@ import StylablePlugin from '@stylable/webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import postcss from 'postcss';
 import update from 'immutability-helper';
-import findIndex from '../../helpers/findIndex';
-import postcssConfig from '../postcss';
+import findIndex from '../helpers/findIndex';
+import postcssConfig from '../configs/postcss';
 
 const stylesProcessor = postcss(postcssConfig);
 

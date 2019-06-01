@@ -5,9 +5,7 @@ module.exports = configureStorybook;
 
 function configureStorybook(input) {
 
-	const {
-		config: storybookBaseConfig
-	} = configure(input);
+	const storybookBaseConfig = configure(input);
 	const webpackDevConfig = webpackConfig.dev();
 
 	storybookBaseConfig.resolve.extensions.push(

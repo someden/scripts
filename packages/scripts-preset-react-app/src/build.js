@@ -4,7 +4,7 @@ import {
 	notify,
 	notifyError
 } from './helpers/notify';
-import * as webpackConfig from './configs/webpack';
+import * as webpackConfig from './webpack';
 
 const webpackBuildCompiler = webpack(webpackConfig.build());
 
