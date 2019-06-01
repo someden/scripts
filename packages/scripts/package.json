@@ -34,5 +34,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "core-js"
+    ]
   }
 }
