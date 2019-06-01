@@ -12,8 +12,8 @@
 [node]: https://img.shields.io/node/v/%40trigen/scripts.svg
 [node-url]: https://nodejs.org
 
-[deps]: https://david-dm.org/TrigenSoftware/scripts.svg
-[deps-url]: https://david-dm.org/TrigenSoftware/scripts
+[deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts
+[deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts
 
 [build]: http://img.shields.io/travis/com/TrigenSoftware/scripts.svg
 [build-url]: https://travis-ci.com/TrigenSoftware/scripts
@@ -54,12 +54,68 @@ yarn exec -- trigen-scripts lint
 
 ## Available plugins and presets
 
-- [plugin-eslint](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-eslint#readme)
-- [plugin-babel](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-babel#readme)
-- [plugin-typescript](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-typescript#readme)
-- [plugin-jest](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-jest#readme)
-- [plugin-rollup](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-rollup#readme)
-- [plugin-storybook](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-storybook#readme)
-- [preset-lib](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-lib#readme)
-- [preset-node-app](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-node-app#readme)
-- [preset-react-app](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-react-app#readme)
+| Package | Version | Dependencies |
+|---------|---------|--------------|
+| [`@trigen/scripts-plugin-eslint`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-eslint#readme)         | [![NPM version][plugin-eslint-npm]][plugin-eslint-npm-url]         | [![NPM version][plugin-eslint-deps]][plugin-eslint-deps-url]         |
+| [`@trigen/scripts-plugin-babel`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-babel#readme)           | [![NPM version][plugin-babel-npm]][plugin-babel-npm-url]           | [![NPM version][plugin-babel-deps]][plugin-babel-deps-url]           |
+| [`@trigen/scripts-plugin-typescript`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-typescript#readme) | [![NPM version][plugin-typescript-npm]][plugin-typescript-npm-url] | [![NPM version][plugin-typescript-deps]][plugin-typescript-deps-url] |
+| [`@trigen/scripts-plugin-jest`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-jest#readme)             | [![NPM version][plugin-jest-npm]][plugin-jest-npm-url]             | [![NPM version][plugin-jest-deps]][plugin-jest-deps-url]             |
+| [`@trigen/scripts-plugin-rollup`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-rollup#readme)         | [![NPM version][plugin-rollup-npm]][plugin-rollup-npm-url]         | [![NPM version][plugin-rollup-deps]][plugin-rollup-deps-url]         |
+| [`@trigen/scripts-plugin-storybook`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-storybook#readme)   | [![NPM version][plugin-storybook-npm]][plugin-storybook-npm-url]   | [![NPM version][plugin-storybook-deps]][plugin-storybook-deps-url]   |
+| [`@trigen/scripts-preset-lib`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-lib#readme)               | [![NPM version][preset-lib-npm]][preset-lib-npm-url]               | [![NPM version][preset-lib-deps]][preset-lib-deps-url]               |
+| [`@trigen/scripts-preset-node-app`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-node-app#readme)     | [![NPM version][preset-node-app-npm]][preset-node-app-npm-url]     | [![NPM version][preset-node-app-deps]][preset-node-app-deps-url]     |
+| [`@trigen/scripts-preset-react-app`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-react-app#readme)   | [![NPM version][preset-react-app-npm]][preset-react-app-npm-url]   | [![NPM version][preset-react-app-deps]][preset-react-app-deps-url]   |
+
+[plugin-eslint-npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-eslint.svg
+[plugin-eslint-npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-eslint
+
+[plugin-eslint-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-plugin-eslint
+[plugin-eslint-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-plugin-eslint
+
+[plugin-babel-npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-babel.svg
+[plugin-babel-npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-babel
+
+[plugin-babel-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-plugin-babel
+[plugin-babel-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-plugin-babel
+
+[plugin-typescript-npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-typescript.svg
+[plugin-typescript-npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-typescript
+
+[plugin-typescript-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-plugin-typescript
+[plugin-typescript-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-plugin-typescript
+
+[plugin-jest-npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-jest.svg
+[plugin-jest-npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-jest
+
+[plugin-jest-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-plugin-jest
+[plugin-jest-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-plugin-jest
+
+[plugin-rollup-npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-rollup.svg
+[plugin-rollup-npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-rollup
+
+[plugin-rollup-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-plugin-rollup
+[plugin-rollup-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-plugin-rollup
+
+[plugin-storybook-npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-storybook.svg
+[plugin-storybook-npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-storybook
+
+[plugin-storybook-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-plugin-storybook
+[plugin-storybook-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-plugin-storybook
+
+[preset-lib-npm]: https://img.shields.io/npm/v/%40trigen/scripts-preset-lib.svg
+[preset-lib-npm-url]: https://www.npmjs.com/package/@trigen/scripts-preset-lib
+
+[preset-lib-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-preset-lib
+[preset-lib-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-preset-lib
+
+[preset-node-app-npm]: https://img.shields.io/npm/v/%40trigen/scripts-preset-node-app.svg
+[preset-node-app-npm-url]: https://www.npmjs.com/package/@trigen/scripts-preset-node-app
+
+[preset-node-app-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-preset-node-app
+[preset-node-app-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-preset-node-app
+
+[preset-react-app-npm]: https://img.shields.io/npm/v/%40trigen/scripts-preset-react-app.svg
+[preset-react-app-npm-url]: https://www.npmjs.com/package/@trigen/scripts-preset-react-app
+
+[preset-react-app-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-preset-react-app
+[preset-react-app-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-preset-react-app
