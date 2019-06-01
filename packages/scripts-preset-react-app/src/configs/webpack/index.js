@@ -1,6 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
-import CleanPlugin from 'clean-webpack-plugin';
+import {
+	CleanWebpackPlugin as CleanPlugin
+} from 'clean-webpack-plugin';
 import FilterWarningPlugins from 'webpack-filter-warnings-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
 import update from 'immutability-helper';
