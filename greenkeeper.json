@@ -1,0 +1,24 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/scripts-plugin-babel/package.json",
+        "packages/scripts-plugin-eslint/package.json",
+        "packages/scripts-plugin-jest/package.json",
+        "packages/scripts-plugin-rollup/package.json",
+        "packages/scripts-plugin-storybook/package.json",
+        "packages/scripts-plugin-typescript/package.json",
+        "packages/scripts-preset-lib/package.json",
+        "packages/scripts-preset-node-app/package.json",
+        "packages/scripts-preset-react-app/package.json",
+        "packages/scripts/package.json"
+      ],
+      "ignore": [
+        "@types/storybook__addon-knobs",
+        "core-js",
+        "svg-sprite-loader"
+      ]
+    }
+  }
+}
