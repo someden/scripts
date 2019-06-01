@@ -21,7 +21,8 @@
     "lint": "eslint 'packages/*/src/**/*.{js,jsx}'",
     "jest": "NODE_ENV=test jest -c jest.config.json",
     "test": "npm run build && npm run jest && node test/integration/scripts.spec",
-    "build": "npm run lint && lerna run build"
+    "build": "npm run lint && lerna run build",
+    "publishAll": "npm run test && lerna publish --contents package"
   },
   "dependencies": {
     "@trigen/scripts": "file:packages/scripts",
