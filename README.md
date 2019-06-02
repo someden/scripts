@@ -61,6 +61,7 @@ yarn exec -- trigen-scripts lint
 | [`@trigen/scripts-plugin-typescript`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-typescript#readme) | [![NPM version][plugin-typescript-npm]][plugin-typescript-npm-url] | [![NPM version][plugin-typescript-deps]][plugin-typescript-deps-url] |
 | [`@trigen/scripts-plugin-jest`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-jest#readme)             | [![NPM version][plugin-jest-npm]][plugin-jest-npm-url]             | [![NPM version][plugin-jest-deps]][plugin-jest-deps-url]             |
 | [`@trigen/scripts-plugin-rollup`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-rollup#readme)         | [![NPM version][plugin-rollup-npm]][plugin-rollup-npm-url]         | [![NPM version][plugin-rollup-deps]][plugin-rollup-deps-url]         |
+| [`@trigen/scripts-plugin-size-limit`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-size-limit#readme) | [![NPM version][plugin-size-limit-npm]][plugin-size-limit-npm-url] | [![NPM version][plugin-size-limit-deps]][plugin-size-limit-deps-url] |
 | [`@trigen/scripts-plugin-storybook`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-plugin-storybook#readme)   | [![NPM version][plugin-storybook-npm]][plugin-storybook-npm-url]   | [![NPM version][plugin-storybook-deps]][plugin-storybook-deps-url]   |
 | [`@trigen/scripts-preset-lib`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-lib#readme)               | [![NPM version][preset-lib-npm]][preset-lib-npm-url]               | [![NPM version][preset-lib-deps]][preset-lib-deps-url]               |
 | [`@trigen/scripts-preset-node-app`](https://github.com/TrigenSoftware/scripts/tree/master/packages/scripts-preset-node-app#readme)     | [![NPM version][preset-node-app-npm]][preset-node-app-npm-url]     | [![NPM version][preset-node-app-deps]][preset-node-app-deps-url]     |
@@ -95,6 +96,12 @@ yarn exec -- trigen-scripts lint
 
 [plugin-rollup-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-plugin-rollup
 [plugin-rollup-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-plugin-rollup
+
+[plugin-size-limit-npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-size-limit.svg
+[plugin-size-limit-npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-size-limit
+
+[plugin-size-limit-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-plugin-size-limit
+[plugin-size-limit-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-plugin-size-limit
 
 [plugin-storybook-npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-storybook.svg
 [plugin-storybook-npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-storybook
