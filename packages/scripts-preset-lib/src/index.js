@@ -5,7 +5,7 @@ import {
 } from '@trigen/scripts/helpers';
 
 const scripts = {
-	'test':         ['build', 'checkSize'],
+	'test':         ['build'],
 	'cleanPublish': [
 		'test',
 		{
