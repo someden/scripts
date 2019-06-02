@@ -1,4 +1,4 @@
-# @trigen/scripts-preset-lib
+# @trigen/scripts-plugin-size-limit
 
 [![NPM version][npm]][npm-url]
 [![Node version][node]][node-url]
@@ -6,14 +6,14 @@
 [![Build status][build]][build-url]
 [![Greenkeeper badge][greenkeeper]][greenkeeper-url]
 
-[npm]: https://img.shields.io/npm/v/%40trigen/scripts-preset-lib.svg
-[npm-url]: https://www.npmjs.com/package/@trigen/scripts-preset-lib
+[npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-size-limit.svg
+[npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-size-limit
 
-[node]: https://img.shields.io/node/v/%40trigen/scripts-preset-lib.svg
+[node]: https://img.shields.io/node/v/%40trigen/scripts-plugin-size-limit.svg
 [node-url]: https://nodejs.org
 
-[deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-preset-lib
-[deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-preset-lib
+[deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-plugin-size-limit
+[deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-plugin-size-limit
 
 [build]: http://img.shields.io/travis/com/TrigenSoftware/scripts.svg
 [build-url]: https://travis-ci.com/TrigenSoftware/scripts
@@ -21,21 +21,21 @@
 [greenkeeper]: https://badges.greenkeeper.io/TrigenSoftware/scripts.svg
 [greenkeeper-url]: https://greenkeeper.io/
 
-Lib scripts preset.
+Size-limit scripts.
 
 ## Usage
 
 1. Install scripts package
 
 ```bash
-yarn add -D @trigen/scripts-preset-lib
+yarn add -D @trigen/scripts-plugin-size-limit
 ```
 
 2. Add installed scripts to `.trigenscriptsrc`
 
 ```json
 [
-    "preset-lib",
+    "plugin-size-limit",
     "./some/other"
 ]
 ```
@@ -43,14 +43,12 @@ yarn add -D @trigen/scripts-preset-lib
 3. Now you can run some script
 
 ```bash
-yarn exec -- trigen-scripts build
+yarn exec -- trigen-scripts checkSize
 ```
 
 ## Available scripts
 
 ```bash
-# Run lint, tests and build
-yarn test
-# Clean package publish
-yarn cleanPublish
+# Check bundle size
+yarn checkSize
 ```

@@ -48,6 +48,10 @@ function run(script, ignoreTitle) {
 		return;
 	}
 
+	if (!command) {
+		return;
+	}
+
 	const {
 		vars = {},
 		cmd,

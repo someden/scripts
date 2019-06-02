@@ -80,6 +80,15 @@ exports[`@trigen/scripts-* scripts-plugin-rollup should return correct scripts o
 }"
 `;
 
+exports[`@trigen/scripts-* scripts-plugin-size-limit should return correct scripts object 1`] = `
+"{
+	\\"checkSize\\": {
+		\\"cmd\\": \\"size-limit\\",
+		\\"args\\": []
+	}
+}"
+`;
+
 exports[`@trigen/scripts-* scripts-plugin-storybook should return correct scripts object 1`] = `
 "{
 	\\"start:storybook\\": {
@@ -196,32 +205,6 @@ exports[`@trigen/scripts-* scripts-plugin-typescript should return correct scrip
 
 exports[`@trigen/scripts-* scripts-preset-lib should return correct scripts object 1`] = `
 "{
-	\\"start\\": {
-		\\"vars\\": {
-			\\"NODE_ENV\\": \\"development\\"
-		},
-		\\"cmd\\": \\"babel-node\\",
-		\\"args\\": [
-			\\"src/index.js\\"
-		]
-	},
-	\\"build\\": {
-		\\"vars\\": {
-			\\"NODE_ENV\\": \\"production\\"
-		},
-		\\"cmd\\": \\"babel\\",
-		\\"args\\": [
-			\\"./src\\",
-			\\"-d\\",
-			\\"./lib\\",
-			\\"-s\\",
-			\\"inline\\"
-		]
-	},
-	\\"checkSize\\": {
-		\\"cmd\\": \\"size-limit\\",
-		\\"args\\": []
-	},
 	\\"test\\": [
 		\\"build\\",
 		\\"checkSize\\"

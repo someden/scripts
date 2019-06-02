@@ -138,7 +138,7 @@ describe('@trigen/scripts', () => {
 		it('should save scripts from plugin', () => {
 
 			writeRC([
-				'preset-lib'
+				'preset-node-app'
 			]);
 
 			let result = getScripts(
@@ -147,11 +147,11 @@ describe('@trigen/scripts', () => {
 			);
 
 			expect(result.start.cmd).toBe('babel-node');
-			expect(result.build.cmd).toBe('babel');
+			expect(result.build.cmd).toBe('rollup');
 
 			writeRC([
 				'plugin-typescript',
-				'preset-lib'
+				'preset-node-app'
 			]);
 
 			result = getScripts(
@@ -160,7 +160,7 @@ describe('@trigen/scripts', () => {
 			);
 
 			expect(result.start.cmd).toBe('ts-node-dev');
-			expect(result.build.cmd).toBe('tsc');
+			expect(result.build.cmd).toBe('rollup');
 		});
 	});
 });

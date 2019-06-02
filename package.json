@@ -30,6 +30,7 @@
     "@trigen/scripts-plugin-eslint": "file:packages/scripts-plugin-eslint",
     "@trigen/scripts-plugin-jest": "file:packages/scripts-plugin-jest",
     "@trigen/scripts-plugin-rollup": "file:packages/scripts-plugin-rollup",
+    "@trigen/scripts-plugin-size-limit": "file:packages/scripts-plugin-size-limit",
     "@trigen/scripts-plugin-storybook": "file:packages/scripts-plugin-storybook",
     "@trigen/scripts-plugin-typescript": "file:packages/scripts-plugin-typescript",
     "@trigen/scripts-preset-lib": "file:packages/scripts-preset-lib",

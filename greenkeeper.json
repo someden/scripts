@@ -7,6 +7,7 @@
         "packages/scripts-plugin-eslint/package.json",
         "packages/scripts-plugin-jest/package.json",
         "packages/scripts-plugin-rollup/package.json",
+        "packages/scripts-plugin-size-limit/package.json",
         "packages/scripts-plugin-storybook/package.json",
         "packages/scripts-plugin-typescript/package.json",
         "packages/scripts-preset-lib/package.json",
