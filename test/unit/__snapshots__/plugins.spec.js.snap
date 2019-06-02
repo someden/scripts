@@ -208,9 +208,7 @@ exports[`@trigen/scripts-* scripts-plugin-typescript should return correct scrip
 
 exports[`@trigen/scripts-* scripts-preset-lib should return correct scripts object 1`] = `
 "{
-	\\"test\\": [
-		\\"build\\"
-	],
+	\\"test\\": [],
 	\\"cleanPublish\\": [
 		\\"test\\",
 		{

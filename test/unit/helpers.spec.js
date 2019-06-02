@@ -1,6 +1,6 @@
 import {
 	getScriptArg,
-	addItems,
+	addScripts,
 	saveScripts
 } from '../../packages/scripts/src/helpers';
 import {
@@ -68,24 +68,24 @@ describe('@trigen/scripts', () => {
 			});
 		});
 
-		describe('addItems', () => {
+		describe('addScripts', () => {
 
 			it('should add to `undefined`', () => {
 
 				expect(
-					addItems(undefined, 'script')
+					addScripts(undefined, 'script')
 				).toEqual(
 					['script']
 				);
 
 				expect(
-					addItems(undefined, ['script'])
+					addScripts(undefined, ['script'])
 				).toEqual(
 					['script']
 				);
 
 				expect(
-					addItems(undefined, ['script', 'script2'])
+					addScripts(undefined, ['script', 'script2'])
 				).toEqual(
 					['script', 'script2']
 				);
@@ -94,19 +94,19 @@ describe('@trigen/scripts', () => {
 			it('should add to item', () => {
 
 				expect(
-					addItems('item', 'script')
+					addScripts('item', 'script')
 				).toEqual(
 					['item', 'script']
 				);
 
 				expect(
-					addItems('item', ['script'])
+					addScripts('item', ['script'])
 				).toEqual(
 					['item', 'script']
 				);
 
 				expect(
-					addItems('item', ['script', 'script2'])
+					addScripts('item', ['script', 'script2'])
 				).toEqual(
 					['item', 'script', 'script2']
 				);
@@ -115,19 +115,19 @@ describe('@trigen/scripts', () => {
 			it('should add to items', () => {
 
 				expect(
-					addItems(['item'], 'script')
+					addScripts(['item'], 'script')
 				).toEqual(
 					['item', 'script']
 				);
 
 				expect(
-					addItems(['item'], ['script'])
+					addScripts(['item'], ['script'])
 				).toEqual(
 					['item', 'script']
 				);
 
 				expect(
-					addItems(['item'], ['script', 'script2'])
+					addScripts(['item'], ['script', 'script2'])
 				).toEqual(
 					['item', 'script', 'script2']
 				);
@@ -136,28 +136,51 @@ describe('@trigen/scripts', () => {
 			it('should not add existing item', () => {
 
 				expect(
-					addItems(['item'], 'item')
+					addScripts(['item'], 'item')
 				).toEqual(
 					['item']
+				);
+			});
+
+			it('should filter scripts', () => {
+
+				expect(
+					addScripts(null, 'script', {})
+				).toEqual(
+					[]
+				);
+
+				expect(
+					addScripts('item', 'script', {})
+				).toEqual(
+					['item']
+				);
+
+				expect(
+					addScripts('item', 'script', {
+						script: true
+					})
+				).toEqual(
+					['item', 'script']
 				);
 			});
 
 			it('should unshift', () => {
 
 				expect(
-					addItems('item', 'script', true)
+					addScripts('item', 'script', null, true)
 				).toEqual(
 					['script', 'item']
 				);
 
 				expect(
-					addItems(['item'], ['script'], true)
+					addScripts(['item'], ['script'], null, true)
 				).toEqual(
 					['script', 'item']
 				);
 
 				expect(
-					addItems(['item'], ['script', 'script2'], true)
+					addScripts(['item'], ['script', 'script2'], null, true)
 				).toEqual(
 					['script2', 'script', 'item']
 				);

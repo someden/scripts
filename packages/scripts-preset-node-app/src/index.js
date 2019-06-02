@@ -1,6 +1,6 @@
 import update from 'immutability-helper';
 import {
-	addItems,
+	addScripts,
 	saveScripts
 } from '@trigen/scripts/helpers';
 import babel from '@trigen/scripts-plugin-babel';
@@ -21,7 +21,7 @@ export default function getScripts(args, inputAllScripts) {
 
 	return update(allScripts, {
 		'test':         {
-			$apply: _ => addItems(_, scripts.test)
+			$apply: _ => addScripts(_, scripts.test)
 		}
 	});
 }

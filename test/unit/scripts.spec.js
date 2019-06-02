@@ -163,5 +163,31 @@ describe('@trigen/scripts', () => {
 			expect(result.start.cmd).toBe('ts-node-dev');
 			expect(result.build.cmd).toBe('rollup');
 		});
+
+		it('should check scripts', () => {
+
+			writeRC([
+				'preset-lib'
+			]);
+
+			let result = getScripts(
+				[],
+				{ cwd: __dirname }
+			);
+
+			expect(result.test.includes('build')).toBe(false);
+
+			writeRC([
+				'plugin-typescript',
+				'preset-lib'
+			]);
+
+			result = getScripts(
+				[],
+				{ cwd: __dirname }
+			);
+
+			expect(result.test.includes('build')).toBe(true);
+		});
 	});
 });

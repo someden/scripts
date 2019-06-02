@@ -1,7 +1,7 @@
 import update from 'immutability-helper';
 import {
 	FILL_ME,
-	addItems
+	addScripts
 } from '@trigen/scripts/helpers';
 
 const scripts = {
@@ -15,7 +15,7 @@ const scripts = {
 export default function getScripts(args, allScripts) {
 	return update(allScripts, {
 		'test':      {
-			$apply: _ => addItems(_, scripts.test)
+			$apply: _ => addScripts(_, scripts.test)
 		},
 		'checkSize': {
 			$set: update(scripts.checkSize, {

@@ -2,7 +2,7 @@ import update from 'immutability-helper';
 import {
 	FILL_ME,
 	getScriptArg,
-	addItems
+	addScripts
 } from '@trigen/scripts/helpers';
 
 const scripts = {
@@ -51,10 +51,10 @@ export default function getScripts(args, allScripts) {
 			})
 		},
 		'lint:scripts': {
-			$apply: _ => addItems(_, scripts['lint:scripts'])
+			$apply: _ => addScripts(_, scripts['lint:scripts'])
 		},
 		'lint':         {
-			$apply: _ => addItems(_, scripts.lint)
+			$apply: _ => addScripts(_, scripts.lint)
 		},
 		'typecheck':    {
 			$set: update(scripts.typecheck, {
@@ -64,7 +64,7 @@ export default function getScripts(args, allScripts) {
 			})
 		},
 		'test':         {
-			$apply: _ => addItems(_, scripts.test, true)
+			$apply: _ => addScripts(_, scripts.test, null, true)
 		},
 		'start':        {
 			$set: update(scripts.start, {

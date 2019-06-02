@@ -19,11 +19,15 @@ export function getScriptArg(args, arg, value) {
 	return [];
 }
 
-export function addItems(items, add, unshift) {
+export function addScripts(items, add, scripts, unshift) {
 
-	const addList = Array.isArray(add)
+	let addList = Array.isArray(add)
 		? add.slice()
 		: [add];
+
+	if (scripts) {
+		addList = addList.filter(_ => _ in scripts);
+	}
 
 	if (!items) {
 		return addList;

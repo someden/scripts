@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 import {
 	FILL_ME,
 	getScriptArg,
-	addItems
+	addScripts
 } from '@trigen/scripts/helpers';
 import babel from '@trigen/scripts-plugin-babel';
 import typescript from '@trigen/scripts-plugin-typescript';
@@ -61,10 +61,10 @@ export default function getScripts(args, inputAllScripts) {
 			})
 		},
 		'lint':            {
-			$apply: _ => addItems(_, scripts.lint, true)
+			$apply: _ => addScripts(_, scripts.lint, null, true)
 		},
 		'test':            {
-			$apply: _ => addItems(_, scripts.test)
+			$apply: _ => addScripts(_, scripts.test)
 		},
 		'start:storybook': {
 			vars: {

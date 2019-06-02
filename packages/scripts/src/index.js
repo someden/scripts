@@ -49,7 +49,12 @@ function run(script, ignoreTitle) {
 	}
 
 	if (!command) {
-		return;
+
+		if (typeof script === 'string') {
+			throw new Error(`Unknown script "${script}"`);
+		}
+
+		throw new Error('Unknown script');
 	}
 
 	const {

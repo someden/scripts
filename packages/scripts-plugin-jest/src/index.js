@@ -2,7 +2,7 @@ import update from 'immutability-helper';
 import {
 	FILL_ME,
 	getScriptArg,
-	addItems
+	addScripts
 } from '@trigen/scripts/helpers';
 
 const scripts = {
@@ -27,7 +27,7 @@ export default function getScripts(args, allScripts) {
 			})
 		},
 		'test': {
-			$apply: _ => addItems(_, scripts.test)
+			$apply: _ => addScripts(_, scripts.test)
 		}
 	});
 }
