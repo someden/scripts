@@ -114,7 +114,8 @@ describe('@trigen/scripts', () => {
 				'plugin-typescript',
 				'plugin-jest',
 				'plugin-rollup',
-				'preset-lib'
+				'preset-lib',
+				'plugin-size-limit'
 			]);
 
 			const result = getScripts(
