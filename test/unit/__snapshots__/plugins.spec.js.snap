@@ -82,6 +82,9 @@ exports[`@trigen/scripts-* scripts-plugin-rollup should return correct scripts o
 
 exports[`@trigen/scripts-* scripts-plugin-size-limit should return correct scripts object 1`] = `
 "{
+	\\"test\\": [
+		\\"checkSize\\"
+	],
 	\\"checkSize\\": {
 		\\"cmd\\": \\"size-limit\\",
 		\\"args\\": []
