@@ -218,25 +218,14 @@ exports[`@trigen/scripts-* scripts-preset-lib should return correct scripts obje
 			\\"inline\\"
 		]
 	},
-	\\"jest\\": {
-		\\"vars\\": {
-			\\"NODE_ENV\\": \\"test\\"
-		},
-		\\"cmd\\": \\"jest\\",
-		\\"args\\": [
-			\\"-c\\",
-			\\"jest.config.json\\"
-		]
-	},
-	\\"test\\": [
-		\\"jest\\",
-		\\"build\\",
-		\\"checkSize\\"
-	],
 	\\"checkSize\\": {
 		\\"cmd\\": \\"size-limit\\",
 		\\"args\\": []
 	},
+	\\"test\\": [
+		\\"build\\",
+		\\"checkSize\\"
+	],
 	\\"cleanPublish\\": [
 		\\"test\\",
 		{

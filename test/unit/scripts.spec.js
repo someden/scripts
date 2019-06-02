@@ -112,6 +112,7 @@ describe('@trigen/scripts', () => {
 
 			writeRC([
 				'plugin-typescript',
+				'plugin-jest',
 				'plugin-rollup',
 				'preset-lib'
 			]);
