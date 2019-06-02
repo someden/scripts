@@ -47,3 +47,17 @@ export function addItems(items, add, unshift) {
 
 	return itemsList;
 }
+
+export function saveScripts(scriptNames, nextScripts, prevScripts) {
+	return scriptNames.reduce((scripts, name) => {
+
+		if (prevScripts[name]) {
+			return {
+				...scripts,
+				[name]: prevScripts[name]
+			};
+		}
+
+		return scripts;
+	}, nextScripts);
+}

@@ -134,5 +134,33 @@ describe('@trigen/scripts', () => {
 				['typecheck', 'lint', 'jest', 'build', 'checkSize']
 			);
 		});
+
+		it('should save scripts from plugin', () => {
+
+			writeRC([
+				'preset-lib'
+			]);
+
+			let result = getScripts(
+				[],
+				{ cwd: __dirname }
+			);
+
+			expect(result.start.cmd).toBe('babel-node');
+			expect(result.build.cmd).toBe('babel');
+
+			writeRC([
+				'plugin-typescript',
+				'preset-lib'
+			]);
+
+			result = getScripts(
+				[],
+				{ cwd: __dirname }
+			);
+
+			expect(result.start.cmd).toBe('ts-node-dev');
+			expect(result.build.cmd).toBe('tsc');
+		});
 	});
 });

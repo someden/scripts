@@ -1,6 +1,7 @@
 import {
 	getScriptArg,
-	addItems
+	addItems,
+	saveScripts
 } from '../../packages/scripts/src/helpers';
 import {
 	external
@@ -160,6 +161,24 @@ describe('@trigen/scripts', () => {
 				).toEqual(
 					['script2', 'script', 'item']
 				);
+			});
+		});
+
+		describe('saveScripts', () => {
+
+			it('should save scripts', () => {
+
+				const scripts = saveScripts(['start', 'build'], {
+					start: 'nextStart',
+					build: 'nextBuild'
+				}, {
+					start: 'start'
+				});
+
+				expect(scripts).toEqual({
+					start: 'start',
+					build: 'nextBuild'
+				});
 			});
 		});
 	});

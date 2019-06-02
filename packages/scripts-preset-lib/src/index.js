@@ -1,7 +1,8 @@
 import update from 'immutability-helper';
 import {
 	FILL_ME,
-	addItems
+	addItems,
+	saveScripts
 } from '@trigen/scripts/helpers';
 import babel from '@trigen/scripts-plugin-babel';
 
@@ -24,7 +25,7 @@ export default function getScripts(args, inputAllScripts) {
 
 	let allScripts = inputAllScripts;
 
-	allScripts = babel(args, allScripts);
+	allScripts = saveScripts(['start', 'build'], babel(args, allScripts), allScripts);
 
 	return update(allScripts, {
 		'checkSize':    {

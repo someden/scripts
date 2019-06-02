@@ -1,6 +1,7 @@
 import update from 'immutability-helper';
 import {
-	addItems
+	addItems,
+	saveScripts
 } from '@trigen/scripts/helpers';
 import babel from '@trigen/scripts-plugin-babel';
 import jest from '@trigen/scripts-plugin-jest';
@@ -14,7 +15,7 @@ export default function getScripts(args, inputAllScripts) {
 
 	let allScripts = inputAllScripts;
 
-	allScripts = babel(args, allScripts);
+	allScripts = saveScripts(['start'], babel(args, allScripts), allScripts);
 	allScripts = jest(args, allScripts);
 	allScripts = rollup(args, allScripts);
 
