@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import lib from '../../packages/scripts-preset-lib/src';
 
 const cwd = process.cwd();
 const packages = path.join(cwd, 'packages');
@@ -23,5 +24,34 @@ describe('@trigen/scripts-*', () => {
 
 			expect(scriptsSnapshot).toMatchSnapshot();
 		});
+	});
+
+	it('`scripts-preset-lib` should add cd to publish subdir', () => {
+
+		let scripts = lib([], {});
+
+		expect(scripts.cleanPublish.length).toBe(2);
+		expect(scripts.cleanPublish).toEqual([
+			'test',
+			{
+				cmd:   'clean-publish',
+				args:  []
+			}
+		]);
+
+		scripts = lib(['packages'], {});
+
+		expect(scripts.cleanPublish.length).toBe(3);
+		expect(scripts.cleanPublish).toEqual([
+			'test',
+			{
+				cmd:  'cd',
+				args: ['packages']
+			},
+			{
+				cmd:   'clean-publish',
+				args:  []
+			}
+		]);
 	});
 });
