@@ -21,13 +21,13 @@ export function getScripts(args, options) {
 
 	const rcPlugins = getConfigFromRC(options);
 	const plugins = getPlugins(rcPlugins, PREFIX);
-	const scripts = plugins.reduce((scripts, plugin) => {
+	const scripts = plugins.reduce((scripts, [plugin, params]) => {
 
 		const {
 			default: getPluginScripts
 		} = plugin;
 
-		return getPluginScripts(args, scripts);
+		return getPluginScripts(args, scripts, params);
 	}, {});
 
 	return scripts;

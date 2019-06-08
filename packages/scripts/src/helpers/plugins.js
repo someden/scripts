@@ -4,15 +4,28 @@ import resolve from 'resolve-cwd';
 export default function getPlugins(plugins, prefix) {
 	return plugins.map((_) => {
 
+		let name = '';
+		let params = {};
+		let plugin = null;
+
+		if (Array.isArray(_)) {
+			name = _[0];
+			params = _[1] || params;
+		} else {
+			name = _;
+		}
+
 		try {
-			return require(resolve(`${prefix}${_}`));
+			plugin = require(resolve(`${prefix}${name}`));
 		} catch (err) {
 
 			try {
-				return require(resolve(_));
+				plugin = require(resolve(name));
 			} catch (err2) {
 				throw err2;
 			}
 		}
+
+		return [plugin, params];
 	});
 }

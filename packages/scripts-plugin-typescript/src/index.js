@@ -37,14 +37,16 @@ const scripts = {
 	}
 };
 
-export default function getScripts(args, allScripts) {
+export default function getScripts(args, allScripts, {
+	lint = 'src/**/*.{ts,tsx}'
+} = {}) {
 	return update(allScripts, {
 		'lint:ts':      {
 			$set: update(scripts['lint:ts'], {
 				args: {
 					$push: [
 						'-p', '.', '-t', 'stylish',
-						...getScriptArg(args, 0, 'src/**/*.{ts,tsx}'),
+						...getScriptArg(args, 0, lint),
 						...args
 					]
 				}

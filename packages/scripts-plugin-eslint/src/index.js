@@ -15,14 +15,16 @@ const scripts = {
 	'test':         ['lint']
 };
 
-export default function getScripts(args, allScripts) {
+export default function getScripts(args, allScripts, {
+	lint = 'src/**/*.{js,jsx}'
+} = {}) {
 	return update(allScripts, {
 		'lint:js':      {
 			$set: update(scripts['lint:js'], {
 				args: {
 					$push: [
 						'--cache',
-						...getScriptArg(args, 0, 'src/**/*.{js,jsx}'),
+						...getScriptArg(args, 0, lint),
 						...args
 					]
 				}

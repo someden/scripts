@@ -9,7 +9,7 @@ const scripts = {
 	'jest': {
 		vars: { NODE_ENV: 'test' },
 		cmd:  'jest',
-		args: FILL_ME // ['-c', 'jest.config.json']
+		args: FILL_ME
 	},
 	'test': ['jest']
 };
