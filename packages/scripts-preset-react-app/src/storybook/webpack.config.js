@@ -17,9 +17,23 @@ function configureStorybook(input) {
 	);
 
 	storybookBaseConfig.module.rules = [
-		...storybookBaseConfig.module.rules.filter(
-			_ => !/css|svg/.test(String(_.test))
-		),
+		...storybookBaseConfig.module.rules.filter((rule) => {
+
+			const test = String(rule.test);
+
+			switch (true) {
+
+				case /svg/.test(test):
+					return false;
+
+				case /css/.test(test):
+					rule.exclude = /\.st\.css$/;
+					return true;
+
+				default:
+					return true;
+			}
+		}),
 		...webpackDevConfig.module.rules
 	];
 
