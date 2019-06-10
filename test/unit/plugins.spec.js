@@ -26,11 +26,10 @@ describe('@trigen/scripts-*', () => {
 		});
 	});
 
-	it('`scripts-preset-lib` should add cd to publish subdir', () => {
+	it('`scripts-preset-lib` should add cwd to publish subdir', () => {
 
 		let scripts = lib([], {});
 
-		expect(scripts.cleanPublish.length).toBe(2);
 		expect(scripts.cleanPublish).toEqual([
 			'test',
 			{
@@ -41,14 +40,10 @@ describe('@trigen/scripts-*', () => {
 
 		scripts = lib(['packages'], {});
 
-		expect(scripts.cleanPublish.length).toBe(3);
 		expect(scripts.cleanPublish).toEqual([
 			'test',
 			{
-				cmd:  'cd',
-				args: ['packages']
-			},
-			{
+				cwd:   'packages',
 				cmd:   'clean-publish',
 				args:  []
 			}
