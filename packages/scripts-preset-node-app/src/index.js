@@ -22,7 +22,7 @@ export default function getScripts(args, inputAllScripts, {
 	allScripts = rollup(args, allScripts);
 
 	return update(allScripts, {
-		'test':         {
+		'test': {
 			$apply: _ => (
 				testSkipBuild
 					? _
