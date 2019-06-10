@@ -11,7 +11,9 @@ const scripts = {
 	'test': ['build']
 };
 
-export default function getScripts(args, inputAllScripts) {
+export default function getScripts(args, inputAllScripts, {
+	testSkipBuild = false
+} = {}) {
 
 	let allScripts = inputAllScripts;
 
@@ -21,7 +23,11 @@ export default function getScripts(args, inputAllScripts) {
 
 	return update(allScripts, {
 		'test':         {
-			$apply: _ => addScripts(_, scripts.test)
+			$apply: _ => (
+				testSkipBuild
+					? _
+					: addScripts(_, scripts.test)
+			)
 		}
 	});
 }

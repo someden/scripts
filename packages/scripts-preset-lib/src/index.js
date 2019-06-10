@@ -16,7 +16,9 @@ const scripts = {
 	]
 };
 
-export default function getScripts(args, allScripts) {
+export default function getScripts(args, allScripts, {
+	testSkipBuild = false
+} = {}) {
 
 	const cd = getScriptArg(args, 0, './').length
 		? null
@@ -25,7 +27,11 @@ export default function getScripts(args, allScripts) {
 
 	return update(allScripts, {
 		'test':         {
-			$apply: _ => addScripts(_, scripts.test, allScripts)
+			$apply: _ => (
+				testSkipBuild
+					? _
+					: addScripts(_, scripts.test, allScripts)
+			)
 		},
 		'cleanPublish': {
 			$set: update(scripts.cleanPublish, {
