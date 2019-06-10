@@ -38,7 +38,9 @@ describe('@trigen/scripts-*', () => {
 			}
 		]);
 
-		scripts = lib(['packages'], {});
+		scripts = lib([], {}, {
+			publish: 'packages'
+		});
 
 		expect(scripts.cleanPublish).toEqual([
 			'test',
