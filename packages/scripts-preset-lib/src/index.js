@@ -35,8 +35,8 @@ export default function getScripts(args, allScripts) {
 					},
 					$apply: _ => (
 						!cd ? _ : update(_, {
-							$set: {
-								cwd: cd
+							cwd: {
+								$set: cd
 							}
 						})
 					)
