@@ -4,7 +4,7 @@ import { spawnSync } from 'child_process';
 
 export default function spawn({
 	cwd,
-	vars,
+	vars = {},
 	cmd,
 	args,
 	ignoreResult
