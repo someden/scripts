@@ -35,7 +35,9 @@ const scripts = {
 	}
 };
 
-export default function getScripts(args, inputAllScripts) {
+export default function getScripts(args, inputAllScripts, {
+	testSkipBuild = false
+} = {}) {
 
 	const storybookConfigsArgs = getScriptArg(args, '-c', storybookConfigs);
 	const storybookAutoConfigure = Boolean(storybookConfigsArgs.length);
@@ -64,7 +66,11 @@ export default function getScripts(args, inputAllScripts) {
 			$apply: _ => addScripts(_, scripts.lint, null, true)
 		},
 		'test':            {
-			$apply: _ => addScripts(_, scripts.test)
+			$apply: _ => (
+				testSkipBuild
+					? _
+					: addScripts(_, scripts.test)
+			)
 		},
 		'start:storybook': {
 			vars: {

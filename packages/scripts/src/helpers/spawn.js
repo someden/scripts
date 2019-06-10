@@ -1,12 +1,24 @@
+
+import path from 'path';
 import { spawnSync } from 'child_process';
 
-export default function spawn(vars, cmd, args, ignoreResult) {
+export default function spawn({
+	cwd,
+	vars,
+	cmd,
+	args,
+	ignoreResult
+}) {
 
+	const cd = cwd
+		? path.join(process.cwd(), cwd)
+		: process.cwd();
 	const {
 		error,
 		signal,
 		status
 	} = spawnSync(cmd, args, {
+		cwd:   cd,
 		stdio: 'inherit',
 		env:   {
 			...process.env,

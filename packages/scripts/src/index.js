@@ -57,13 +57,7 @@ function run(script, ignoreTitle) {
 		throw new Error('Unknown script');
 	}
 
-	const {
-		vars = {},
-		cmd,
-		args,
-		ignoreResult
-	} = command;
-	const status = spawn(vars, cmd, args, ignoreResult);
+	const status = spawn(command);
 
 	if (status) {
 		process.exit(status);

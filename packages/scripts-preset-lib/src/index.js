@@ -19,9 +19,9 @@ const scripts = {
 export default function getScripts(args, allScripts) {
 
 	const cd = getScriptArg(args, 0, './').length
-		? []
-		: [args[0]];
-	const cpArgs = cd.length ? args.slice(1) : args;
+		? null
+		: args[0];
+	const publishArgs = cd ? args.slice(1) : args;
 
 	return update(allScripts, {
 		'test':         {
@@ -31,19 +31,16 @@ export default function getScripts(args, allScripts) {
 			$set: update(scripts.cleanPublish, {
 				1: {
 					args: {
-						$push: cpArgs
-					}
-				},
-				$apply: _ => (
-					!cd.length ? _ : update(_, {
-						$splice: [[
-							1, 0, {
-								cmd:  'cd',
-								args: cd
+						$push: publishArgs
+					},
+					$apply: _ => (
+						!cd ? _ : update(_, {
+							$set: {
+								cwd: cd
 							}
-						]]
-					})
-				)
+						})
+					)
+				}
 			})
 		}
 	});
