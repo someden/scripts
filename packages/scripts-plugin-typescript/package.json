@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-plugin-typescript",
-  "version": "2.6.1",
+  "version": "2.6.3",
   "description": "TypeScript scripts.",
   "author": "dangreen",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@trigen/scripts": "^2.6.1",
+    "@trigen/scripts": "^2.6.3",
     "ts-node-dev": "^1.0.0-pre.39",
     "tsconfig-paths": "^3.8.0",
     "tslint": "^5.11.0",

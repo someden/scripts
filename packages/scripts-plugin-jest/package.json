@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-plugin-jest",
-  "version": "2.6.1",
+  "version": "2.6.3",
   "description": "Jest scripts.",
   "author": "dangreen",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@trigen/scripts": "^2.6.1",
+    "@trigen/scripts": "^2.6.3",
     "@types/jest": "^24.0.10",
     "babel-jest": "^24.5.0",
     "jest": "^24.3.0"

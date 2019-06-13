@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-preset-lib",
-  "version": "2.6.1",
+  "version": "2.6.3",
   "description": "Lib scripts preset.",
   "author": "dangreen",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@trigen/scripts": "^2.6.1",
+    "@trigen/scripts": "^2.6.3",
     "browserslist-config-trigen": "^1.1.0",
     "clean-publish": "^1.1.0",
     "coveralls": "^3.0.0",
