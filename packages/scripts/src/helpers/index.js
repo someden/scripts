@@ -37,6 +37,10 @@ export function addScripts(items, add, scripts, unshift) {
 		? items.slice()
 		: [items];
 
+	if (unshift) {
+		addList = addList.reverse();
+	}
+
 	addList.forEach((add) => {
 
 		if (!itemsList.includes(add)) {

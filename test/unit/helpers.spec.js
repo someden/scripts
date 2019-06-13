@@ -182,7 +182,7 @@ describe('@trigen/scripts', () => {
 				expect(
 					addScripts(['item'], ['script', 'script2'], null, true)
 				).toEqual(
-					['script2', 'script', 'item']
+					['script', 'script2', 'item']
 				);
 			});
 		});
