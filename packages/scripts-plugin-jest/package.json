@@ -22,12 +22,13 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@trigen/scripts": "file:../scripts",
+    "@trigen/scripts": "^2.6.1",
     "@types/jest": "^24.0.10",
     "babel-jest": "^24.5.0",
     "jest": "^24.3.0"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "23116128a1fc252c7c195c5d27070ec63ee6aa18"
 }
