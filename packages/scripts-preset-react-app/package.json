@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-preset-react-app",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "React app scripts preset.",
   "author": "dangreen",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "@stylable/webpack-plugin": "^1.1.4",
     "@trigen/scripts": "^2.6.3",
     "@trigen/scripts-plugin-babel": "^2.6.3",
-    "@trigen/scripts-plugin-jest": "^2.6.3",
+    "@trigen/scripts-plugin-jest": "^2.6.4",
     "@trigen/scripts-plugin-storybook": "^2.6.3",
     "@trigen/scripts-plugin-typescript": "^2.6.3",
     "autoprefixer": "^9.1.3",
