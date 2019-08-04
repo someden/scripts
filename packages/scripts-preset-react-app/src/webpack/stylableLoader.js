@@ -16,7 +16,7 @@ export const ignoreWarnings = [
 	/**
 	 * Ignore warnings about elements in portals.
 	 */
-	/Stylable.*unscoped class "[a-z][^"]+" will affect all elements of the same type in the document/,
+	/Stylable.*unscoped class "[a-zA-Z][^"]+" will affect all elements of the same type in the document/,
 	/**
 	 * Ignore warnings about .root class.
 	 */
