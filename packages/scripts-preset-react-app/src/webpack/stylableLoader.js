@@ -36,6 +36,7 @@ export function base(config) {
 				test:    /\.(jpg|webp|png|gif)$/,
 				loader:  '@flexis/srcset-loader',
 				options: {
+					rules:            [{}],
 					name:             '[path][name].[ext]',
 					skipOptimization: true
 				}
