@@ -26,7 +26,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "^5.0.5",
+    "@storybook/addon-a11y": "^5.1.10",
     "@storybook/addon-actions": "^5.0.5",
     "@storybook/addon-info": "^5.0.5",
     "@storybook/addon-knobs": "^5.0.5",
@@ -34,7 +34,6 @@
     "@storybook/addons": "^5.0.5",
     "@storybook/react": "^5.0.5",
     "@trigen/scripts": "file:../scripts",
-    "@types/storybook__addon-a11y": "^5.0.0",
     "@types/storybook__addon-actions": "^3.4.1",
     "@types/storybook__addon-info": "^4.1.0",
     "@types/storybook__addon-knobs": "4.0.0",
