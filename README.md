@@ -4,7 +4,7 @@
 [![Node version][node]][node-url]
 [![Dependencies status][deps]][deps-url]
 [![Build status][build]][build-url]
-[![Greenkeeper badge][greenkeeper]][greenkeeper-url]
+[![Dependabot badge][dependabot]][dependabot-url]
 
 [npm]: https://img.shields.io/npm/v/%40trigen/scripts.svg
 [npm-url]: https://www.npmjs.com/package/@trigen/scripts
@@ -15,11 +15,11 @@
 [deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts
 [deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts
 
-[build]: http://img.shields.io/travis/com/TrigenSoftware/scripts.svg
+[build]: http://img.shields.io/travis/com/TrigenSoftware/scripts/master.svg
 [build-url]: https://travis-ci.com/TrigenSoftware/scripts
 
-[greenkeeper]: https://badges.greenkeeper.io/TrigenSoftware/scripts.svg
-[greenkeeper-url]: https://greenkeeper.io/
+[dependabot]: https://api.dependabot.com/badges/status?host=github&repo=TrigenSoftware/scripts
+[dependabot-url]: https://dependabot.com/
 
 Scripts and configuration for TrigenSoftware's projects.
 

@@ -4,7 +4,7 @@
 [![Node version][node]][node-url]
 [![Dependencies status][deps]][deps-url]
 [![Build status][build]][build-url]
-[![Greenkeeper badge][greenkeeper]][greenkeeper-url]
+[![Dependabot badge][dependabot]][dependabot-url]
 
 [npm]: https://img.shields.io/npm/v/%40trigen/scripts-plugin-babel.svg
 [npm-url]: https://www.npmjs.com/package/@trigen/scripts-plugin-babel
@@ -18,8 +18,8 @@
 [build]: http://img.shields.io/travis/com/TrigenSoftware/scripts.svg
 [build-url]: https://travis-ci.com/TrigenSoftware/scripts
 
-[greenkeeper]: https://badges.greenkeeper.io/TrigenSoftware/scripts.svg
-[greenkeeper-url]: https://greenkeeper.io/
+[dependabot]: https://api.dependabot.com/badges/status?host=github&repo=TrigenSoftware/scripts
+[dependabot-url]: https://dependabot.com/
 
 Babel scripts.
 
