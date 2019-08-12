@@ -22,7 +22,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@trigen/scripts": "^2.6.3",
+    "@trigen/scripts": "file:../scripts",
     "eslint": "^5.15.3",
     "eslint-config-trigen": "^3.2.3"
   },

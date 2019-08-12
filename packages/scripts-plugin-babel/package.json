@@ -26,7 +26,7 @@
     "@babel/core": "^7.4.0",
     "@babel/node": "^7.0.0",
     "@babel/runtime": "^7.4.2",
-    "@trigen/scripts": "^2.6.3",
+    "@trigen/scripts": "file:../scripts",
     "babel-preset-trigen": "^2.2.1"
   },
   "publishConfig": {
