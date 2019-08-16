@@ -84,6 +84,10 @@ try {
 		stdio: 'inherit',
 		cwd:   WEATHER_PATH
 	});
+	execSync(`yarn exec -- lint-staged`, {
+		stdio: 'inherit',
+		cwd:   WEATHER_PATH
+	});
 
 } catch (err) {
 	throw err;
