@@ -347,7 +347,9 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 		\\"args\\": [
 			\\"--ci\\",
 			\\"-p\\",
-			\\"3001\\"
+			\\"3001\\",
+			\\"-c\\",
+			\\"/packages/scripts-preset-react-app/src/storybook\\"
 		]
 	},
 	\\"build:storybook\\": {
@@ -359,7 +361,9 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 		\\"cmd\\": \\"build-storybook\\",
 		\\"args\\": [
 			\\"-o\\",
-			\\"storybook-build\\"
+			\\"storybook-build\\",
+			\\"-c\\",
+			\\"/packages/scripts-preset-react-app/src/storybook\\"
 		]
 	},
 	\\"lint:styles\\": {
