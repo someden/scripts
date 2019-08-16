@@ -35,7 +35,8 @@ export default function getScripts(args, allScripts) {
 				args: {
 					$push: [
 						'--ci', '-p', '3001',
-						...storybookConfigsArgs
+						...storybookConfigsArgs,
+						...args
 					]
 				}
 			})
@@ -50,7 +51,8 @@ export default function getScripts(args, allScripts) {
 				args: {
 					$set: [
 						...storybookConfigsArgs,
-						'-o', 'storybook-build'
+						...getScriptArg(args, '-o', 'storybook-build'),
+						...args
 					]
 				}
 			})
