@@ -381,6 +381,16 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 			\\"/packages/scripts-preset-react-app/src/render.js\\"
 		]
 	},
+	\\"render\\": [
+		\\"build\\",
+		\\"build:render\\",
+		{
+			\\"cmd\\": \\"node\\",
+			\\"args\\": [
+				\\"build/render\\"
+			]
+		}
+	],
 	\\"serve\\": {
 		\\"vars\\": {
 			\\"NODE_ENV\\": \\"production\\"
