@@ -47,6 +47,7 @@ function configureStorybook(input) {
 				case 'HashedModuleIdsPlugin':
 				case 'HtmlWebpackPlugin':
 				case 'ScriptExtHtmlWebpackPlugin':
+				case 'HtmlWebpackExcludeAssetsPlugin':
 				case 'HotModuleReplacementPlugin':
 				case 'WorkboxWebpackPlugin':
 				case 'CleanWebpackPlugin':
