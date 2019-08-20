@@ -8,7 +8,7 @@ import browserSyncConfigBase from './configs/browserSync';
 const server = create();
 const middleware = [
 	process.env.PROXY_SERVER_URI && HttpProxyMiddleware(process.env.PROXY_SERVER_URI),
-	HistoryApiFallbackMiddleware()
+	!process.env.DISABLE_HISTORY_FALLBACK && HistoryApiFallbackMiddleware()
 ].filter(Boolean);
 const browserSyncConfig = {
 	...browserSyncConfigBase,

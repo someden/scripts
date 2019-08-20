@@ -6,6 +6,8 @@ import {
 } from 'clean-webpack-plugin';
 import FilterWarningPlugins from 'webpack-filter-warnings-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
+import ScriptHtmlPlugin from 'script-ext-html-webpack-plugin';
+import ExcludeHtmlPlugin from 'html-webpack-exclude-assets-plugin';
 import update from 'immutability-helper';
 import {
 	decamelize
@@ -218,9 +220,19 @@ export function build(params) {
 			new CleanPlugin(),
 			new webpack.HashedModuleIdsPlugin(),
 			new HtmlPlugin({
-				template: 'src/index.html',
-				minify:   htmlminConfig
-			})
+				template:      'src/index.html',
+				inject:        'head',
+				minify:        htmlminConfig,
+				excludeAssets: [
+					/runtime\..*\.css$/,
+					/stylable-css-runtime\..*\.css$/,
+					/vendor\..*\.css$/
+				]
+			}),
+			new ScriptHtmlPlugin({
+				defaultAttribute: 'defer'
+			}),
+			new ExcludeHtmlPlugin()
 		] }
 	}));
 }

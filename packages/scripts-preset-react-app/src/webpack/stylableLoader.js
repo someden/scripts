@@ -1,5 +1,6 @@
 import StylablePlugin from '@stylable/webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
+import FilterPlugin from 'filter-chunk-webpack-plugin';
 import postcss from 'postcss';
 import update from 'immutability-helper';
 import findIndex from '../helpers/findIndex';
@@ -81,17 +82,23 @@ export function build(config) {
 				failOnError: true
 			}),
 			new StylablePlugin({
-				filename:           '[name].[chunkhash].css',
-				createRuntimeChunk: true,
-				transformHooks:     { postProcessor },
-				optimize:           {
+				filename:       '[name].[chunkhash].css',
+				transformHooks: { postProcessor },
+				optimize:       {
 					removeUnusedComponents:   true,
 					removeComments:           true,
 					removeStylableDirectives: true,
-					classNameOptimizations:   true,
-					shortNamespaces:          true,
+					classNameOptimizations:   true, // big troubles with ssr, check it after
+					shortNamespaces:          false,
 					minify:                   true
 				}
+			}),
+			new FilterPlugin({
+				patterns: [
+					'runtime.*.css',
+					'stylable-css-runtime.*.css',
+					'vendor.*.css'
+				]
 			})
 		] }
 	});
@@ -118,12 +125,11 @@ export function render(config) {
 		},
 		plugins: { $push: [
 			new StylablePlugin({
-				filename:           '[name].[chunkhash].css',
-				createRuntimeChunk: false,
 				outputCSS:          false,
 				includeCSSInJS:     false,
 				optimize:           {
-					classNameOptimizations: true
+					classNameOptimizations: true, // big troubles with ssr, check it after
+					shortNamespaces:        false
 				}
 			})
 		] }
