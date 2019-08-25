@@ -11,18 +11,19 @@ function customizePage(page) {
 	});
 }
 
-function getMatchOptions({
-	context: {
-		kind,
-		story
-	}
-}) {
-	return {
+function getMatchOptions(options = {}) {
+	return ({
+		context: {
+			kind,
+			story
+		}
+	}) => ({
+		...options,
 		customSnapshotIdentifier: `${kind}__${story.replace(/ /g, '-')}`
-	};
+	});
 }
 
-export default function init(srcDir, buildDir) {
+export default function init(options = {}, srcDir, buildDir) {
 
 	process.env.PROJECT_SRC = srcDir || path.join(process.cwd(), 'src');
 
@@ -32,8 +33,8 @@ export default function init(srcDir, buildDir) {
 			storybookUrl: buildDir
 				? path.join('file://', buildDir)
 				: path.join('file://', process.cwd(), 'storybook-build'),
-			customizePage,
-			getMatchOptions
+			getMatchOptions: getMatchOptions(options),
+			customizePage
 		})
 	});
 }
