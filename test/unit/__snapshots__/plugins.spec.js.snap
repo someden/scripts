@@ -119,10 +119,7 @@ exports[`@trigen/scripts-* scripts-plugin-storybook should return correct script
 			\\"-o\\",
 			\\"storybook-build\\"
 		]
-	},
-	\\"test\\": [
-		\\"build:storybook\\"
-	]
+	}
 }"
 `;
 
@@ -307,7 +304,6 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 	\\"test\\": [
 		\\"typecheck\\",
 		\\"lint\\",
-		\\"build:storybook\\",
 		\\"jest\\",
 		\\"build\\"
 	],
