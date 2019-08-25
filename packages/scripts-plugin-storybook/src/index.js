@@ -19,10 +19,12 @@ const scripts = {
 	}
 };
 
-export default function getScripts(args, allScripts) {
+export default function getScripts(args, allScripts, {
+	storybookConfigs: inputStorybookConfigs
+} = {}) {
 
-	const storybookConfigsArgs = getScriptArg(args, '-c', storybookConfigs);
-	const storybookAutoConfigure = Boolean(storybookConfigsArgs.length);
+	const storybookConfigsArgs = getScriptArg(args, '-c', inputStorybookConfigs || storybookConfigs);
+	const storybookAutoConfigure = Boolean(!inputStorybookConfigs && storybookConfigsArgs.length);
 
 	return update(allScripts, {
 		'start:storybook': {

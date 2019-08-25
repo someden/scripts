@@ -328,16 +328,6 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 			]
 		}
 	],
-	\\"jest\\": {
-		\\"vars\\": {
-			\\"NODE_ENV\\": \\"test\\"
-		},
-		\\"cmd\\": \\"jest\\",
-		\\"args\\": [
-			\\"-c\\",
-			\\"jest.config.json\\"
-		]
-	},
 	\\"start:storybook\\": {
 		\\"vars\\": {
 			\\"STORYBOOK_AUTO_CONFIGURE\\": \\"false\\",
@@ -360,10 +350,20 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 		},
 		\\"cmd\\": \\"build-storybook\\",
 		\\"args\\": [
-			\\"-o\\",
-			\\"storybook-build\\",
 			\\"-c\\",
-			\\"/packages/scripts-preset-react-app/src/storybook\\"
+			\\"/packages/scripts-preset-react-app/src/storybook\\",
+			\\"-o\\",
+			\\"storybook-build\\"
+		]
+	},
+	\\"jest\\": {
+		\\"vars\\": {
+			\\"NODE_ENV\\": \\"test\\"
+		},
+		\\"cmd\\": \\"jest\\",
+		\\"args\\": [
+			\\"-c\\",
+			\\"jest.config.json\\"
 		]
 	},
 	\\"lint:styles\\": {
