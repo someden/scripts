@@ -4,23 +4,22 @@ import {
 	imageSnapshot
 } from '@storybook/addon-storyshots-puppeteer';
 
-function customizePage(page) {
+export function customizePage(page) {
 	return page.setViewport({
 		width:  1280,
 		height: 720
 	});
 }
 
-function getMatchOptions(options = {}) {
-	return ({
-		context: {
-			kind,
-			story
-		}
-	}) => ({
-		...options,
+export function getMatchOptions({
+	context: {
+		kind,
+		story
+	}
+}) {
+	return {
 		customSnapshotIdentifier: `${kind}__${story.replace(/ /g, '-')}`
-	});
+	};
 }
 
 export default function init(options = {}, srcDir, buildDir) {
@@ -33,8 +32,9 @@ export default function init(options = {}, srcDir, buildDir) {
 			storybookUrl: buildDir
 				? path.join('file://', buildDir)
 				: path.join('file://', process.cwd(), 'storybook-build'),
-			getMatchOptions: getMatchOptions(options),
-			customizePage
+			getMatchOptions,
+			customizePage,
+			...options
 		})
 	});
 }
