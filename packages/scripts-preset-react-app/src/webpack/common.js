@@ -7,7 +7,7 @@ export const excludeAssets = {
 			return false;
 		}
 
-		return /\.css$/.test(asset);
+		return /(\.css$)|(favicons\/)/.test(asset);
 	}
 };
 
