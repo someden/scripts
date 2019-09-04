@@ -79,31 +79,27 @@ export function build(config) {
 				}
 			}
 		},
-		plugins: {
-			$unshift: [
-				new FilterPlugin({
-					patterns: filterAssets
-				})
-			],
-			$push: [
-				new StylelintPlugin({
-					files:       'src/**/*.st.css',
-					failOnError: true
-				}),
-				new StylablePlugin({
-					filename:       '[name].[chunkhash].css',
-					transformHooks: { postProcessor },
-					optimize:       {
-						removeUnusedComponents:   true,
-						removeComments:           true,
-						removeStylableDirectives: true,
-						classNameOptimizations:   true, // big troubles with ssr, check it after
-						shortNamespaces:          false,
-						minify:                   true
-					}
-				})
-			]
-		}
+		plugins: { $push: [
+			new StylelintPlugin({
+				files:       'src/**/*.st.css',
+				failOnError: true
+			}),
+			new StylablePlugin({
+				filename:       '[name].[chunkhash].css',
+				transformHooks: { postProcessor },
+				optimize:       {
+					removeUnusedComponents:   true,
+					removeComments:           true,
+					removeStylableDirectives: true,
+					classNameOptimizations:   true, // big troubles with ssr, check it after
+					shortNamespaces:          false,
+					minify:                   true
+				}
+			}),
+			new FilterPlugin({
+				patterns: filterAssets
+			})
+		] }
 	});
 }
 

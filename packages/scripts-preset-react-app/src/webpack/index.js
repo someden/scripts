@@ -132,12 +132,14 @@ function base({
 			new FilterWarningPlugins({
 				exclude: ignoreWarnings
 			}),
-			new CopyPlugin([{
-				from: 'src/favicons',
-				to:   'favicons'
-			}, {
-				from: 'src/manifest.json'
-			}])
+			new CopyPlugin([
+				{
+					from:   'src/favicons',
+					to:     'favicons',
+					ignore: '!*.{ico,png}'
+				},
+				'src/manifest.json'
+			])
 		]
 	});
 }
@@ -156,7 +158,7 @@ export function dev(params) {
 		optimization: { $set: {
 			noEmitOnErrors: true
 		} },
-		plugins:      { $push: [
+		plugins:      { $unshift: [
 			new webpack.HotModuleReplacementPlugin(),
 			new HtmlPlugin({
 				template: 'src/index.html'
@@ -226,7 +228,7 @@ export function build(params) {
 				}
 			}
 		} },
-		plugins:      { $push: [
+		plugins:      { $unshift: [
 			new CleanPlugin(),
 			new webpack.HashedModuleIdsPlugin(),
 			new HtmlPlugin({
@@ -275,7 +277,7 @@ export function render(params) {
 				}
 			}
 		},
-		plugins:      { $push: [
+		plugins:      { $unshift: [
 			new CleanPlugin(),
 			new webpack.HashedModuleIdsPlugin()
 		] }
