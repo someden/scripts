@@ -47,7 +47,11 @@ const ignoreWarnings = loaders.reduce((all, { ignoreWarnings }) => {
 	/**
 	 * Ignore warnings about TypeScript interfaces.
 	 */
-	/export 'I[A-Z][^']+'(| \([^)]+\)) was not found in/
+	/export 'I[A-Z][^']+'(| \([^)]+\)) was not found in/,
+	/**
+	 * Ignore warnings about favicons coping.
+	 */
+	/unable to locate 'src\/(favicons|manifest)/
 ]);
 
 function base({
