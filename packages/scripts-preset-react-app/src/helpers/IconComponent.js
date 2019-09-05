@@ -1,5 +1,7 @@
 /* eslint-env browser */
-import React, { PureComponent } from 'react';
+import React, {
+	PureComponent
+} from 'react';
 import PropTypes from 'prop-types';
 
 const headBase = typeof document != 'undefined'
@@ -36,7 +38,12 @@ export default class Icon extends PureComponent {
 		'role':        undefined
 	};
 
+	useRef = null;
 	hrefListenerRemover = null;
+
+	getUseRef = shoudlPrepandPathname ? (ref) => {
+		this.useRef = ref;
+	} : null;
 
 	render() {
 
@@ -57,7 +64,7 @@ export default class Icon extends PureComponent {
 		const hidden = typeof ariaHidden !== 'undefined'
 			? ariaHidden
 			: typeof role !== 'string';
-		const href = `${this.getPathname()}#${glyph}`;
+		const href = this.getHref();
 
 		return (
 			<svg
@@ -73,6 +80,7 @@ export default class Icon extends PureComponent {
 				aria-hidden={hidden}
 			>
 				<use
+					ref={this.getUseRef}
 					xlinkHref={href}
 					href={href}
 				/>
@@ -83,15 +91,18 @@ export default class Icon extends PureComponent {
 	componentDidMount() {
 
 		if (shoudlPrepandPathname) {
-			this.hrefListenerRemover = addHrefListener(() => {
-				this.forceUpdate();
-			});
+			this.setHref();
+			this.hrefListenerRemover = addHrefListener(
+				this.setHref.bind(this)
+			);
 		}
 	}
 
 	componentWillUnmount() {
 
-		const { hrefListenerRemover } = this;
+		const {
+			hrefListenerRemover
+		} = this;
 
 		if (shoudlPrepandPathname
 			&& typeof hrefListenerRemover == 'function'
@@ -108,6 +119,30 @@ export default class Icon extends PureComponent {
 		}
 
 		return '';
+	}
+
+	getHref() {
+
+		const {
+			glyph
+		} = this.props;
+
+		return `${this.getPathname()}#${glyph}`;
+	}
+
+	setHref() {
+
+		const {
+			useRef
+		} = this;
+
+		if (useRef) {
+
+			const href = this.getHref();
+
+			useRef.setAttribute('xlink:href', href);
+			useRef.setAttribute('href', href);
+		}
 	}
 }
 
