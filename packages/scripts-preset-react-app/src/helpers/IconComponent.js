@@ -57,6 +57,7 @@ export default class Icon extends PureComponent {
 		const hidden = typeof ariaHidden !== 'undefined'
 			? ariaHidden
 			: typeof role !== 'string';
+		const href = `${this.getPathname()}#${glyph}`;
 
 		return (
 			<svg
@@ -71,7 +72,10 @@ export default class Icon extends PureComponent {
 				data-glyph={glyph}
 				aria-hidden={hidden}
 			>
-				<use xlinkHref={`${this.getPathname()}#${glyph}`}/>
+				<use
+					xlinkHref={href}
+					href={href}
+				/>
 			</svg>
 		);
 	}
