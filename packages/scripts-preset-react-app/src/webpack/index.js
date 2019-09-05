@@ -143,7 +143,9 @@ function base({
 					ignore: '!*.{ico,png}'
 				},
 				'src/manifest.json'
-			])
+			], {
+				logLevel: 'silent'
+			})
 		]
 	});
 }
