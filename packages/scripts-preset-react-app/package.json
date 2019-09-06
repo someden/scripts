@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-preset-react-app",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0",
   "description": "React app scripts preset.",
   "author": "dangreen",
   "license": "MIT",

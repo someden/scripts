@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-plugin-typescript",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0",
   "description": "TypeScript scripts.",
   "author": "dangreen",
   "license": "MIT",
