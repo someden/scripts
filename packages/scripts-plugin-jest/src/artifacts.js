@@ -30,7 +30,7 @@ async function send() {
 		}
 	});
 	const info = await transporter.sendMail({
-		to:          'unexisted@email.address',
+		to:          'publish@test.artifacts',
 		text:        `Artifacts: ${dir}`,
 		attachments: [{
 			filename: 'artifacts.zip',
