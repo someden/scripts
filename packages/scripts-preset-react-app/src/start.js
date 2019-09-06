@@ -12,20 +12,19 @@ import * as webpackConfig from './webpack';
 const server = create();
 const webpackDevCompiler = webpack(webpackConfig.dev());
 
-webpackDevCompiler.plugin('done', () => {
+webpackDevCompiler.hooks.done.tap('trigen-scripts', () => {
 	notify('Recompilation was done.');
 });
 
 const middleware = [
 	WebpackDevMiddleware(webpackDevCompiler, {
-		publicPath: webpackDevCompiler.options.output.publicPath,
-		stats:      {
-			chunks:   false,
-			children: false,
-			modules:  false,
-			colors:   true
-		},
-		writeToDisk: true
+		publicPath:  webpackDevCompiler.options.output.publicPath,
+		writeToDisk: true,
+		stats:       {
+			chunks:  false,
+			modules: false,
+			colors:  true
+		}
 	}),
 	WebpackHotMiddleware(webpackDevCompiler, {
 		reload: true

@@ -8,6 +8,7 @@ import FilterWarningPlugins from 'webpack-filter-warnings-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
 import ScriptHtmlPlugin from 'script-ext-html-webpack-plugin';
 import ExcludeHtmlPlugin from 'html-webpack-exclude-assets-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 import update from 'immutability-helper';
 import {
 	decamelize
@@ -17,6 +18,9 @@ import applyReducers from '../helpers/applyReducers';
 import addDevScripts from '../helpers/addDevScripts';
 import getWebpackHook from '../helpers/getWebpackHook';
 import htmlminConfig from '../configs/htmlmin';
+import {
+	excludeAssets
+} from './common';
 import * as stylableLoader from './stylableLoader';
 import * as svgLoader from './svgLoader';
 import * as swLoader from './swLoader';
@@ -43,7 +47,11 @@ const ignoreWarnings = loaders.reduce((all, { ignoreWarnings }) => {
 	/**
 	 * Ignore warnings about TypeScript interfaces.
 	 */
-	/export 'I[A-Z][^']+'(| \([^)]+\)) was not found in/
+	/export 'I[A-Z][^']+'(| \([^)]+\)) was not found in/,
+	/**
+	 * Ignore warnings about favicons coping.
+	 */
+	/unable to locate 'src\/(favicons|manifest)/
 ]);
 
 function base({
@@ -127,6 +135,16 @@ function base({
 			),
 			new FilterWarningPlugins({
 				exclude: ignoreWarnings
+			}),
+			new CopyPlugin([
+				{
+					from:   'src/favicons',
+					to:     'favicons',
+					ignore: '!*.{ico,png}'
+				},
+				'src/manifest.json'
+			], {
+				logLevel: 'silent'
 			})
 		]
 	});
@@ -146,7 +164,7 @@ export function dev(params) {
 		optimization: { $set: {
 			noEmitOnErrors: true
 		} },
-		plugins:      { $push: [
+		plugins:      { $unshift: [
 			new webpack.HotModuleReplacementPlugin(),
 			new HtmlPlugin({
 				template: 'src/index.html'
@@ -216,21 +234,17 @@ export function build(params) {
 				}
 			}
 		} },
-		plugins:      { $push: [
+		plugins:      { $unshift: [
 			new CleanPlugin(),
 			new webpack.HashedModuleIdsPlugin(),
 			new HtmlPlugin({
-				template:      'src/index.html',
-				inject:        'head',
-				minify:        htmlminConfig,
-				excludeAssets: [
-					/runtime\..*\.css$/,
-					/stylable-css-runtime\..*\.css$/,
-					/vendor\..*\.css$/
-				]
+				template: 'src/index.html',
+				inject:   'head',
+				minify:   htmlminConfig,
+				excludeAssets
 			}),
 			new ScriptHtmlPlugin({
-				defaultAttribute: 'defer'
+				defaultAttribute: 'async'
 			}),
 			new ExcludeHtmlPlugin()
 		] }
@@ -269,7 +283,7 @@ export function render(params) {
 				}
 			}
 		},
-		plugins:      { $push: [
+		plugins:      { $unshift: [
 			new CleanPlugin(),
 			new webpack.HashedModuleIdsPlugin()
 		] }

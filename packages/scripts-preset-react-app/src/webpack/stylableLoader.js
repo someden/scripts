@@ -7,6 +7,9 @@ import postcss from 'postcss';
 import update from 'immutability-helper';
 import findIndex from '../helpers/findIndex';
 import postcssConfig from '../configs/postcss';
+import {
+	filterAssets
+} from './common';
 
 const stylesProcessor = postcss(postcssConfig);
 
@@ -96,11 +99,7 @@ export function build(config) {
 				}
 			}),
 			new FilterPlugin({
-				patterns: [
-					'runtime.*.css',
-					'stylable-css-runtime.*.css',
-					'vendor.*.css'
-				]
+				patterns: filterAssets
 			})
 		] }
 	});

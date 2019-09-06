@@ -26,7 +26,7 @@ babelRegister({
 export default function getWebpackHook() {
 
 	try {
-		return require(hookPath); // eslint-disable-line
+		return Object.assign({}, emptyHook, require(hookPath)); // eslint-disable-line
 	} catch (err) {
 		return emptyHook;
 	}
