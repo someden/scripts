@@ -60,6 +60,12 @@ exports[`@trigen/scripts-* scripts-plugin-jest should return correct scripts obj
 			\\"jest.config.json\\"
 		]
 	},
+	\\"artifacts\\": {
+		\\"cmd\\": \\"node\\",
+		\\"args\\": [
+			\\"/packages/scripts-plugin-jest/src/artifacts.js\\"
+		]
+	},
 	\\"test\\": [
 		\\"jest\\"
 	]
@@ -249,6 +255,12 @@ exports[`@trigen/scripts-* scripts-preset-node-app should return correct scripts
 			\\"jest.config.json\\"
 		]
 	},
+	\\"artifacts\\": {
+		\\"cmd\\": \\"node\\",
+		\\"args\\": [
+			\\"/packages/scripts-plugin-jest/src/artifacts.js\\"
+		]
+	},
 	\\"test\\": [
 		\\"jest\\",
 		\\"build\\"
@@ -364,6 +376,12 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 		\\"args\\": [
 			\\"-c\\",
 			\\"jest.config.json\\"
+		]
+	},
+	\\"artifacts\\": {
+		\\"cmd\\": \\"node\\",
+		\\"args\\": [
+			\\"/packages/scripts-plugin-jest/src/artifacts.js\\"
 		]
 	},
 	\\"lint:styles\\": {

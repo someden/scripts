@@ -1,3 +1,4 @@
+import path from 'path';
 import update from 'immutability-helper';
 import {
 	FILL_ME,
@@ -11,6 +12,10 @@ const scripts = {
 		cmd:  'jest',
 		args: FILL_ME
 	},
+	'artifacts': {
+		cmd:  'node',
+		args: [path.join(__dirname, 'artifacts.js')]
+	},
 	'test': ['jest']
 };
 
@@ -23,6 +28,13 @@ export default function getScripts(args, allScripts) {
 						...getScriptArg(args, '-c', 'jest.config.json'),
 						...args
 					]
+				}
+			})
+		},
+		'artifacts': {
+			$set: update(scripts.artifacts, {
+				args: {
+					$push: args
 				}
 			})
 		},

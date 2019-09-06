@@ -51,6 +51,8 @@ yarn exec -- trigen-scripts jest --watch
 ```bash
 # Run tests with Jest
 yarn jest
+# Publish artifacts
+yarn artifacts test/artifacts
 # Run tests
 yarn test
 ```
