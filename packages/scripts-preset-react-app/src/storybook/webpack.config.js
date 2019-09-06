@@ -51,6 +51,8 @@ function configureStorybook(input) {
 				case 'HotModuleReplacementPlugin':
 				case 'WorkboxWebpackPlugin':
 				case 'CleanWebpackPlugin':
+				case 'FilterChunkWebpackPlugin':
+				case 'CopyPlugin':
 					return false;
 
 				default:
