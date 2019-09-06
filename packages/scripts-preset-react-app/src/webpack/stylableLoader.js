@@ -1,4 +1,6 @@
-import StylablePlugin from '@stylable/webpack-plugin';
+import {
+	StylableWebpackPlugin
+} from '@stylable/webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import FilterPlugin from 'filter-chunk-webpack-plugin';
 import postcss from 'postcss';
@@ -55,7 +57,7 @@ export function dev(config) {
 			new StylelintPlugin({
 				files: 'src/**/*.st.css'
 			}),
-			new StylablePlugin({
+			new StylableWebpackPlugin({
 				transformHooks: { postProcessor }
 			})
 		] }
@@ -84,7 +86,7 @@ export function build(config) {
 				files:       'src/**/*.st.css',
 				failOnError: true
 			}),
-			new StylablePlugin({
+			new StylableWebpackPlugin({
 				filename:       '[name].[chunkhash].css',
 				transformHooks: { postProcessor },
 				optimize:       {
@@ -123,7 +125,7 @@ export function render(config) {
 			}
 		},
 		plugins: { $push: [
-			new StylablePlugin({
+			new StylableWebpackPlugin({
 				outputCSS:          false,
 				includeCSSInJS:     false,
 				optimize:           {

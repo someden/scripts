@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-preset-react-app",
-  "version": "2.13.7",
+  "version": "3.0.0-alpha.1",
   "description": "React app scripts preset.",
   "author": "dangreen",
   "license": "MIT",
@@ -33,8 +33,8 @@
     "@flexis/favicons": "^1.3.4",
     "@flexis/srcset-loader": "^1.0.0",
     "@flexis/workbox-webpack-plugin": "^1.2.1",
-    "@stylable/core": "^1.0.6",
-    "@stylable/webpack-plugin": "^1.1.4",
+    "@stylable/core": "^2.1.4",
+    "@stylable/webpack-plugin": "^2.1.7",
     "@trigen/scripts": "file:../scripts",
     "@trigen/scripts-plugin-babel": "file:../scripts-plugin-babel",
     "@trigen/scripts-plugin-jest": "file:../scripts-plugin-jest",
