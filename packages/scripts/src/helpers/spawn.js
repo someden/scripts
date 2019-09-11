@@ -1,6 +1,8 @@
 
 import path from 'path';
-import { spawnSync } from 'child_process';
+import {
+	spawnSync
+} from 'child_process';
 
 export default function spawn({
 	cwd,
