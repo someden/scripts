@@ -1,12 +1,13 @@
 /* eslint-disable no-undef */
-import {
-	spawn
-} from 'child_process';
-import path from 'path';
 import puppeteer from 'puppeteer';
 import {
 	toMatchImageSnapshot
 } from 'jest-image-snapshot';
+import {
+	customizePage as defaultCustomizePage,
+	closeWebsockets
+} from '@trigen/scripts-plugin-storybook/jest/storyshots';
+import start from '@trigen/scripts-plugin-storybook/jest/start';
 
 expect.extend({
 	toMatchImageSnapshot
@@ -20,8 +21,6 @@ function defaultScreenshotOptions() {
 }
 
 const noop = () => {};
-
-const asyncNoop = async () => {};
 const defaultConfig = {
 	url:                  'http://localhost:3000',
 	chromeExecutablePath: undefined,
@@ -29,18 +28,14 @@ const defaultConfig = {
 	getScreenshotOptions: defaultScreenshotOptions,
 	beforeScreenshot:     noop,
 	getGotoOptions:       noop,
-	customizePage:        asyncNoop,
+	customizePage:        defaultCustomizePage,
 	getCustomBrowser:     undefined,
 	launch:               {}
 };
 
 export default function initRouteshots(routes, customConfig = {}) {
 
-	const server = spawn('node', [
-		path.join(__dirname, '..', 'start')
-	], {
-		cwd: process.cwd()
-	});
+	const server = start('start');
 	const {
 		url,
 		chromeExecutablePath,
@@ -72,31 +67,17 @@ export default function initRouteshots(routes, customConfig = {}) {
 
 		beforeAll(async () => {
 
+			await server.wait();
+
 			if (getCustomBrowser) {
 				browser = await getCustomBrowser();
 			} else {
 				browser = await puppeteer.launch(launchConfig);
 			}
 
-			await new Promise(resolve => server.stdout.once('data', resolve));
-
 			page = await browser.newPage();
 
-			await page.setRequestInterception(true);
-			page.on('request', (interceptedRequest) => {
-
-				const url = interceptedRequest.url();
-
-				if (url.includes('socket.io') || url.includes('__webpack_hmr')) {
-					interceptedRequest.abort();
-					return;
-				}
-
-				interceptedRequest.continue();
-			});
-
-			await page.goto(url);
-			await page.waitFor('#view');
+			await closeWebsockets(page);
 		});
 
 		afterAll(() => {
