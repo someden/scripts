@@ -176,7 +176,9 @@ export function dev(params) {
 export function build(params) {
 
 	const config = base(params);
-	const { rules } = config.module;
+	const {
+		rules
+	} = config.module;
 
 	return applyReducers(buildLoaders, update(config, {
 		output:       {
@@ -254,7 +256,9 @@ export function build(params) {
 export function render(params) {
 
 	const config = base(params);
-	const { rules } = config.module;
+	const {
+		rules
+	} = config.module;
 
 	return applyReducers(renderLoaders, update(config, {
 		entry:        { $set: {

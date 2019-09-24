@@ -27,7 +27,9 @@ export function dev(config) {
 
 export function build(config) {
 
-	const { rules } = config.module;
+	const {
+		rules
+	} = config.module;
 
 	return update(config, {
 		module:  {

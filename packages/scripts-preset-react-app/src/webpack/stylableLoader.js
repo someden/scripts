@@ -1,6 +1,9 @@
 import {
 	StylableWebpackPlugin
 } from '@stylable/webpack-plugin';
+import {
+	StylableOptimizer
+} from '@stylable/optimizer';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import FilterPlugin from 'filter-chunk-webpack-plugin';
 import postcss from 'postcss';
@@ -12,6 +15,7 @@ import {
 } from './common';
 
 const stylesProcessor = postcss(postcssConfig);
+const stylableOptimizer = new StylableOptimizer();
 
 function postProcessor(stylableResult) {
 	stylesProcessor.process(stylableResult.meta.outputAst).sync();
@@ -89,12 +93,13 @@ export function build(config) {
 			new StylableWebpackPlugin({
 				filename:       '[name].[chunkhash].css',
 				transformHooks: { postProcessor },
+				optimizer:      stylableOptimizer,
 				optimize:       {
 					removeUnusedComponents:   true,
 					removeComments:           true,
 					removeStylableDirectives: true,
-					classNameOptimizations:   true, // big troubles with ssr, check it after
-					shortNamespaces:          false,
+					classNameOptimizations:   true,
+					shortNamespaces:          true,
 					minify:                   true
 				}
 			}),
@@ -126,11 +131,12 @@ export function render(config) {
 		},
 		plugins: { $push: [
 			new StylableWebpackPlugin({
-				outputCSS:          false,
-				includeCSSInJS:     false,
-				optimize:           {
-					classNameOptimizations: true, // big troubles with ssr, check it after
-					shortNamespaces:        false
+				outputCSS:      false,
+				includeCSSInJS: false,
+				optimizer:      stylableOptimizer,
+				optimize:       {
+					classNameOptimizations: true,
+					shortNamespaces:        true
 				}
 			})
 		] }

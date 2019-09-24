@@ -33,11 +33,14 @@ const scripts = {
 		args: [path.join(__dirname, 'build.js')]
 	},
 	'build:render':   {
-		vars: { NODE_ENV: 'production' },
+		vars: {
+			NODE_ENV:  'production',
+			RENDERING: JSON.stringify(true)
+		},
 		cmd:  'node',
 		args: [path.join(__dirname, 'render.js')]
 	},
-	'render':         ['build', 'build:render', {
+	'render':         ['build:render', {
 		cmd:  'node',
 		args: ['build/render']
 	}],
@@ -135,7 +138,7 @@ export default function getScripts(args, inputAllScripts, {
 		},
 		'render':     {
 			$set: update(scripts.render, {
-				2: {
+				1: {
 					args: {
 						$push: args
 					}

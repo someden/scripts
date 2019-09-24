@@ -5,14 +5,20 @@ import {
 	generateImport,
 	generateExport
 } from 'svg-sprite-loader/lib/utils';
-import { stringifyRequest } from 'loader-utils';
-import { pascalize } from 'humps';
+import {
+	stringifyRequest
+} from 'loader-utils';
+import {
+	pascalize
+} from 'humps';
 
 module.exports = runtimeGenerator;
 
 function runtimeGenerator({
-	symbol, config,
-	context, loaderContext
+	symbol,
+	config,
+	context,
+	loaderContext
 }) {
 
 	const {
@@ -21,8 +27,12 @@ function runtimeGenerator({
 		runtimeOptions,
 		esModule
 	} = config;
+	const {
+		iconModule,
+		skipSymbol
+	} = runtimeOptions;
 	const compilerContext = loaderContext._compiler.context;
-	const iconModulePath = path.resolve(compilerContext, runtimeOptions.iconModule);
+	const iconModulePath = path.resolve(compilerContext, iconModule);
 	const iconModuleRequest = stringify(
 		path.relative(path.dirname(symbol.request.file), iconModulePath)
 	);
@@ -37,8 +47,9 @@ function runtimeGenerator({
 		${generateImport('sprite', spriteRequest, esModule)}
 		${generateImport(esModule ? 'Icon' : '{ default: Icon }', iconModuleRequest, esModule)}
 
-		var symbol = new SpriteSymbol(${stringifySymbol(symbol)});
-		sprite.add(symbol);
+		${skipSymbol ? '' : `
+		sprite.add(new SpriteSymbol(${stringifySymbol(symbol)}));
+		`}
 
 		function ${displayName}() {
 			Icon.apply(this, arguments);
