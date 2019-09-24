@@ -244,7 +244,7 @@ export function build(params) {
 				excludeAssets
 			}),
 			new ScriptHtmlPlugin({
-				defaultAttribute: 'async'
+				defaultAttribute: 'defer'
 			}),
 			new ExcludeHtmlPlugin()
 		] }
