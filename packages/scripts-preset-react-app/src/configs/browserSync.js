@@ -7,6 +7,6 @@ export default {
 	notify:         false,
 	logSnippet:     false,
 	snippetOptions: {
-		blacklist: process.env.DISABLE_BROWSER_SYNC && ['/', /.*/]
+		blacklist: process.env.DISABLE_BROWSER_SYNC && ['/', '**/*']
 	}
 };
