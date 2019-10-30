@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts",
-  "version": "3.2.0",
+  "version": "3.5.0",
   "description": "CLI tool for running scripts.",
   "author": "dangreen",
   "license": "MIT",
