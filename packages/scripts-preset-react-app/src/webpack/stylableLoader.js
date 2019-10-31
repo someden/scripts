@@ -91,7 +91,7 @@ export function build(config) {
 				failOnError: true
 			}),
 			new StylableWebpackPlugin({
-				filename:       '[name].[chunkhash].css',
+				filename:       '[name].[hash:10].css',
 				transformHooks: { postProcessor },
 				optimizer:      stylableOptimizer,
 				optimize:       {
