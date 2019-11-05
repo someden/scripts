@@ -12,7 +12,7 @@ Array [
   "FilterWarningsPlugin",
   "CopyPlugin",
   "WorkboxWebpackPlugin",
-  "Object",
+  "StylelintWebpackPlugin",
   "StylableWebpackPlugin",
   "FilterChunkWebpackPlugin",
 ]
@@ -28,7 +28,7 @@ Array [
   "FilterWarningsPlugin",
   "CopyPlugin",
   "WorkboxWebpackPlugin",
-  "Object",
+  "StylelintWebpackPlugin",
   "StylableWebpackPlugin",
 ]
 `;
