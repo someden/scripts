@@ -14,7 +14,7 @@ import {
 	filterAssets
 } from './common';
 
-const STYLABLE_SHORT_NAMESPACES = Boolean(process.env.STYLABLE_SHORT_NAMESPACES);
+const STYLABLE_OPTIMIZE = Boolean(process.env.STYLABLE_OPTIMIZE);
 const stylesProcessor = postcss(postcssConfig);
 const stylableOptimizer = new StylableOptimizer();
 
@@ -99,8 +99,8 @@ export function build(config) {
 					removeUnusedComponents:   true,
 					removeComments:           true,
 					removeStylableDirectives: true,
-					classNameOptimizations:   true,
-					shortNamespaces:          STYLABLE_SHORT_NAMESPACES,
+					classNameOptimizations:   STYLABLE_OPTIMIZE,
+					shortNamespaces:          STYLABLE_OPTIMIZE,
 					minify:                   true
 				}
 			}),
@@ -136,8 +136,8 @@ export function render(config) {
 				includeCSSInJS: false,
 				optimizer:      stylableOptimizer,
 				optimize:       {
-					classNameOptimizations: true,
-					shortNamespaces:        STYLABLE_SHORT_NAMESPACES
+					classNameOptimizations: STYLABLE_OPTIMIZE,
+					shortNamespaces:        STYLABLE_OPTIMIZE
 				}
 			})
 		] }
