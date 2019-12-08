@@ -7,7 +7,10 @@ module.exports = {
 		}]
 	],
 	overrides: [{
-		test:    /(IconComponent|storybook\/config)\.js$/,
+		test:    [
+			/(IconComponent|storybook\/config)\.jsx?$/,
+			/helpers\/renderer/
+		],
 		presets: [
 			['babel-preset-trigen', {
 				targets: {

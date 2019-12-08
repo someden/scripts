@@ -1,20 +1,28 @@
-/* eslint-env browser */
 import React, {
+	SVGProps,
 	PureComponent
 } from 'react';
 import PropTypes from 'prop-types';
 
-const headBase = typeof document != 'undefined'
+interface ISelfProps {
+	glyph?: string;
+	width?: number;
+	height?: number;
+}
+
+export type IProps = ISelfProps & SVGProps<SVGElement>;
+
+const headBase = typeof document !== 'undefined'
 	? document.querySelector('head > base')
 	: null;
 const shoudlPrepandPathname = headBase && headBase.hasAttribute('href');
 let iconClassName = null;
 
-export function setIconClassName(className) {
+export function setIconClassName(className: string) {
 	iconClassName = className;
 }
 
-export default class Icon extends PureComponent {
+export default class Icon extends PureComponent<IProps> {
 
 	static propTypes = {
 		'className':   PropTypes.string,
@@ -28,20 +36,13 @@ export default class Icon extends PureComponent {
 	};
 
 	static defaultProps = {
-		'className':   undefined,
-		'style':       undefined,
-		'glyph':       '',
-		'width':       undefined,
-		'height':      undefined,
-		'tabIndex':    -1,
-		'aria-hidden': undefined,
-		'role':        undefined
+		'glyph':    '',
+		'tabIndex': -1
 	};
 
-	useRef = null;
-	hrefListenerRemover = null;
-
-	getUseRef = shoudlPrepandPathname ? (ref) => {
+	private useRef: SVGUseElement = null;
+	private hrefListenerRemover: () => void = null;
+	private readonly getUseRef = shoudlPrepandPathname ? (ref: SVGUseElement) => {
 		this.useRef = ref;
 	} : null;
 
@@ -58,7 +59,7 @@ export default class Icon extends PureComponent {
 			role,
 			...props
 		} = this.props;
-		const focusable = tabIndex < 0
+		const focusable: any = tabIndex < 0
 			? { focusable: false }
 			: { tabIndex };
 		const hidden = typeof ariaHidden !== 'undefined'
@@ -105,14 +106,14 @@ export default class Icon extends PureComponent {
 		} = this;
 
 		if (shoudlPrepandPathname
-			&& typeof hrefListenerRemover == 'function'
+			&& typeof hrefListenerRemover === 'function'
 		) {
 			hrefListenerRemover();
 		}
 	}
 
 	// https://gist.github.com/leonderijke/c5cf7c5b2e424c0061d2
-	getPathname() {
+	private getPathname() {
 
 		if (shoudlPrepandPathname) {
 			return `${location.pathname}${location.search}`;
@@ -121,7 +122,7 @@ export default class Icon extends PureComponent {
 		return '';
 	}
 
-	getHref() {
+	private getHref() {
 
 		const {
 			glyph
@@ -130,7 +131,7 @@ export default class Icon extends PureComponent {
 		return `${this.getPathname()}#${glyph}`;
 	}
 
-	setHref() {
+	private setHref() {
 
 		const {
 			useRef
@@ -164,7 +165,7 @@ if (shoudlPrepandPathname) {
 
 	setInterval(() => {
 
-		if (prevHref != location.href) {
+		if (prevHref !== location.href) {
 			prevHref = location.href;
 			hrefListeners.forEach((listener) => {
 				listener();
