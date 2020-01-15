@@ -1,11 +1,13 @@
 {
 	"root": true,
-	"extends": "trigen",
+	"extends": [
+		"trigen",
+		"trigen/commonjs"
+	],
 	"env": {
 		"node": true
 	},
 	"rules": {
-		"import/unambiguous": "off",
 		"no-sync": "off",
 		"no-process-exit": "off",
 		"no-console": "off"
