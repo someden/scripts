@@ -19,12 +19,7 @@ export function getPlugins(plugins, prefix) {
 		try {
 			plugin = require(resolve(`${prefix}${name}`));
 		} catch (err) {
-
-			try {
-				plugin = require(resolve(name));
-			} catch (err2) {
-				throw err2;
-			}
+			plugin = require(resolve(name));
 		}
 
 		return [plugin, params];
@@ -46,12 +41,7 @@ export function getPluginsDependencies(plugins, prefix) {
 		try {
 			pkg = require(resolve(path.join(`${prefix}${name}`, 'package.json')));
 		} catch (err) {
-
-			try {
-				pkg = require(resolve(path.join(name, 'package.json')));
-			} catch (err2) {
-				throw err2;
-			}
+			pkg = require(resolve(path.join(name, 'package.json')));
 		}
 
 		return pkg.dependencies;
