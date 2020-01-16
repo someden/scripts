@@ -140,7 +140,7 @@ function base({
 				{
 					from:   'src/favicons',
 					to:     'favicons',
-					ignore: '!*.{ico,png}'
+					ignore: ['!*.{ico,png}']
 				},
 				'src/manifest.json'
 			], {
