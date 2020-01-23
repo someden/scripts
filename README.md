@@ -126,3 +126,8 @@ yarn exec -- trigen-scripts lint
 
 [preset-react-app-deps]: https://david-dm.org/TrigenSoftware/scripts.svg?path=packages/scripts-preset-react-app
 [preset-react-app-deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts-preset-react-app
+
+## Roadmap
+
+- [ ] Move to [`webpack-chain`](https://github.com/neutrinojs/webpack-chain)
+- [ ] Move from `tslint` to [`typescript-eslint`](https://github.com/typescript-eslint/typescript-eslint)
