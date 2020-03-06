@@ -52,7 +52,8 @@ const scripts = {
 };
 
 export default function getScripts(args, inputAllScripts, {
-	testSkipBuild = false
+	testSkipBuild = false,
+	transpile = {}
 } = {}) {
 
 	const storybookConfigsArgs = getScriptArg(args, '-c', storybookConfigs);
@@ -124,6 +125,11 @@ export default function getScripts(args, inputAllScripts, {
 		},
 		'build':     {
 			$set: update(scripts.build, {
+				vars: {
+					REACT_APP_TRANSPILE: {
+						$set: JSON.stringify(transpile)
+					}
+				},
 				args: {
 					$push: args
 				}

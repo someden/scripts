@@ -1,14 +1,13 @@
 import path from 'path';
 import webpack from 'webpack';
 import externals from 'webpack-node-externals';
-import {
-	CleanWebpackPlugin as CleanPlugin
-} from 'clean-webpack-plugin';
 import FilterWarningPlugins from 'webpack-filter-warnings-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
 import ScriptHtmlPlugin from 'script-ext-html-webpack-plugin';
 import ExcludeHtmlPlugin from 'html-webpack-exclude-assets-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
+import BdslPlugin from 'bdsl-webpack-plugin';
 import update from 'immutability-helper';
 import {
 	decamelize
@@ -17,7 +16,13 @@ import findIndex from '../helpers/findIndex';
 import applyReducers from '../helpers/applyReducers';
 import addDevScripts from '../helpers/addDevScripts';
 import getWebpackHook from '../helpers/getWebpackHook';
+import createDependenciesRegExp from '../helpers/createDependenciesRegExp';
+import pasteBrowserslistEnv from '../helpers/pasteBrowserslistEnv';
+import getBabelConfig from '../configs/babel';
 import htmlminConfig from '../configs/htmlmin';
+import {
+	CleanPlugin
+} from './CleanPlugin';
 import {
 	excludeAssets
 } from './common';
@@ -53,11 +58,17 @@ const ignoreWarnings = loaders.reduce((all, { ignoreWarnings }) => {
 	 */
 	/unable to locate 'src\/(favicons|manifest)/
 ]);
+const javascriptTest = /\.jsx?$/;
+const typescriptTest = /\.tsx?$/;
 
-function base({
-	envify = {}
-} = {}) {
-	return applyReducers(baseLoaders, {
+function base(params = {}) {
+
+	const {
+		isFirstBuild = true,
+		envify = {}
+	} = params;
+
+	return applyReducers(baseLoaders, params, {
 		entry:   {
 			index: path.join(cwd, 'src/App/index.tsx')
 		},
@@ -83,46 +94,37 @@ function base({
 		},
 		module:  {
 			rules: [{
-				test:   /\.js$/,
+				test:   javascriptTest,
 				parser: {
 					amd: false
 				}
-			}, /* {
-				test:    /\.jsx?$/,
+			}, {
+				test:    javascriptTest,
 				exclude: /node_modules/,
-				use:     [
-					{
-						loader: 'babel-loader'
-					},
-					{
-						loader:  'eslint-loader',
-						options: {
-							emitError: true
-						}
-					}
-				]
-			}, */ {
-				test:    /\.tsx?$/,
+				loader:  'babel-loader',
+				options: {
+					cacheDirectory: true
+				}
+			}, {
+				test:    typescriptTest,
 				exclude: /node_modules/,
 				use:     [{
-					loader:  'awesome-typescript-loader',
+					loader:  'babel-loader',
 					options: {
-						forceIsolatedModules: true,
-						useTranspileModule:   true,
-						useCache:             true,
-						reportFiles:          [
-							'src/**/*.{ts,tsx}',
-							'!globals.d.ts'
-						],
-						useBabel:             true,
-						babelCore:            '@babel/core'
+						cacheDirectory: true
 					}
 				}, {
+					loader:  'ts-loader',
+					options: {
+						transpileOnly: true
+					}
+				},
+				isFirstBuild && {
 					loader:  'tslint-loader',
 					options: {
 						emitErrors: true
 					}
-				}]
+				}].filter(Boolean)
 			}]
 		},
 		plugins: [
@@ -136,7 +138,7 @@ function base({
 			new FilterWarningPlugins({
 				exclude: ignoreWarnings
 			}),
-			new CopyPlugin([
+			isFirstBuild && new CopyPlugin([
 				{
 					from:   'src/favicons',
 					to:     'favicons',
@@ -145,8 +147,15 @@ function base({
 				'src/manifest.json'
 			], {
 				logLevel: 'silent'
+			}),
+			isFirstBuild && new ForkTsCheckerPlugin({
+				async:       false,
+				reportFiles: [
+					'src/**/*.{ts,tsx}',
+					'!globals.d.ts'
+				]
 			})
-		]
+		].filter(Boolean)
 	});
 }
 
@@ -157,139 +166,236 @@ export function dev(params) {
 		'webpack-hot-middleware/client?http://localhost:3000/&reload=true'
 	];
 
-	return applyReducers(devLoaders, update(config, {
-		entry:        { $apply: entry => addDevScripts(entry, devScripts) },
-		mode:         { $set: 'development' },
-		devtool:      { $set: 'inline-source-map' },
-		optimization: { $set: {
-			noEmitOnErrors: true
-		} },
-		plugins:      { $unshift: [
-			new webpack.HotModuleReplacementPlugin(),
-			new HtmlPlugin({
-				template: 'src/index.html'
-			})
-		] }
+	return applyReducers(devLoaders, params, update(config, {
+		entry:        {
+			$apply: entry => addDevScripts(entry, devScripts)
+		},
+		mode:         {
+			$set: 'development'
+		},
+		devtool:      {
+			$set: 'inline-source-map'
+		},
+		optimization: {
+			$set: {
+				noEmitOnErrors: true
+			}
+		},
+		plugins:      {
+			$unshift: [
+				new webpack.HotModuleReplacementPlugin(),
+				new HtmlPlugin({
+					template: 'src/index.html'
+				})
+			]
+		}
 	}));
 }
 
-export function build(params) {
+export function build(params = {}) {
 
 	const config = base(params);
 	const {
-		rules
-	} = config.module;
-
-	return applyReducers(buildLoaders, update(config, {
-		output:       {
-			filename:      { $set: '[name].[chunkhash].js' },
-			chunkFilename: { $set: '[name].[chunkhash].js' }
+		isFirstBuild = true,
+		transpile = {
+			extensions: []
 		},
-		mode:         { $set: 'production' },
+		browserslistEnv
+	} = params;
+	const filenameTemplate = pasteBrowserslistEnv('[name].[env].[chunkhash].js', browserslistEnv);
+	const extensions = [
+		...transpile.extensions,
+		'.babel.js'
+	];
+	const dependenciesRegExp = createDependenciesRegExp({
+		...transpile,
+		extensions
+	});
+	const excludeDependencies = _ => /node_modules/.test(_) && !dependenciesRegExp.test(_);
+	const babelConfig = getBabelConfig(browserslistEnv);
+
+	return applyReducers(buildLoaders, params, update(config, {
+		name:         {
+			$set: browserslistEnv
+		},
+		output:       {
+			filename:      {
+				$set: filenameTemplate
+			},
+			chunkFilename: {
+				$set: filenameTemplate
+			}
+		},
+		resolve:      {
+			mainFields: {
+				$set: [
+					'raw',
+					'browser',
+					'module',
+					'main'
+				]
+			},
+			extensions: {
+				$unshift: extensions
+			}
+		},
+		mode:         {
+			$set: 'production'
+		},
 		module:  {
 			rules: {
-				// [findIndex('test', '/\\.jsx?$/', rules)]: {
-				// 	use: {
-				// 		1: {
-				// 			options: {
-				// 				failOnError: { $set: true }
-				// 			}
-				// 		}
-				// 	}
-				// },
-				[findIndex('test', '/\\.tsx?$/', rules)]: {
-					use: {
-						1: {
-							options: {
-								failOnHint: { $set: true }
+				$apply: rules => update(rules, {
+					[findIndex('loader', 'babel-loader', rules)]: {
+						exclude: {
+							$set: excludeDependencies
+						},
+						options: {
+							$merge: babelConfig
+						}
+					},
+					[findIndex('test', typescriptTest, rules)]: {
+						exclude: {
+							$set: excludeDependencies
+						},
+						use: {
+							$apply: (use) => {
+
+								const mutation = {
+									[findIndex('loader', 'babel-loader', use)]: {
+										options: {
+											$merge: babelConfig
+										}
+									}
+								};
+
+								if (isFirstBuild) {
+									mutation[findIndex('loader', 'tslint-loader', use)] = {
+										options: {
+											failOnHint: {
+												$set: true
+											}
+										}
+									};
+								}
+
+								return update(use, mutation);
+							}
+						}
+					}
+				})
+			}
+		},
+		optimization: {
+			$set: {
+				runtimeChunk: 'single',
+				splitChunks:  {
+					name:        true,
+					cacheGroups: {
+						default: {
+							chunks:     'initial',
+							minChunks:  2
+						},
+						vendor: {
+							name:     'vendor',
+							chunks:   'initial',
+							priority: 10,
+							enforce:  true,
+							test(module) {
+
+								if (module.resource && !/\.(j|t)sx?$/.test(module.resource)) {
+									return false;
+								}
+
+								return module.context
+									&& module.context.includes('node_modules')
+									&& !module.context.includes('@flexis/ui/components'); // sad hack
 							}
 						}
 					}
 				}
 			}
 		},
-		optimization: { $set: {
-			runtimeChunk: 'single',
-			splitChunks:  {
-				name:        true,
-				cacheGroups: {
-					default: {
-						chunks:     'initial',
-						minChunks:  2
-					},
-					vendor: {
-						name:     'vendor',
-						chunks:   'initial',
-						priority: 10,
-						enforce:  true,
-						test(module) {
-
-							if (module.resource && !/\.(j|t)sx?$/.test(module.resource)) {
-								return false;
-							}
-
-							return module.context
-								&& module.context.includes('node_modules')
-								&& !module.context.includes('@flexis/ui/components'); // sad hack
-						}
-					}
-				}
-			}
-		} },
-		plugins:      { $unshift: [
-			new CleanPlugin(),
-			new webpack.HashedModuleIdsPlugin(),
-			new HtmlPlugin({
-				template: 'src/index.html',
-				inject:   'head',
-				minify:   htmlminConfig,
-				excludeAssets
-			}),
-			new ScriptHtmlPlugin({
-				defaultAttribute: 'defer'
-			}),
-			new ExcludeHtmlPlugin()
-		] }
+		plugins:      {
+			$unshift: [
+				isFirstBuild && new CleanPlugin(),
+				new webpack.HashedModuleIdsPlugin(),
+				new HtmlPlugin({
+					template: 'src/index.html',
+					inject:   'head',
+					minify:   htmlminConfig,
+					excludeAssets
+				}),
+				new ScriptHtmlPlugin({
+					defaultAttribute: 'defer'
+				}),
+				new ExcludeHtmlPlugin(),
+				new BdslPlugin({
+					env:             browserslistEnv,
+					withStylesheets: true
+				})
+			].filter(Boolean)
+		}
 	}));
 }
 
-export function render(params) {
+export function render(params = {}) {
 
 	const config = base(params);
-	const {
-		rules
-	} = config.module;
 
-	return applyReducers(renderLoaders, update(config, {
-		entry:        { $set: {
-			index: path.join(cwd, 'src/App/render.tsx')
-		} },
-		output:       {
-			path:          { $set: path.join(cwd, 'build', 'render') },
-			libraryTarget: { $set: 'commonjs2' }
-		},
-		target:       { $set: 'node' },
-		externals:    { $set: [externals({
-			whitelist: [/^@flexis\/ui/]
-		})] },
-		mode:         { $set: 'production' },
-		optimization: { $set: { minimize: false } },
-		module:       {
-			rules: {
-				[findIndex('test', '/\\.tsx?$/', rules)]: {
-					use: {
-						1: {
-							options: {
-								failOnHint: { $set: true }
-							}
-						}
-					}
-				}
+	return applyReducers(renderLoaders, params, update(config, {
+		entry:        {
+			$set: {
+				index: path.join(cwd, 'src/App/render.tsx')
 			}
 		},
-		plugins:      { $unshift: [
-			new CleanPlugin(),
-			new webpack.HashedModuleIdsPlugin()
-		] }
+		output:       {
+			path:          {
+				$set: path.join(cwd, 'build', 'render')
+			},
+			libraryTarget: {
+				$set: 'commonjs2'
+			}
+		},
+		target:       {
+			$set: 'node'
+		},
+		externals:    {
+			$set: [externals({
+				whitelist: [/^@flexis\/ui/]
+			})]
+		},
+		mode:         {
+			$set: 'production'
+		},
+		optimization: {
+			$set: {
+				minimize: false
+			}
+		},
+		module:       {
+			rules: {
+				$apply: rules => update(rules, {
+					[findIndex('test', typescriptTest, rules)]: {
+						use: {
+							$apply: use => update(use, {
+								[findIndex('loader', 'tslint-loader', use)]: {
+									options: {
+										failOnHint: {
+											$set: true
+										}
+									}
+								}
+							})
+						}
+					}
+				})
+			}
+		},
+		plugins:      {
+			$unshift: [
+				new CleanPlugin(),
+				new webpack.HashedModuleIdsPlugin()
+			]
+		}
 	}));
 }

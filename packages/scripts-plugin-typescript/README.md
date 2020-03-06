@@ -46,6 +46,12 @@ yarn add -D @trigen/scripts-plugin-typescript
 yarn exec -- trigen-scripts start src/test.ts
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| lint | `string` | `'src/**/*.{ts,tsx}'` | Files patterns to lint |
+
 ## Available scripts
 
 ```bash

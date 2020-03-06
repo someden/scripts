@@ -46,6 +46,13 @@ yarn add -D @trigen/scripts-preset-lib
 yarn exec -- trigen-scripts build
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| publish | `string` | - | Custom path to publish as package. |
+| testSkipBuild | `boolean` | `false` | Skip build step while testing. |
+
 ## Available scripts
 
 ```bash

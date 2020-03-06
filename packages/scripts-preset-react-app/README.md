@@ -46,6 +46,15 @@ yarn add -D @trigen/scripts-preset-react-app
 yarn exec -- trigen-scripts start
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| testSkipBuild | `boolean` | `false` | Skip build step while testing. |
+| transpile | `object` | - | Dependencies transpilation config. |
+| transpile.dependencies | `string[]` | - | Package names to force enable Babel. |
+| transpile.extensions | `string[]` | - | Files extensions to force enable Babel. |
+
 ## Available scripts
 
 ```bash

@@ -9,18 +9,25 @@ import FilterPlugin from 'filter-chunk-webpack-plugin';
 import postcss from 'postcss';
 import update from 'immutability-helper';
 import findIndex from '../helpers/findIndex';
-import postcssConfig from '../configs/postcss';
+import pasteBrowserslistEnv from '../helpers/pasteBrowserslistEnv';
+import getPostcssConfig from '../configs/postcss';
 import {
 	filterAssets
 } from './common';
 
 const STYLABLE_OPTIMIZE = Boolean(process.env.STYLABLE_OPTIMIZE);
-const stylesProcessor = postcss(postcssConfig);
 const stylableOptimizer = new StylableOptimizer();
 
-function postProcessor(stylableResult) {
-	stylesProcessor.process(stylableResult.meta.outputAst).sync();
-	return stylableResult;
+function createPostProcessor(browserslistEnv) {
+
+	const stylesProcessor = postcss(
+		getPostcssConfig(browserslistEnv)
+	);
+
+	return (stylableResult) => {
+		stylesProcessor.process(stylableResult.meta.outputAst).sync();
+		return stylableResult;
+	};
 }
 
 export const ignoreWarnings = [
@@ -37,77 +44,101 @@ export const ignoreWarnings = [
 export function base(config) {
 	return update(config, {
 		module: {
-			rules: { $push: [{
-				test:    /\.(eot|woff|ttf)$/,
-				loader:  'file-loader',
-				options: {
-					name: '[path][name].[ext]'
-				}
-			}, {
-				test:    /\.(jpg|webp|png|gif)$/,
-				loader:  '@flexis/srcset-loader',
-				options: {
-					rules:            [{}],
-					name:             '[path][name].[ext]',
-					skipOptimization: true
-				}
-			}] }
+			rules: {
+				$push: [{
+					test:    /\.(eot|woff|ttf)$/,
+					loader:  'file-loader',
+					options: {
+						name: '[path][name].[ext]'
+					}
+				}, {
+					test:    /\.(jpg|webp|png|gif)$/,
+					loader:  '@flexis/srcset-loader',
+					options: {
+						rules:            [{}],
+						name:             '[path][name].[ext]',
+						skipOptimization: true
+					}
+				}]
+			}
 		}
 	});
 }
 
 export function dev(config) {
 	return update(config, {
-		plugins: { $push: [
-			new StylelintPlugin({
-				files: 'src/**/*.st.css'
-			}),
-			new StylableWebpackPlugin({
-				transformHooks: { postProcessor }
-			})
-		] }
+		plugins: {
+			$push: [
+				new StylelintPlugin({
+					files: 'src/**/*.st.css'
+				}),
+				new StylableWebpackPlugin({
+					transformHooks: {
+						postProcessor: createPostProcessor()
+					}
+				})
+			]
+		}
 	});
 }
 
-export function build(config) {
+export function build(config, {
+	isFirstBuild = true,
+	browserslistEnv
+}) {
+
+	const filenameTemplate = pasteBrowserslistEnv('[name].[env].[hash:10].css', browserslistEnv);
+
 	return update(config, {
 		module: {
 			rules: {
-				[findIndex('loader', 'file-loader', config.module.rules)]: {
-					options: {
-						name: { $set: '[name].[hash:10].[ext]' }
+				$apply: rules => update(rules, {
+					[findIndex('loader', 'file-loader', rules)]: {
+						options: {
+							name: {
+								$set: '[name].[hash:10].[ext]'
+							}
+						}
+					},
+					[findIndex('loader', '@flexis/srcset-loader', rules)]: {
+						options: {
+							name:             {
+								$set: '[name].[hash:10].[ext]'
+							},
+							skipOptimization: {
+								$set: false
+							}
+						}
 					}
-				},
-				[findIndex('loader', '@flexis/srcset-loader', config.module.rules)]: {
-					options: {
-						name:             { $set: '[name].[hash:10].[ext]' },
-						skipOptimization: { $set: false }
-					}
-				}
+				})
 			}
 		},
-		plugins: { $push: [
-			new StylelintPlugin({
-				files:       'src/**/*.st.css',
-				failOnError: true
-			}),
-			new StylableWebpackPlugin({
-				filename:       '[name].[hash:10].css',
-				transformHooks: { postProcessor },
-				optimizer:      stylableOptimizer,
-				optimize:       {
-					removeUnusedComponents:   true,
-					removeComments:           true,
-					removeStylableDirectives: true,
-					classNameOptimizations:   STYLABLE_OPTIMIZE,
-					shortNamespaces:          STYLABLE_OPTIMIZE,
-					minify:                   true
-				}
-			}),
-			new FilterPlugin({
-				patterns: filterAssets
-			})
-		] }
+		plugins: {
+			$push: [
+				isFirstBuild && new StylelintPlugin({
+					files:       'src/**/*.st.css',
+					failOnError: true
+				}),
+				new StylableWebpackPlugin({
+					filename:       filenameTemplate,
+					transformHooks: {
+						postProcessor: createPostProcessor(browserslistEnv)
+					},
+					optimizer:      stylableOptimizer,
+					optimize:       {
+						removeUnusedComponents:   true,
+						removeComments:           true,
+						removeStylableDirectives: true,
+						classNameOptimizations:   STYLABLE_OPTIMIZE,
+						shortNamespaces:          STYLABLE_OPTIMIZE,
+						minify:                   true
+					}
+				}),
+				new FilterPlugin({
+					patterns: filterAssets
+				})
+			].filter(Boolean)
+		}
 	});
 }
 
@@ -115,31 +146,45 @@ export function render(config) {
 	return update(config, {
 		module: {
 			rules: {
-				[findIndex('loader', 'file-loader', config.module.rules)]: {
-					options: {
-						name:     { $set: '[name].[hash:10].[ext]' },
-						emitFile: { $set: false }
+				$apply: rules => update(rules, {
+					[findIndex('loader', 'file-loader', rules)]: {
+						options: {
+							name:     {
+								$set: '[name].[hash:10].[ext]'
+							},
+							emitFile: {
+								$set: false
+							}
+						}
+					},
+					[findIndex('loader', '@flexis/srcset-loader', rules)]: {
+						options: {
+							name:             {
+								$set: '[name].[hash:10].[ext]'
+							},
+							skipOptimization: {
+								$set: false
+							},
+							emitFile:         {
+								$set: false
+							}
+						}
 					}
-				},
-				[findIndex('loader', '@flexis/srcset-loader', config.module.rules)]: {
-					options: {
-						name:             { $set: '[name].[hash:10].[ext]' },
-						skipOptimization: { $set: false },
-						emitFile:         { $set: false }
-					}
-				}
+				})
 			}
 		},
-		plugins: { $push: [
-			new StylableWebpackPlugin({
-				outputCSS:      false,
-				includeCSSInJS: false,
-				optimizer:      stylableOptimizer,
-				optimize:       {
-					classNameOptimizations: STYLABLE_OPTIMIZE,
-					shortNamespaces:        STYLABLE_OPTIMIZE
-				}
-			})
-		] }
+		plugins: {
+			$push: [
+				new StylableWebpackPlugin({
+					outputCSS:      false,
+					includeCSSInJS: false,
+					optimizer:      stylableOptimizer,
+					optimize:       {
+						classNameOptimizations: STYLABLE_OPTIMIZE,
+						shortNamespaces:        STYLABLE_OPTIMIZE
+					}
+				})
+			]
+		}
 	});
 }

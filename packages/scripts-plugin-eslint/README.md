@@ -46,6 +46,12 @@ yarn add -D @trigen/scripts-plugin-eslint
 yarn exec -- trigen-scripts lint:js
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| lint | `string` | `'src/**/*.{js,jsx}'` | Files patterns to lint |
+
 ## Available scripts
 
 ```bash

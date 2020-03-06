@@ -46,6 +46,12 @@ yarn add -D @trigen/scripts-plugin-storybook
 yarn exec -- trigen-scripts start:storybook
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| storybookConfigs | `string` | - | Path to directory containing Storybook configs. |
+
 ## Available scripts
 
 ```bash

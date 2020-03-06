@@ -46,6 +46,12 @@ yarn add -D @trigen/scripts-preset-node-app
 yarn exec -- trigen-scripts build
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| testSkipBuild | `boolean` | `false` | Skip build step while testing. |
+
 ## Available scripts
 
 ```bash

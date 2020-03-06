@@ -42,7 +42,10 @@ yarn add -D @trigen/scripts-preset-react-app
 ```json
 [
     "preset-react-app",
-    "./some/other"
+    "./some/other",
+    ["some-other", {
+        "withOption": true
+    }]
 ]
 ```
 
