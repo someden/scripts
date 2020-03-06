@@ -69,8 +69,14 @@ export default async function init(options = {}, srcDir, url) {
 	} = test;
 
 	test.beforeAll = async () => {
+
 		await server.wait();
-		await beforeAll();
+
+		try {
+			await beforeAll();
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	test.afterAll = async () => {
