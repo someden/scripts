@@ -2,7 +2,7 @@
 
 exports[`@trigen/scripts-preset-react-app webpack should place build plugins in correct order 1`] = `
 Array [
-  "CleanWebpackPlugin",
+  "CleanPlugin",
   "HashedModuleIdsPlugin",
   "HtmlWebpackPlugin",
   "ScriptExtHtmlWebpackPlugin",
@@ -38,7 +38,7 @@ Array [
 
 exports[`@trigen/scripts-preset-react-app webpack should place render plugins in correct order 1`] = `
 Array [
-  "CleanWebpackPlugin",
+  "CleanPlugin",
   "HashedModuleIdsPlugin",
   "EnvironmentPlugin",
   "DefinePlugin",
