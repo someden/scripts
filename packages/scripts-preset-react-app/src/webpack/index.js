@@ -138,7 +138,7 @@ function base(params = {}) {
 			new FilterWarningPlugins({
 				exclude: ignoreWarnings
 			}),
-			isFirstBuild && new CopyPlugin([
+			new CopyPlugin([
 				{
 					from:   'src/favicons',
 					to:     'favicons',
