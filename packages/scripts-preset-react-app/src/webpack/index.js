@@ -7,7 +7,9 @@ import ScriptHtmlPlugin from 'script-ext-html-webpack-plugin';
 import ExcludeHtmlPlugin from 'html-webpack-exclude-assets-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
-import BdslPlugin from 'bdsl-webpack-plugin';
+import BdslPlugin, {
+	getBrowserslistEnvList
+} from 'bdsl-webpack-plugin';
 import update from 'immutability-helper';
 import {
 	decamelize
@@ -330,8 +332,9 @@ export function build(params = {}) {
 				}),
 				new ExcludeHtmlPlugin(),
 				new BdslPlugin({
-					env:             browserslistEnv,
-					withStylesheets: true
+					env:                    browserslistEnv,
+					unsafeUseDocumentWrite: true,
+					withStylesheets:        true
 				})
 			].filter(Boolean)
 		}
@@ -398,4 +401,23 @@ export function render(params = {}) {
 			]
 		}
 	}));
+}
+
+export function dslBuild() {
+
+	const transpile = {
+		dependencies: [],
+		extensions:   [],
+		...JSON.parse(process.env.REACT_APP_TRANSPILE)
+	};
+	const webpackBuildConfigs = [
+		...getBrowserslistEnvList(),
+		undefined
+	].map((browserslistEnv, index) => build({
+		isFirstBuild: index === 0,
+		transpile,
+		browserslistEnv
+	}));
+
+	return webpackBuildConfigs;
 }

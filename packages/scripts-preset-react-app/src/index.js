@@ -137,6 +137,11 @@ export default function getScripts(args, inputAllScripts, {
 		},
 		'build:render':     {
 			$set: update(scripts['build:render'], {
+				vars: {
+					REACT_APP_TRANSPILE: {
+						$set: JSON.stringify(transpile)
+					}
+				},
 				args: {
 					$push: args
 				}
