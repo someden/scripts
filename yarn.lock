@@ -3101,7 +3101,7 @@
   version "5.0.0-alpha.0"
   dependencies:
     "@trigen/scripts" "file:packages/scripts"
-		browserslist-config-trigen "^1.1.0"
+    browserslist-config-trigen "^1.1.0"
     clean-publish "^1.1.0"
     coveralls "^3.0.0"
     husky "^4.0.9"
