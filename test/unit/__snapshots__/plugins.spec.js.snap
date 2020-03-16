@@ -334,7 +334,8 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 	\\"build\\": {
 		\\"vars\\": {
 			\\"NODE_ENV\\": \\"production\\",
-			\\"REACT_APP_TRANSPILE\\": \\"{}\\"
+			\\"REACT_APP_TRANSPILE\\": \\"{}\\",
+			\\"REACT_APP_BDSL\\": \\"{}\\"
 		},
 		\\"cmd\\": \\"node\\",
 		\\"args\\": [
@@ -484,7 +485,8 @@ exports[`@trigen/scripts-* scripts-preset-react-app should return correct script
 		\\"vars\\": {
 			\\"NODE_ENV\\": \\"production\\",
 			\\"RENDERING\\": \\"true\\",
-			\\"REACT_APP_TRANSPILE\\": \\"{}\\"
+			\\"REACT_APP_TRANSPILE\\": \\"{}\\",
+			\\"REACT_APP_BDSL\\": \\"{}\\"
 		},
 		\\"cmd\\": \\"node\\",
 		\\"args\\": [
