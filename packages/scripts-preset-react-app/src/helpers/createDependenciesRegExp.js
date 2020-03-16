@@ -3,7 +3,7 @@ function escape(input) {
 	return input.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
-export default function createDependenciesRegExp({
+export function createDependenciesRegExp({
 	dependencies = [],
 	extensions = []
 } = {}) {

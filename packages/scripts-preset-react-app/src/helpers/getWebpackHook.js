@@ -23,7 +23,7 @@ babelRegister({
 	]
 });
 
-export default function getWebpackHook() {
+export function getWebpackHook() {
 
 	try {
 		return Object.assign({}, emptyHook, require(hookPath)); // eslint-disable-line

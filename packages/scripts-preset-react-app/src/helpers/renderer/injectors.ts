@@ -20,6 +20,13 @@ export function replaceEntryScript(...scripts: string[]) {
 	);
 }
 
+export function replaceDslScript(...scripts: string[]) {
+	return (_: string) => _.replace(
+		/<script>function dsl(.|\n)*<\/script>/m,
+		scripts.join('')
+	);
+}
+
 export function prependEmbededScripts(...scripts: string[]) {
 	return (_: string) => _.replace(
 		/(<script)/,

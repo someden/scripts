@@ -3,7 +3,7 @@ import {
 	notifyError
 } from './notify';
 
-export default function reporter(error, stats) {
+export function reporter(error, stats) {
 
 	if (error) {
 		notifyError(error);

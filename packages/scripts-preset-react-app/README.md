@@ -54,6 +54,7 @@ yarn exec -- trigen-scripts start
 | transpile | `object` | - | Dependencies transpilation config. |
 | transpile.dependencies | `string[]` | - | Package names to force enable Babel. |
 | transpile.extensions | `string[]` | - | Files extensions to force enable Babel. |
+| bdsl | `object` | - | `bdsl-webpack-plugin` config. |
 
 ## Available scripts
 

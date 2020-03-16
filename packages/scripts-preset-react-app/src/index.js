@@ -53,7 +53,8 @@ const scripts = {
 
 export default function getScripts(args, inputAllScripts, {
 	testSkipBuild = false,
-	transpile = {}
+	transpile = {},
+	bdsl = {}
 } = {}) {
 
 	const storybookConfigsArgs = getScriptArg(args, '-c', storybookConfigs);
@@ -128,6 +129,9 @@ export default function getScripts(args, inputAllScripts, {
 				vars: {
 					REACT_APP_TRANSPILE: {
 						$set: JSON.stringify(transpile)
+					},
+					REACT_APP_BDSL: {
+						$set: JSON.stringify(bdsl)
 					}
 				},
 				args: {
@@ -140,6 +144,9 @@ export default function getScripts(args, inputAllScripts, {
 				vars: {
 					REACT_APP_TRANSPILE: {
 						$set: JSON.stringify(transpile)
+					},
+					REACT_APP_BDSL: {
+						$set: JSON.stringify(bdsl)
 					}
 				},
 				args: {

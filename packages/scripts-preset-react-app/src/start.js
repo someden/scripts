@@ -1,11 +1,15 @@
 import 'dotenv/config';
 import webpack from 'webpack';
-import { create } from 'browser-sync';
+import {
+	create
+} from 'browser-sync';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 import HttpProxyMiddleware from 'http-proxy-middleware';
 import HistoryApiFallbackMiddleware from 'connect-history-api-fallback';
-import { notify } from './helpers/notify';
+import {
+	notify
+} from './helpers';
 import browserSyncConfigBase from './configs/browserSync';
 import * as webpackConfig from './webpack';
 

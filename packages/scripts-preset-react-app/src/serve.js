@@ -1,8 +1,12 @@
 import 'dotenv/config';
-import { create } from 'browser-sync';
+import {
+	create
+} from 'browser-sync';
 import HttpProxyMiddleware from 'http-proxy-middleware';
 import HistoryApiFallbackMiddleware from 'connect-history-api-fallback';
-import { notify } from './helpers/notify';
+import {
+	notify
+} from './helpers';
 import browserSyncConfigBase from './configs/browserSync';
 
 const server = create();

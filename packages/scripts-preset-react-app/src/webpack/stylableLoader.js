@@ -8,8 +8,10 @@ import StylelintPlugin from 'stylelint-webpack-plugin';
 import FilterPlugin from 'filter-chunk-webpack-plugin';
 import postcss from 'postcss';
 import update from 'immutability-helper';
-import findIndex from '../helpers/findIndex';
-import pasteBrowserslistEnv from '../helpers/pasteBrowserslistEnv';
+import {
+	findIndex,
+	pasteBrowserslistEnv
+} from '../helpers';
 import getPostcssConfig from '../configs/postcss';
 import {
 	filterAssets

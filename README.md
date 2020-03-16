@@ -132,5 +132,6 @@ yarn exec -- trigen-scripts lint
 
 ## Roadmap
 
-- [ ] Move to [`webpack-chain`](https://github.com/neutrinojs/webpack-chain)
-- [ ] Move from `tslint` to [`typescript-eslint`](https://github.com/typescript-eslint/typescript-eslint)
+- [ ] Preact option;
+- [ ] Move to [`webpack-chain`](https://github.com/neutrinojs/webpack-chain);
+- [ ] Move from `tslint` to [`typescript-eslint`](https://github.com/typescript-eslint/typescript-eslint).

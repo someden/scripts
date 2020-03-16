@@ -14,12 +14,15 @@ import update from 'immutability-helper';
 import {
 	decamelize
 } from 'humps';
-import findIndex from '../helpers/findIndex';
-import applyReducers from '../helpers/applyReducers';
-import addDevScripts from '../helpers/addDevScripts';
-import getWebpackHook from '../helpers/getWebpackHook';
-import createDependenciesRegExp from '../helpers/createDependenciesRegExp';
-import pasteBrowserslistEnv from '../helpers/pasteBrowserslistEnv';
+import {
+	findIndex,
+	applyReducers,
+	addDevScripts,
+	getWebpackHook,
+	createDependenciesRegExp,
+	pasteBrowserslistEnv,
+	getConfigFromEnv
+} from '../helpers';
 import getBabelConfig from '../configs/babel';
 import htmlminConfig from '../configs/htmlmin';
 import {
@@ -331,11 +334,12 @@ export function build(params = {}) {
 					defaultAttribute: 'defer'
 				}),
 				new ExcludeHtmlPlugin(),
-				new BdslPlugin({
-					env:                    browserslistEnv,
-					unsafeUseDocumentWrite: true,
-					withStylesheets:        true
-				})
+				new BdslPlugin(
+					getConfigFromEnv('REACT_APP_BDSL', {
+						env:             browserslistEnv,
+						withStylesheets: true
+					})
+				)
 			].filter(Boolean)
 		}
 	}));
@@ -405,11 +409,10 @@ export function render(params = {}) {
 
 export function dslBuild() {
 
-	const transpile = {
+	const transpile = getConfigFromEnv('REACT_APP_TRANSPILE', {
 		dependencies: [],
-		extensions:   [],
-		...JSON.parse(process.env.REACT_APP_TRANSPILE)
-	};
+		extensions:   []
+	});
 	const webpackBuildConfigs = [
 		...getBrowserslistEnvList(),
 		undefined

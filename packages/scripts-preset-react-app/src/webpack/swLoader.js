@@ -3,8 +3,10 @@ import WorkboxPlugin from '@flexis/workbox-webpack-plugin';
 import {
 	HotModuleReplacementFilterPlugin
 } from 'hmr-filter-webpack-plugin';
-import findIndex from '../helpers/findIndex';
-import pasteBrowserslistEnv from '../helpers/pasteBrowserslistEnv';
+import {
+	findIndex,
+	pasteBrowserslistEnv
+} from '../helpers';
 import {
 	excludeAssets
 } from './common';

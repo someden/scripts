@@ -9,5 +9,6 @@ export default {
 	removeEmptyAttributes:         true,
 	removeScriptTypeAttributes:    true,
 	removeStyleLinkTypeAttributes: true,
+	minifyCSS:                     true,
 	minifyJS:                      true
 };
