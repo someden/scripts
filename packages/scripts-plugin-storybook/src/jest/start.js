@@ -27,7 +27,7 @@ export default function start(script = 'start:storybook') {
 
 			const message = data.toString('utf8');
 
-			if (/ERR!|Error:/.test(message)) {
+			if (/ERR!|Error:|ERROR in/.test(message)) {
 				reject(new Error(message));
 			}
 		});

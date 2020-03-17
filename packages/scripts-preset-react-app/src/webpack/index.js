@@ -123,7 +123,10 @@ function base(params = {}) {
 					options: {
 						transpileOnly:   true,
 						compilerOptions: {
-							sourceMap: true
+							sourceMap:       true,
+							inlineSourceMap: false,
+							declaration:     false,
+							declarationMap:  false
 						}
 					}
 				},
