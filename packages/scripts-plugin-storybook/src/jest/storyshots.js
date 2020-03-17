@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import path from 'path';
+import envCi from 'env-ci';
 import initStoryshots from '@storybook/addon-storyshots';
 import {
 	imageSnapshot
@@ -22,6 +23,22 @@ export function getMatchOptions({
 	return {
 		customSnapshotIdentifier: `${kind}__${story.replace(/ /g, '-')}`
 	};
+}
+
+const {
+	isCi
+} = envCi();
+
+export function afterScreenshot({
+	context: {
+		kind,
+		story
+	}
+}) {
+
+	if (isCi) {
+		process.stdout.write(`📷 ${kind} ${story}\n`);
+	}
 }
 
 export async function closeWebsockets(page) {
