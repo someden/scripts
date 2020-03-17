@@ -26,7 +26,7 @@ export function getMatchOptions({
 }) {
 
 	if (isCi) {
-		process.stdout.write(`📷 ${kind} ${story}\n`);
+		process.stdout.write(`📷  ${kind} ${story}\n`);
 	}
 
 	return {
@@ -79,14 +79,8 @@ export default async function init(options = {}, srcDir, url) {
 	} = test;
 
 	test.beforeAll = async () => {
-
 		await server.wait();
-
-		try {
-			await beforeAll();
-		} catch (err) {
-			console.error(err);
-		}
+		await beforeAll();
 	};
 
 	test.afterAll = async () => {

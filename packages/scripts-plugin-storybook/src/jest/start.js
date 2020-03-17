@@ -12,14 +12,23 @@ export default function start(script = 'start:storybook') {
 		},
 		detached: true
 	});
-	const wait = new Promise((resolve) => {
+	const wait = new Promise((resolve, reject) => {
+
 		server.stdout.on('data', (data) => {
 
 			if (data.toString('utf8').includes('webpack built')) {
 				resolve();
 			}
 		});
-		server.stderr.on('data', () => {});
+
+		server.stderr.on('data', (data) => {
+
+			const message = data.toString('utf8');
+
+			if (message.includes('ERR!')) {
+				reject(new Error(message));
+			}
+		});
 	});
 
 	return {
