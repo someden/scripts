@@ -53,6 +53,7 @@ function configureStorybook(input) {
 				case 'CleanWebpackPlugin':
 				case 'FilterChunkWebpackPlugin':
 				case 'CopyPlugin':
+				case 'BdslWebpackPlugin':
 					return false;
 
 				default:
