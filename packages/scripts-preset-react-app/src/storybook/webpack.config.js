@@ -50,7 +50,7 @@ function configureStorybook(input) {
 				case 'HtmlWebpackExcludeAssetsPlugin':
 				case 'HotModuleReplacementPlugin':
 				case 'WorkboxWebpackPlugin':
-				case 'CleanWebpackPlugin':
+				case 'CleanPlugin':
 				case 'FilterChunkWebpackPlugin':
 				case 'CopyPlugin':
 				case 'BdslWebpackPlugin':
