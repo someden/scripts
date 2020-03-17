@@ -69,6 +69,7 @@ export default async function init(options = {}, srcDir, url) {
 	const finalOptions = {
 		getMatchOptions,
 		customizePage,
+		afterScreenshot,
 		...options
 	};
 	const server = start();
