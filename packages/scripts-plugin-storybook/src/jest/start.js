@@ -16,7 +16,9 @@ export default function start(script = 'start:storybook') {
 
 		server.stdout.on('data', (data) => {
 
-			if (data.toString('utf8').includes('webpack built')) {
+			const message = data.toString('utf8');
+
+			if (/Storybook \d+\.\d+\.\d+ started/.test(message)) {
 				resolve();
 			}
 		});
@@ -25,7 +27,7 @@ export default function start(script = 'start:storybook') {
 
 			const message = data.toString('utf8');
 
-			if (message.includes('ERR!')) {
+			if (/ERR!|Error:/.test(message)) {
 				reject(new Error(message));
 			}
 		});
