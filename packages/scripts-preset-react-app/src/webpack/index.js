@@ -121,7 +121,10 @@ function base(params = {}) {
 				}, {
 					loader:  'ts-loader',
 					options: {
-						transpileOnly: true
+						transpileOnly:   true,
+						compilerOptions: {
+							sourceMap: true
+						}
 					}
 				},
 				isFirstBuild && {
