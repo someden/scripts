@@ -341,10 +341,12 @@ export function build(params = {}) {
 				}),
 				new ExcludeHtmlPlugin(),
 				new BdslPlugin(
-					getConfigFromEnv('REACT_APP_BDSL', {
+					getConfigFromEnv('REACT_APP_BDSL', config => ({
 						env:             browserslistEnv,
-						withStylesheets: true
-					})
+						withStylesheets: true,
+						isModule:        config.moduleEnv === browserslistEnv,
+						...config
+					}))
 				)
 			].filter(Boolean)
 		}

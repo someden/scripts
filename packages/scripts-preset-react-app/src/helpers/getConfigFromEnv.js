@@ -1,7 +1,12 @@
 
-export function getConfigFromEnv(name, defaults) {
+export function getConfigFromEnv(name, defaultsOrMutator) {
+
+	if (typeof defaultsOrMutator === 'function') {
+		return defaultsOrMutator(JSON.parse(process.env[name] || '{}'));
+	}
+
 	return {
-		...defaults,
+		...defaultsOrMutator,
 		...JSON.parse(process.env[name] || '{}')
 	};
 }
