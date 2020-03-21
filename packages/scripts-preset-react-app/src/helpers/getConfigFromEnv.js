@@ -1,12 +1,14 @@
 
 export function getConfigFromEnv(name, defaultsOrMutator) {
 
+	const envConfig = JSON.parse(process.env[name] || '{}');
+
 	if (typeof defaultsOrMutator === 'function') {
-		return defaultsOrMutator(JSON.parse(process.env[name] || '{}'));
+		return defaultsOrMutator(envConfig);
 	}
 
 	return {
 		...defaultsOrMutator,
-		...JSON.parse(process.env[name] || '{}')
+		...envConfig
 	};
 }
