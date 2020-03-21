@@ -3146,7 +3146,7 @@
     "@trigen/scripts-plugin-typescript" "file:packages/scripts-plugin-typescript"
     autoprefixer "^9.1.3"
     babel-loader "^8.0.0"
-    bdsl-webpack-plugin "^1.2.0-beta"
+    bdsl-webpack-plugin "^1.3.0-beta"
     browser-sync "^2.24.7"
     browserslist-config-trigen "^1.1.0"
     clean-webpack-plugin "^3.0.0"
@@ -4931,20 +4931,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bdsl-webpack-plugin@^1.1.0-beta:
-  version "1.1.0-beta"
-  resolved "https://registry.yarnpkg.com/bdsl-webpack-plugin/-/bdsl-webpack-plugin-1.1.0-beta.tgz#c7f08ebff6926822f518b332fc28672c3a469327"
-  integrity sha512-vJZCjjWovb4eCTx0zxG8fA78sH7ZD9Gn4n24814uUHXV/cppUt2W8V5Vk+FIRhfC2ciTUKk4eCgUNBKeoHfOfg==
-  dependencies:
-    "@babel/runtime" "^7.2.0"
-    browserslist "^4.8.7"
-    browserslist-useragent-regexp "^2.0.1"
-    core-js "3"
-
-bdsl-webpack-plugin@^1.2.0-beta:
-  version "1.2.0-beta"
-  resolved "https://registry.yarnpkg.com/bdsl-webpack-plugin/-/bdsl-webpack-plugin-1.2.0-beta.tgz#77d0f05e934336f2d9719824a376a4d7bccd1ed3"
-  integrity sha512-YRI7by/dvgccJnd3qYs6+lJlqQnMa19wcHA4iU37yVSMToYPnq2LLBbTLCaPcYueblgoF5gTxQvzkxzYHncgeA==
+bdsl-webpack-plugin@^1.3.0-beta:
+  version "1.3.0-beta"
+  resolved "https://registry.yarnpkg.com/bdsl-webpack-plugin/-/bdsl-webpack-plugin-1.3.0-beta.tgz#3c26bf1405187bc4486193d5149ac38a8fe509c8"
+  integrity sha512-2PYfLkvCZsnQuWGGbOEXaYR97V00P3XEA1txDUBy7lBWk3F7jfHAXUg5l5VUdru72FmxQ8aW2Q+Ts8v+VeqrrQ==
   dependencies:
     "@babel/runtime" "^7.2.0"
     browserslist "^4.8.7"
