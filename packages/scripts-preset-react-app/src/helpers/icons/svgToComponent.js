@@ -13,6 +13,12 @@ import {
 
 module.exports = runtimeGenerator;
 
+function createRequest(context, module) {
+	return stringifyRequest({
+		context
+	}, module).replace(/^"(\.\.\/)*node_modules\//g, '"');
+}
+
 function runtimeGenerator({
 	symbol,
 	config
@@ -29,9 +35,9 @@ function runtimeGenerator({
 		skipSymbol
 	} = runtimeOptions;
 	const context = path.dirname(symbol.request.file);
-	const iconRequest = stringifyRequest({ context }, iconModule);
-	const spriteRequest = stringifyRequest({ context }, spriteModule);
-	const symbolRequest = stringifyRequest({ context }, symbolModule);
+	const iconRequest = createRequest(context, iconModule);
+	const spriteRequest = createRequest(context, spriteModule);
+	const symbolRequest = createRequest(context, symbolModule);
 	const displayName = `Icon${pascalize(symbol.id)}`;
 	const [,, width, height] = symbol.viewBox.split(' ');
 
