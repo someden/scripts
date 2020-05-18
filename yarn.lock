@@ -282,11 +282,6 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.9.5.tgz#90977a8e6fbf6b431a7dc31752eee233bf052d80"
   integrity sha512-/8arLKUFq882w4tWGj9JYzRpAlZgiWUJ+dtteNTDqrRBz9Iguck9Rn3ykuBDoUwh2TO4tSAJlrxDUOXWklJe4g==
 
-"@babel/helper-validator-identifier@^7.9.5":
-  version "7.9.5"
-  resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.9.5.tgz#90977a8e6fbf6b431a7dc31752eee233bf052d80"
-  integrity sha512-/8arLKUFq882w4tWGj9JYzRpAlZgiWUJ+dtteNTDqrRBz9Iguck9Rn3ykuBDoUwh2TO4tSAJlrxDUOXWklJe4g==
-
 "@babel/helper-wrap-function@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/helper-wrap-function/-/helper-wrap-function-7.8.3.tgz#9dbdb2bb55ef14aaa01fe8c99b629bd5352d8610"
@@ -1053,16 +1048,7 @@
     globals "^11.1.0"
     lodash "^4.17.13"
 
-"@babel/types@^7.0.0", "@babel/types@^7.3.0", "@babel/types@^7.4.0", "@babel/types@^7.4.4", "@babel/types@^7.8.3", "@babel/types@^7.8.6", "@babel/types@^7.9.0", "@babel/types@^7.9.5", "@babel/types@^7.9.6":
-  version "7.9.6"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.9.6.tgz#2c5502b427251e9de1bd2dff95add646d95cc9f7"
-  integrity sha512-qxXzvBO//jO9ZnoasKF1uJzHd2+M6Q2ZPIVfnFps8JJvXy0ZBbwbNOmE6SGIY5XOY6d1Bo5lb9d9RJ8nv3WSeA==
-  dependencies:
-    "@babel/helper-validator-identifier" "^7.9.5"
-    lodash "^4.17.13"
-    to-fast-properties "^2.0.0"
-
-"@babel/types@^7.3.3":
+"@babel/types@^7.0.0", "@babel/types@^7.3.0", "@babel/types@^7.3.3", "@babel/types@^7.4.0", "@babel/types@^7.4.4", "@babel/types@^7.8.3", "@babel/types@^7.8.6", "@babel/types@^7.9.0", "@babel/types@^7.9.5", "@babel/types@^7.9.6":
   version "7.9.6"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.9.6.tgz#2c5502b427251e9de1bd2dff95add646d95cc9f7"
   integrity sha512-qxXzvBO//jO9ZnoasKF1uJzHd2+M6Q2ZPIVfnFps8JJvXy0ZBbwbNOmE6SGIY5XOY6d1Bo5lb9d9RJ8nv3WSeA==
@@ -3110,20 +3096,20 @@
     "@babel/core" "^7.4.0"
     "@babel/node" "^7.0.0"
     "@babel/runtime" "^7.4.2"
-    "@trigen/scripts" "file:packages/scripts"
+    "@trigen/scripts" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-plugin-babel-5.3.0-825fa10b-0a60-4a12-8fec-4731dca01688-1589781999847/node_modules/@trigen/scripts"
     babel-preset-trigen "^2.2.1"
 
 "@trigen/scripts-plugin-eslint@file:packages/scripts-plugin-eslint":
   version "5.3.0"
   dependencies:
-    "@trigen/scripts" "file:packages/scripts"
+    "@trigen/scripts" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-plugin-eslint-5.3.0-f8fce4e9-0f1f-4504-aa41-4fa07e2cdbe2-1589781999971/node_modules/@trigen/scripts"
     eslint "^6.1.0"
     eslint-config-trigen "^3.2.3"
 
 "@trigen/scripts-plugin-jest@file:packages/scripts-plugin-jest":
   version "5.3.0"
   dependencies:
-    "@trigen/scripts" "file:packages/scripts"
+    "@trigen/scripts" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-plugin-jest-5.3.0-eee9c804-d842-4877-8976-2e9529fb588d-1589782000001/node_modules/@trigen/scripts"
     "@types/jest" "^25.1.3"
     archiver "^4.0.1"
     babel-jest "^26.0.1"
@@ -3143,7 +3129,7 @@
 "@trigen/scripts-plugin-size-limit@file:packages/scripts-plugin-size-limit":
   version "5.3.0"
   dependencies:
-    "@trigen/scripts" "file:packages/scripts"
+    "@trigen/scripts" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-plugin-size-limit-5.3.0-706978d6-5125-4ab5-b42f-1ea951312096-1589782000097/node_modules/@trigen/scripts"
     size-limit "^4.1.1"
 
 "@trigen/scripts-plugin-storybook@file:packages/scripts-plugin-storybook":
@@ -3158,8 +3144,8 @@
     "@storybook/addon-storyshots-puppeteer" "^5.1.11"
     "@storybook/addons" "^5.0.5"
     "@storybook/react" "^5.0.5"
-    "@trigen/scripts" "file:packages/scripts"
-    "@trigen/scripts-plugin-jest" "file:packages/scripts-plugin-jest"
+    "@trigen/scripts" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-plugin-storybook-5.3.0-2e0fe1bf-9526-4040-9f2a-1d00234f4cb1-1589782000103/node_modules/@trigen/scripts"
+    "@trigen/scripts-plugin-jest" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-plugin-storybook-5.3.0-2e0fe1bf-9526-4040-9f2a-1d00234f4cb1-1589782000103/node_modules/@trigen/scripts-plugin-jest"
     "@types/storybook__addon-info" "^5.2.1"
     babel-plugin-require-context-hook "^1.0.0"
     env-ci "^5.0.2"
@@ -3168,7 +3154,7 @@
 "@trigen/scripts-plugin-typescript@file:packages/scripts-plugin-typescript":
   version "5.3.0"
   dependencies:
-    "@trigen/scripts" "file:packages/scripts"
+    "@trigen/scripts" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-plugin-typescript-5.3.0-6659b211-4c17-4e16-84b3-827000327a93-1589782000323/node_modules/@trigen/scripts"
     ts-node-dev "^1.0.0-pre.39"
     tsconfig-paths "^3.8.0"
     tslint "^6.0.0"
@@ -3179,7 +3165,7 @@
 "@trigen/scripts-preset-lib@file:packages/scripts-preset-lib":
   version "5.3.0"
   dependencies:
-    "@trigen/scripts" "file:packages/scripts"
+    "@trigen/scripts" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-lib-5.3.0-1e27b9f5-6524-47f3-abd1-1c3303da79c1-1589782000339/node_modules/@trigen/scripts"
     browserslist-config-trigen "^1.1.0"
     clean-publish "^1.1.0"
     coveralls "^3.0.0"
@@ -3189,10 +3175,10 @@
 "@trigen/scripts-preset-node-app@file:packages/scripts-preset-node-app":
   version "5.3.0"
   dependencies:
-    "@trigen/scripts" "file:packages/scripts"
-    "@trigen/scripts-plugin-babel" "file:packages/scripts-plugin-babel"
-    "@trigen/scripts-plugin-jest" "file:packages/scripts-plugin-jest"
-    "@trigen/scripts-plugin-rollup" "file:packages/scripts-plugin-rollup"
+    "@trigen/scripts" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-node-app-5.3.0-d9987400-50ac-4dc9-b2d3-485590ff1aa4-1589782000353/node_modules/@trigen/scripts"
+    "@trigen/scripts-plugin-babel" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-node-app-5.3.0-d9987400-50ac-4dc9-b2d3-485590ff1aa4-1589782000353/node_modules/@trigen/scripts-plugin-babel"
+    "@trigen/scripts-plugin-jest" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-node-app-5.3.0-d9987400-50ac-4dc9-b2d3-485590ff1aa4-1589782000353/node_modules/@trigen/scripts-plugin-jest"
+    "@trigen/scripts-plugin-rollup" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-node-app-5.3.0-d9987400-50ac-4dc9-b2d3-485590ff1aa4-1589782000353/node_modules/@trigen/scripts-plugin-rollup"
     browserslist-config-trigen "^1.1.0"
     husky "^4.0.9"
     lint-staged "^10.0.0"
@@ -3206,11 +3192,11 @@
     "@flexis/workbox-webpack-plugin" "^1.2.1"
     "@stylable/core" "^2.1.4"
     "@stylable/webpack-plugin" "^2.1.7"
-    "@trigen/scripts" "file:packages/scripts"
-    "@trigen/scripts-plugin-babel" "file:packages/scripts-plugin-babel"
-    "@trigen/scripts-plugin-jest" "file:packages/scripts-plugin-jest"
-    "@trigen/scripts-plugin-storybook" "file:packages/scripts-plugin-storybook"
-    "@trigen/scripts-plugin-typescript" "file:packages/scripts-plugin-typescript"
+    "@trigen/scripts" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-react-app-5.4.0-8cb50942-5ec4-430c-a62a-3ceb5dfa1477-1589782000355/node_modules/@trigen/scripts"
+    "@trigen/scripts-plugin-babel" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-react-app-5.4.0-8cb50942-5ec4-430c-a62a-3ceb5dfa1477-1589782000355/node_modules/@trigen/scripts-plugin-babel"
+    "@trigen/scripts-plugin-jest" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-react-app-5.4.0-8cb50942-5ec4-430c-a62a-3ceb5dfa1477-1589782000355/node_modules/@trigen/scripts-plugin-jest"
+    "@trigen/scripts-plugin-storybook" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-react-app-5.4.0-8cb50942-5ec4-430c-a62a-3ceb5dfa1477-1589782000355/node_modules/@trigen/scripts-plugin-storybook"
+    "@trigen/scripts-plugin-typescript" "file:../../Library/Caches/Yarn/v6/npm-@trigen-scripts-preset-react-app-5.4.0-8cb50942-5ec4-430c-a62a-3ceb5dfa1477-1589782000355/node_modules/@trigen/scripts-plugin-typescript"
     autoprefixer "^9.1.3"
     babel-loader "^8.0.0"
     bdsl-webpack-plugin "^1.4.0-beta"
@@ -3226,8 +3212,8 @@
     filter-chunk-webpack-plugin "^2.1.0"
     fork-ts-checker-webpack-plugin "^4.0.4"
     hmr-filter-webpack-plugin "^1.0.0"
-    html-webpack-exclude-assets-plugin "^0.0.7"
     html-webpack-plugin "^3.2.0"
+    html-webpack-skip-assets-plugin "^0.0.2"
     http-proxy-middleware "^1.0.1"
     humps "^2.0.1"
     husky "^4.0.9"
@@ -3238,13 +3224,13 @@
     postcss "^7.0.2"
     postcss-momentum-scrolling "^2.2.9"
     puppeteer "^3.0.0"
-    react-hot-loader "4.12.15"
+    react-hot-loader "4.12.21"
     script-ext-html-webpack-plugin "^2.1.4"
     service-worker-loader "^4.0.1"
     stylelint "^13.0.0"
     stylelint-config-trigen "^2.0.4"
     stylelint-webpack-plugin "^2.0.0"
-    svg-sprite-loader "4.2.5"
+    svg-sprite-loader "5.0.0"
     svgo "^1.0.5"
     svgo-loader "^2.1.0"
     ts-loader "^7.0.1"
@@ -10238,11 +10224,6 @@ html-tags@^3.1.0:
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
   integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
 
-html-webpack-exclude-assets-plugin@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/html-webpack-exclude-assets-plugin/-/html-webpack-exclude-assets-plugin-0.0.7.tgz#ee69906adb3d869e4e29f29b0f3e99b53fa87c99"
-  integrity sha512-gaYKMGBPDts3Fb1WXyDEEcS/0TSRg2IDl3EsbQL2AkKWTqdjSKwfQ8Iz0RhPiWErJfqhq5/wkhoYyjQoG55pug==
-
 html-webpack-plugin@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-3.2.0.tgz#b01abbd723acaaa7b37b6af4492ebda03d9dd37b"
@@ -10267,6 +10248,13 @@ html-webpack-plugin@^4.0.0-beta.2:
     pretty-error "^2.1.1"
     tapable "^1.1.3"
     util.promisify "1.0.0"
+
+html-webpack-skip-assets-plugin@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/html-webpack-skip-assets-plugin/-/html-webpack-skip-assets-plugin-0.0.2.tgz#dae583eeb7f7e7ef6b1057848a189ef61d757f28"
+  integrity sha512-KUtPb7mYQRGVXHVr73hUVtaq2RscrVFWXm1WTtKmhG9XVNmSAyQwS40PQCWg/Z6mBuT7KR+CzxjPBzsVmJpvbQ==
+  dependencies:
+    minimatch "3.0.4"
 
 htmlparser2@^3.10.0, htmlparser2@^3.3.0, htmlparser2@^3.8.3:
   version "3.10.1"
@@ -16109,10 +16097,10 @@ react-helmet-async@^1.0.2:
     react-fast-compare "^2.0.4"
     shallowequal "^1.1.0"
 
-react-hot-loader@4.12.15:
-  version "4.12.15"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.12.15.tgz#6bf3984e52edbdf02ea8952777f53da1b3c68c95"
-  integrity sha512-sgkN6g+tgPE6xZzD0Ysqll7KUFYJbMX0DrczT5OxD6S7hZlSnmqSC3ceudwCkiDd65ZTtm+Ayk4Y9k5xxCvpOw==
+react-hot-loader@4.12.21:
+  version "4.12.21"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.12.21.tgz#332e830801fb33024b5a147d6b13417f491eb975"
+  integrity sha512-Ynxa6ROfWUeKWsTHxsrL2KMzujxJVPjs385lmB2t5cHUxdoRPGind9F00tOkdc1l5WBleOF4XEAMILY1KPIIDA==
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
@@ -18497,10 +18485,10 @@ supports-hyperlinks@^2.0.0:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
 
-svg-baker-runtime@^1.4.6:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.4.6.tgz#73499736c636610121a9e17ae6ceb2ea1023ec6b"
-  integrity sha512-n+Uq23mafI12WLHXahkjSY00qHJaNfeB9XgVKdo0C4kzrcn8JnunXNajvOlqkFaTqj7xT7MwTlFl3Hga8AevcQ==
+svg-baker-runtime@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/svg-baker-runtime/-/svg-baker-runtime-1.4.7.tgz#f4720637f5b6202eef6378d81f1fead0815f8a4e"
+  integrity sha512-Zorfwwj5+lWjk/oxwSMsRdS2sPQQdTmmsvaSpzU+i9ZWi3zugHLt6VckWfnswphQP0LmOel3nggpF5nETbt6xw==
   dependencies:
     deepmerge "1.3.2"
     mitt "1.1.2"
@@ -18549,10 +18537,10 @@ svg-parser@^2.0.0:
   resolved "https://registry.yarnpkg.com/svg-parser/-/svg-parser-2.0.2.tgz#d134cc396fa2681dc64f518330784e98bd801ec8"
   integrity sha512-1gtApepKFweigFZj3sGO8KT8LvVZK8io146EzXrpVuWCDAbISz/yMucco3hWTkpZNoPabM+dnMOpy6Swue68Zg==
 
-svg-sprite-loader@4.2.5:
-  version "4.2.5"
-  resolved "https://registry.yarnpkg.com/svg-sprite-loader/-/svg-sprite-loader-4.2.5.tgz#4848a2c36efaabb77753481f52ad0b256355537e"
-  integrity sha512-0upgOBcJKI/stFhBqrPj0x99zhkKUR6JDOtQLozDY5HrIAHEIMW5iY8W9/1CfPT6G+ymqqKV0nLtwiUEwfHKrg==
+svg-sprite-loader@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/svg-sprite-loader/-/svg-sprite-loader-5.0.0.tgz#fd5c63c7110df3ca289282def49f34e6a62e6f65"
+  integrity sha512-/hedkRC2IS0E+kFIb+OUCfqQlbVx72/WEEeRGw2uPsNgOOgJEONXzjfSm+CJ3pB9gOHytlBmPMS8ijMCp5s2Eg==
   dependencies:
     bluebird "^3.5.0"
     deepmerge "1.3.2"
@@ -18561,7 +18549,7 @@ svg-sprite-loader@4.2.5:
     html-webpack-plugin "^3.2.0"
     loader-utils "^1.1.0"
     svg-baker "^1.5.0"
-    svg-baker-runtime "^1.4.6"
+    svg-baker-runtime "^1.4.7"
     url-slug "2.0.0"
 
 svg-tags@^1.0.0:

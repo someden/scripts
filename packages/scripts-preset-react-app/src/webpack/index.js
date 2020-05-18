@@ -4,7 +4,9 @@ import externals from 'webpack-node-externals';
 import FilterWarningPlugins from 'webpack-filter-warnings-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
 import ScriptHtmlPlugin from 'script-ext-html-webpack-plugin';
-import ExcludeHtmlPlugin from 'html-webpack-exclude-assets-plugin';
+import {
+	HtmlWebpackSkipAssetsPlugin as ExcludeHtmlPlugin
+} from 'html-webpack-skip-assets-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
 import BdslPlugin, {

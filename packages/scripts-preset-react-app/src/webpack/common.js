@@ -1,5 +1,5 @@
 
-export const excludeAssets = {
+export const excludeAssets = [{
 	constructor: RegExp,
 	test(asset) {
 
@@ -9,7 +9,7 @@ export const excludeAssets = {
 
 		return /\.css$/.test(asset);
 	}
-};
+}];
 
 export const filterAssets = [
 	'*.css',
