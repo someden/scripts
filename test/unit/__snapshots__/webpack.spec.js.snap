@@ -6,7 +6,7 @@ Array [
   "HashedModuleIdsPlugin",
   "HtmlWebpackPlugin",
   "ScriptExtHtmlWebpackPlugin",
-  "HtmlWebpackExcludeAssetsPlugin",
+  "HtmlWebpackSkipAssetsPlugin",
   "EnvironmentPlugin",
   "DefinePlugin",
   "FilterWarningsPlugin",
