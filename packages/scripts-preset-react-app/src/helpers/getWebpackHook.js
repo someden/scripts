@@ -17,6 +17,7 @@ babelRegister({
 	],
 	presets: [
 		['babel-preset-trigen', {
+			env:      'lib',
 			targets:  { node: 'current' },
 			commonjs: true
 		}]
