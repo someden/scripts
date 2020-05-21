@@ -24,7 +24,7 @@
     "@babel/node": "^7.0.0",
     "@babel/runtime-corejs3": "^7.9.6",
     "@trigen/scripts": "file:../scripts",
-    "babel-preset-trigen": "^4.1.0"
+    "babel-preset-trigen": "^4.2.1"
   },
   "publishConfig": {
     "access": "public"
