@@ -1,6 +1,6 @@
 {
   "name": "scripts",
-  "version": "5.0.0",
+  "version": "0.0.0",
   "description": "Scripts and configuration for TrigenSoftware's projects.",
   "author": "dangreen",
   "license": "MIT",
@@ -61,10 +61,5 @@
     "tslint": "^6.0.0",
     "tslint-config-trigen": "^3.0.7",
     "typescript": "3.9.3"
-  },
-  "greenkeeper": {
-    "ignore": [
-      "@types/storybook__addon-knobs"
-    ]
   }
 }
