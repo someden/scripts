@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "../../scripts/buildPackage.sh",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.9.6",
