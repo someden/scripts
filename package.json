@@ -18,7 +18,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "lint": "eslint 'packages/*/src/**/*.{js,jsx}'",
+    "lint": "eslint 'packages/*/src/**/*.{js,jsx,ts,tsx}' 'test/**/*.{js,jsx,ts,tsx}' --ignore-pattern 'test/unit/eslint/**/*'",
     "jest": "NODE_ENV=test jest -c jest.config.json",
     "test": "yarn build && yarn jest && node test/integration/scripts.spec",
     "build": "yarn lint && lerna run build",
@@ -27,6 +27,7 @@
   "dependencies": {
     "@trigen/babel-preset": "file:packages/babel-preset",
     "@trigen/browserslist-config": "file:packages/browserslist-config",
+    "@trigen/eslint-config": "file:packages/eslint-config",
     "@trigen/scripts": "file:packages/scripts",
     "@trigen/scripts-plugin-babel": "file:packages/scripts-plugin-babel",
     "@trigen/scripts-plugin-eslint": "file:packages/scripts-plugin-eslint",
@@ -50,7 +51,6 @@
     "del": "^5.0.0",
     "del-cli": "^3.0.0",
     "eslint": "^7.0.0",
-    "eslint-config-trigen": "^3.4.2",
     "eslint-plugin-jest": "^23.0.4",
     "husky": "^4.0.9",
     "jest": "^25.1.0",
@@ -58,8 +58,6 @@
     "lerna-update-wizard": "^0.17.7",
     "lint-staged": "^10.0.0",
     "react": "^16.8.6",
-    "tslint": "^6.0.0",
-    "tslint-config-trigen": "^3.0.7",
     "typescript": "3.9.3"
   }
 }

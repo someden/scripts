@@ -11,9 +11,7 @@ function writeRC(scripts) {
 	fs.writeFileSync(
 		rcPath,
 		JSON.stringify(
-			scripts.map(_ =>
-				path.join(cwd, 'packages', `scripts-${_}`, 'src', 'index.js')
-			)
+			scripts.map(_ => path.join(cwd, 'packages', `scripts-${_}`, 'src', 'index.js'))
 		)
 	);
 }
@@ -36,17 +34,18 @@ describe('@trigen/scripts', () => {
 
 			const result = getScripts(
 				[],
-				{ cwd: __dirname }
+				{
+					cwd: __dirname
+				}
 			);
 
 			expect(result).toEqual({
-				'lint:js':      {
-					cmd:  'eslint',
-					args: ['--cache', 'src/**/*.{js,jsx}']
+				'lint:scripts': {
+					cmd: 'eslint',
+					args: ['--cache', 'src/**/*.{js,jsx,ts,tsx}']
 				},
-				'lint:scripts': ['lint:js'],
-				'lint':         ['lint:scripts'],
-				'test':         ['lint']
+				'lint': ['lint:scripts'],
+				'test': ['lint']
 			});
 		});
 
@@ -54,32 +53,34 @@ describe('@trigen/scripts', () => {
 
 			let result = getScripts(
 				['packages/*/src/**/*.js'],
-				{ cwd: __dirname }
+				{
+					cwd: __dirname
+				}
 			);
 
 			expect(result).toEqual({
-				'lint:js':      {
-					cmd:  'eslint',
+				'lint:scripts': {
+					cmd: 'eslint',
 					args: ['--cache', 'packages/*/src/**/*.js']
 				},
-				'lint:scripts': ['lint:js'],
-				'lint':         ['lint:scripts'],
-				'test':         ['lint']
+				'lint': ['lint:scripts'],
+				'test': ['lint']
 			});
 
 			result = getScripts(
 				['-v'],
-				{ cwd: __dirname }
+				{
+					cwd: __dirname
+				}
 			);
 
 			expect(result).toEqual({
-				'lint:js':      {
-					cmd:  'eslint',
-					args: ['--cache', 'src/**/*.{js,jsx}', '-v']
+				'lint:scripts': {
+					cmd: 'eslint',
+					args: ['--cache', 'src/**/*.{js,jsx,ts,tsx}', '-v']
 				},
-				'lint:scripts': ['lint:js'],
-				'lint':         ['lint:scripts'],
-				'test':         ['lint']
+				'lint': ['lint:scripts'],
+				'test': ['lint']
 			});
 		});
 
@@ -92,11 +93,9 @@ describe('@trigen/scripts', () => {
 
 			const result = getScripts(
 				[],
-				{ cwd: __dirname }
-			);
-
-			expect(result['lint:scripts']).toEqual(
-				['lint:js', 'lint:ts']
+				{
+					cwd: __dirname
+				}
 			);
 
 			expect(result.lint).toEqual(
@@ -112,27 +111,21 @@ describe('@trigen/scripts', () => {
 
 			writeRC([
 				'plugin-typescript',
-				'plugin-jest',
 				'plugin-rollup',
 				'preset-lib',
+				'plugin-jest',
 				'plugin-size-limit'
 			]);
 
 			const result = getScripts(
 				[],
-				{ cwd: __dirname }
-			);
-
-			expect(result['lint:scripts']).toEqual(
-				['lint:ts']
-			);
-
-			expect(result.lint).toEqual(
-				['lint:scripts']
+				{
+					cwd: __dirname
+				}
 			);
 
 			expect(result.test).toEqual(
-				['typecheck', 'lint', 'jest', 'build', 'checkSize']
+				['typecheck', 'lint', 'build', 'jest', 'checkSize']
 			);
 		});
 
@@ -144,7 +137,9 @@ describe('@trigen/scripts', () => {
 
 			let result = getScripts(
 				[],
-				{ cwd: __dirname }
+				{
+					cwd: __dirname
+				}
 			);
 
 			expect(result.start.cmd).toBe('babel-node');
@@ -157,7 +152,9 @@ describe('@trigen/scripts', () => {
 
 			result = getScripts(
 				[],
-				{ cwd: __dirname }
+				{
+					cwd: __dirname
+				}
 			);
 
 			expect(result.start.cmd).toBe('ts-node-dev');
@@ -172,7 +169,9 @@ describe('@trigen/scripts', () => {
 
 			let result = getScripts(
 				[],
-				{ cwd: __dirname }
+				{
+					cwd: __dirname
+				}
 			);
 
 			expect(result.test.includes('build')).toBe(false);
@@ -184,7 +183,9 @@ describe('@trigen/scripts', () => {
 
 			result = getScripts(
 				[],
-				{ cwd: __dirname }
+				{
+					cwd: __dirname
+				}
 			);
 
 			expect(result.test.includes('build')).toBe(true);
