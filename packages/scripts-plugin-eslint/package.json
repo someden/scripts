@@ -19,9 +19,10 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.6",
+    "@babel/runtime": "^7.12.5",
     "@trigen/eslint-config": "file:../eslint-config",
     "@trigen/scripts": "file:../scripts",
+    "core-js": "^3.8.2",
     "eslint": "^7.0.0"
   },
   "publishConfig": {

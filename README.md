@@ -162,3 +162,4 @@ yarn exec -- trigen-scripts lint
 - [ ] Storybook theme
 - [ ] esModules in loaders
 - [ ] storyshots with parameters
+- [ ] react testing linter plugins

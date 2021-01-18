@@ -19,8 +19,9 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.6",
+    "@babel/runtime": "^7.12.5",
     "@trigen/scripts": "file:../scripts",
+    "core-js": "^3.8.2",
     "size-limit": "^4.1.1"
   },
   "publishConfig": {

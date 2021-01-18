@@ -144,15 +144,15 @@ export default class Icon extends PureComponent<IProps> {
 	}
 }
 
-const hrefListeners = [];
+const hrefListeners: (() => void)[] = [];
 
-function addHrefListener(listener) {
+function addHrefListener(listener: () => void) {
 	hrefListeners.push(listener);
 	return hrefListeners.splice.bind(
 		hrefListeners,
 		hrefListeners.indexOf(listener),
 		1
-	);
+	) as () => void;
 }
 
 if (shoudlPrepandPathname) {

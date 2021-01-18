@@ -22,8 +22,9 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.6",
+    "@babel/runtime": "^7.12.5",
     "chalk": "^4.0.0",
+    "core-js": "^3.8.2",
     "immutability-helper": "^3.0.0",
     "rcfile": "^1.0.3",
     "resolve-cwd": "^3.0.0"

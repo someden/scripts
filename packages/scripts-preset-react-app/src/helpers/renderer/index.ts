@@ -50,7 +50,7 @@ export default abstract class Renderer {
 			buildDir
 		} = this;
 		const files = await fs.readdir(buildDir);
-		const precacheManifestFile = files.filter(_ => /precache-manifest/.test(_));
+		const precacheManifestFile = files.filter(_ => _.includes('precache-manifest'));
 
 		if (!precacheManifestFile) {
 			throw Error('No precache manifest');

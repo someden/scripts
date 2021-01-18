@@ -4,10 +4,17 @@
 		"./packages/eslint-config/src",
 		"./packages/eslint-config/src/commonjs",
 		"./packages/eslint-config/src/react",
-		"./packages/eslint-config/src/typescript"
+		"./packages/eslint-config/src/typescript",
+		"./packages/eslint-config/src/typescript-requiring-type-checking",
+		"./packages/eslint-config/src/jest",
+		"./packages/eslint-config/src/storybook"
 	],
 	"env": {
 		"node": true
+	},
+	"parserOptions": {
+	  "tsconfigRootDir": "./",
+	  "project": ["./tsconfig.json"]
 	},
 	"rules": {
 		"no-console": "off"

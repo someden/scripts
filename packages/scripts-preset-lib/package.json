@@ -19,11 +19,12 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.6",
+    "@babel/runtime": "^7.12.5",
     "@trigen/browserslist-config": "file:../browserslist-config",
     "@trigen/scripts": "file:../scripts",
     "@trigen/scripts-plugin-eslint": "file:../scripts-plugin-eslint",
     "clean-publish": "^1.1.0",
+    "core-js": "^3.8.2",
     "coveralls": "^3.0.0",
     "husky": "^4.0.9",
     "lint-staged": "^10.0.0"

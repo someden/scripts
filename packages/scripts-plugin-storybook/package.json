@@ -23,7 +23,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.6",
+    "@babel/runtime": "^7.12.5",
     "@storybook/addon-a11y": "^5.1.10",
     "@storybook/addon-actions": "^5.0.5",
     "@storybook/addon-info": "^5.0.5",
@@ -37,6 +37,7 @@
     "@trigen/scripts-plugin-jest": "file:../scripts-plugin-jest",
     "@types/storybook__addon-info": "^5.2.1",
     "babel-plugin-require-context-hook": "^1.0.0",
+    "core-js": "^3.8.2",
     "env-ci": "^5.0.2",
     "react-test-renderer": "^16.9.0"
   },

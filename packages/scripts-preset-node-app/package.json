@@ -19,13 +19,14 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.6",
+    "@babel/runtime": "^7.12.5",
     "@trigen/browserslist-config": "file:../browserslist-config",
     "@trigen/scripts": "file:../scripts",
     "@trigen/scripts-plugin-babel": "file:../scripts-plugin-babel",
     "@trigen/scripts-plugin-eslint": "file:../scripts-plugin-eslint",
     "@trigen/scripts-plugin-jest": "file:../scripts-plugin-jest",
     "@trigen/scripts-plugin-rollup": "file:../scripts-plugin-rollup",
+    "core-js": "^3.8.2",
     "husky": "^4.0.9",
     "lint-staged": "^10.0.0"
   },
