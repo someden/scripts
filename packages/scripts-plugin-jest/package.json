@@ -23,7 +23,7 @@
     "@trigen/babel-preset": "file:../babel-preset",
     "@trigen/scripts": "file:../scripts",
     "@types/jest": "^26.0.0",
-    "archiver": "^4.0.1",
+    "archiver": "^5.2.0",
     "babel-jest": "^26.0.1",
     "core-js": "^3.8.2",
     "form-data": "^3.0.0",

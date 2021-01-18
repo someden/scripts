@@ -89,7 +89,6 @@ module.exports = (api, envOptions, options) => {
 			case 'production':
 				presets.push('@babel/preset-react');
 				plugins.push(
-					'babel-plugin-react-local',
 					['@babel/plugin-transform-react-constant-elements', reactConstantElements],
 					['babel-plugin-transform-react-remove-prop-types', reactRemovePropTypes],
 					'babel-plugin-transform-react-class-to-function'
