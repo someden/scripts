@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-plugin-storybook",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "Storybook scripts.",
   "author": "dangreen",
   "license": "MIT",

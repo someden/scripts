@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-plugin-rollup",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "Rollup scripts.",
   "author": "dangreen",
   "license": "MIT",
