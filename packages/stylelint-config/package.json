@@ -35,5 +35,8 @@
     "stylelint-high-performance-animation": "^1.5.1",
     "stylelint-order": "^4.0.0",
     "stylelint-scss": "^3.13.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
