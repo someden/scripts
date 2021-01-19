@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-plugin-jest",
-  "version": "6.1.1",
+  "version": "7.0.0",
   "description": "Jest scripts.",
   "author": "dangreen",
   "license": "MIT",
