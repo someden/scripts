@@ -1,6 +1,6 @@
 {
   "name": "@trigen/stylelint-config",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Trigen's Stylelint config",
   "author": "dangreen",
   "license": "MIT",

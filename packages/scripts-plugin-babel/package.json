@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-plugin-babel",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Babel scripts.",
   "author": "dangreen",
   "license": "MIT",
