@@ -34,7 +34,8 @@ module.exports = {
 				'no-loop-func': 'off',
 				'require-atomic-updates': 'off',
 				'no-async-promise-executor': 'off',
-				'@typescript-eslint/no-misused-promises': 'off'
+				'@typescript-eslint/no-misused-promises': 'off',
+				'@typescript-eslint/no-empty-function': 'off'
 			}
 		}
 	]
