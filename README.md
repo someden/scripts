@@ -16,7 +16,7 @@
 [deps-url]: https://david-dm.org/TrigenSoftware/scripts?path=packages/scripts
 
 [build]: http://img.shields.io/travis/com/TrigenSoftware/scripts/master.svg
-[build-url]: https://travis-ci.com/TrigenSoftware/scripts
+[build-url]: https://github.com/TrigenSoftware/scripts/actions
 
 [dependabot]: https://api.dependabot.com/badges/status?host=github&repo=TrigenSoftware/scripts
 [dependabot-url]: https://dependabot.com/

@@ -11,8 +11,8 @@
 [node]: https://img.shields.io/node/v/%40trigen/browserslist-config.svg
 [node-url]: https://nodejs.org
 
-[build]: http://img.shields.io/travis/com/TrigenSoftware/scripts.svg
-[build-url]: https://travis-ci.com/TrigenSoftware/scripts
+[build]: https://img.shields.io/github/workflow/status/TrigenSoftware/scripts/CI.svg
+[build-url]: https://github.com/TrigenSoftware/scripts/actions
 
 [dependabot]: https://api.dependabot.com/badges/status?host=github&repo=TrigenSoftware/scripts
 [dependabot-url]: https://dependabot.com/
