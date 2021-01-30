@@ -22,6 +22,12 @@ describe('@trigen/scripts', () => {
 				).toEqual(
 					['test']
 				);
+
+				expect(
+					getScriptArg(['some', '--flag'], 1, ['test', 'some-pattern'])
+				).toEqual(
+					['test', 'some-pattern']
+				);
 			});
 
 			it('shouldn\'t return param', () => {

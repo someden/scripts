@@ -4,7 +4,9 @@ export const FILL_ME = [/* FILL ME */];
 export function getScriptArg(args, arg, value) {
 	if (typeof arg === 'number') {
 		if (arg >= args.length || args[arg][0] === '-') {
-			return [value];
+			return Array.isArray(value)
+				? value.slice()
+				: [value];
 		}
 	} else
 	if (!args.includes(arg)) {
