@@ -13,12 +13,15 @@ const scripts = {
 };
 
 export default function getScripts(args, inputAllScripts, {
-	testSkipBuild = false
+	testSkipBuild = false,
+	lint
 } = {}) {
 	let allScripts = inputAllScripts;
 
 	allScripts = saveScripts(['start'], babel(args, allScripts), allScripts);
-	allScripts = eslint(args, allScripts);
+	allScripts = eslint(args, allScripts, {
+		lint
+	});
 	allScripts = jest(args, allScripts);
 	allScripts = rollup(args, allScripts);
 

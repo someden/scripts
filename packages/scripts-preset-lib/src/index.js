@@ -18,11 +18,14 @@ const scripts = {
 
 export default function getScripts(args, inputAllScripts, {
 	publish = false,
-	testSkipBuild = false
+	testSkipBuild = false,
+	lint
 } = {}) {
 	let allScripts = inputAllScripts;
 
-	allScripts = eslint(args, allScripts);
+	allScripts = eslint(args, allScripts, {
+		lint
+	});
 
 	return update(allScripts, {
 		test: {

@@ -62,7 +62,8 @@ export default function getScripts(args, inputAllScripts, {
 	testSkipBuild = false,
 	transpile = {},
 	bdsl = {},
-	preact = false
+	preact = false,
+	lintScripts
 } = {}) {
 	const storybookConfigsArgs = getScriptArg(args, '-c', storybookConfigs);
 	const storybookAutoConfigure = Boolean(storybookConfigsArgs.length);
@@ -70,7 +71,9 @@ export default function getScripts(args, inputAllScripts, {
 
 	allScripts = babel(args, allScripts);
 	allScripts = typescript(args, allScripts);
-	allScripts = eslint(args, allScripts);
+	allScripts = eslint(args, allScripts, {
+		lint: lintScripts
+	});
 	allScripts = storybook(args, allScripts, {
 		storybookConfigs
 	});
