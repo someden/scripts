@@ -1,9 +1,21 @@
 
 export const FILL_ME = [/* FILL ME */];
 
+function trimLeftFlags(args) {
+	let notFlag = false;
+
+	return args.filter((value) => {
+		notFlag = notFlag || value[0] !== '-';
+
+		return notFlag;
+	});
+}
+
 export function getScriptArg(args, arg, value) {
 	if (typeof arg === 'number') {
-		if (arg >= args.length || args[arg][0] === '-') {
+		const posArgs = trimLeftFlags(args);
+
+		if (arg >= posArgs.length) {
 			return Array.isArray(value)
 				? value.slice()
 				: [value];
