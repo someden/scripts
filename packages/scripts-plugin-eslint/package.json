@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-plugin-eslint",
-  "version": "7.3.1",
+  "version": "7.3.3",
   "description": "ESLint scripts.",
   "author": "dangreen",
   "license": "MIT",
