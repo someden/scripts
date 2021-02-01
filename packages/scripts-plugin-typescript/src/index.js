@@ -72,10 +72,7 @@ export default function getScripts(args, allScripts) {
 						$push: [
 							'./src',
 							...getScriptArg(args, '--out', './docs'),
-							'--ignoreCompilerErrors',
 							'--excludeExternals',
-							'--mode',
-							'modules',
 							...args
 						]
 					}
