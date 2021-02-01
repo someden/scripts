@@ -6,6 +6,11 @@ module.exports = {
 	plugins: [
 		'jsdoc'
 	],
+	settings: {
+		jsdoc: {
+			mode: 'typescript'
+		}
+	},
 	rules: {
 		'jsdoc/check-property-names': ['warn', {
 			enableFixer: true
