@@ -91,6 +91,9 @@ module.exports = {
 			selector: 'interface',
 			format: ['PascalCase'],
 			prefix: ['I']
+		}, {
+			selector: 'enumMember',
+			format: ['PascalCase']
 		}],
 		'@typescript-eslint/no-dynamic-delete': 'error',
 		'@typescript-eslint/no-explicit-any': 'error',
