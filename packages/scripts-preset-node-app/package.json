@@ -1,6 +1,6 @@
 {
   "name": "@trigen/scripts-preset-node-app",
-  "version": "7.3.3",
+  "version": "7.3.4",
   "description": "Node app preset.",
   "author": "dangreen",
   "license": "MIT",

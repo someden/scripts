@@ -1,6 +1,6 @@
 {
   "name": "@trigen/eslint-config",
-  "version": "7.3.3",
+  "version": "7.3.4",
   "description": "Trigen's ESLint config",
   "author": "dangreen",
   "license": "MIT",
